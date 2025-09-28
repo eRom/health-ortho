@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Empan lettres & chiffres – Progression</title>
+  <meta name="description" content="Consultez vos statistiques d'entraînement Empan et exportez vos résultats en JSON ou CSV." />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-180.png" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+  <header class="site-header">
+    <div class="site-header__top">
+      <div>
+        <a href="/empan/index.html" class="site-logo" aria-label="Retour à l'accueil">
+          <span class="site-logo__accent">Retour</span>
+        </a>
+        <h1 class="site-title">Suivi des entraînements</h1>
+        <p class="site-tagline">Visualisez vos progrès et exportez vos séries.</p>
+      </div>
+    </div>
+  </header>
+  <main id="main-content" class="site-main" role="main" tabindex="-1">
+    <section id="metrics-screen" class="screen active" role="region" aria-labelledby="metrics-title" aria-hidden="false">
+      <div class="metrics-layout">
+        <div class="card">
+          <div class="card__body metrics-header">
+          
+            <div class="metrics-stats-grid" role="list">
+              <div class="metrics-stat" role="listitem">
+                <span class="metrics-stat__label">Total séries</span>
+                <span class="metrics-stat__value" id="total-series">-</span>
+              </div>
+              <div class="metrics-stat" role="listitem">
+                <span class="metrics-stat__label">Réussite globale</span>
+                <span class="metrics-stat__value"><span id="total-success-rate">-</span>%</span>
+              </div>
+            </div>
+            <div class="metrics-header__title">
+              <p class="metrics-subtitle">Les statistiques sont calculées à partir des données stockées sur cet appareil.</p>
+            </div>
+            <div class="metrics-export-buttons metrics-export-buttons--inline">
+              <button id="export-btn" class="btn btn--primary" type="button" disabled>Exporter en JSON</button>
+              <button id="export-csv-btn" class="btn btn--outline" type="button" disabled>Exporter en CSV</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      document.documentElement.setAttribute('data-theme', 'dark');
+
+      const PROGRESS_KEY = 'empan_progression';
+      let allData = [];
+
+      const exportBtn = document.getElementById('export-btn');
+      const exportCsvBtn = document.getElementById('export-csv-btn');
+
+      function safeReadProgress() {
+        try {
+          const raw = localStorage.getItem(PROGRESS_KEY);
+          if (!raw) {
+            return [];
+          }
+          const arr = JSON.parse(raw);
+          return Array.isArray(arr) ? arr : [];
+        } catch (error) {
+          return [];
+        }
+      }
+
+      function calculateStats(data) {
+        const totalSeries = data.length;
+        const totalTotalPercentage = data.reduce((sum, entry) => sum + entry.pourcentageBonnesReponses, 0);
+        const totalSuccessRate = totalSeries > 0 ? Math.round(totalTotalPercentage / totalSeries) : 0;
+
+        return {
+          total: {
+            series: totalSeries,
+            successRate: totalSuccessRate,
+          },
+        };
+      }
+
+      function updateStats(stats) {
+        const totalSeriesEl = document.getElementById('total-series');
+        const totalSuccessRateEl = document.getElementById('total-success-rate');
+
+        if (totalSeriesEl) {
+          totalSeriesEl.textContent = `${stats.total.series} série${stats.total.series > 1 ? 's' : ''}`;
+        }
+        if (totalSuccessRateEl) {
+          totalSuccessRateEl.textContent = stats.total.successRate;
+        }
+      }
+
+      function updateExportButtons(enabled) {
+        exportBtn.disabled = !enabled;
+        exportCsvBtn.disabled = !enabled;
+      }
+
+      function loadData() {
+        allData = safeReadProgress().reverse();
+        const stats = calculateStats(allData);
+        updateStats(stats);
+        updateExportButtons(allData.length > 0);
+      }
+
+      exportBtn.addEventListener('click', () => {
+        try {
+          const blob = new Blob([JSON.stringify(allData, null, 2)], { type: 'application/json' });
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+          link.href = url;
+          link.download = `empan_toutes_donnees_${timestamp}.json`;
+          document.body.appendChild(link);
+          link.click();
+          link.remove();
+          URL.revokeObjectURL(url);
+        } catch (error) {
+          alert('Export impossible');
+        }
+      });
+
+      exportCsvBtn.addEventListener('click', () => {
+        try {
+          const headers = ['Date', 'Type', 'Séries', 'Symboles', 'Son', 'Bonnes réponses', 'Pourcentage'];
+          const csvContent = [
+            headers.join(','),
+            ...allData.map((entry) => [
+              new Date(entry.timestamp).toLocaleString(),
+              entry.type,
+              entry.nombreSeries,
+              entry.nombreSymboles,
+              entry.modeEcoute ? 'Oui' : 'Non',
+              entry.nbBonnesReponses,
+              entry.pourcentageBonnesReponses,
+            ].join(',')),
+          ].join('\n');
+
+          const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+          link.href = url;
+          link.download = `empan_toutes_donnees_${timestamp}.csv`;
+          document.body.appendChild(link);
+          link.click();
+          link.remove();
+          URL.revokeObjectURL(url);
+        } catch (error) {
+          alert('Export CSV impossible');
+        }
+      });
+
+      loadData();
+    })();
+  </script>
+</body>
+</html>
