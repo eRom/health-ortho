@@ -1,0 +1,203 @@
+:root {
+  color-scheme: light;
+  --color-bg: #f6fbff;
+  --color-surface: #ffffff;
+  --color-primary: #3aa6b9;
+  --color-primary-dark: #2a7b86;
+  --color-accent: #89cdda;
+  --color-text: #0f2c3f;
+  --color-muted: #5f7a8a;
+  --shadow-soft: 0 18px 40px rgba(58, 166, 185, 0.16);
+  --radius-lg: 20px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+  --transition-base: 180ms ease-in-out;
+  font-size: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background: radial-gradient(circle at top, #e0f7ff, var(--color-bg));
+  color: var(--color-text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: min(100%, 960px);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.app-header {
+  padding: 32px 0 24px;
+  background: linear-gradient(140deg, #e6f8f9 0%, #f0faff 80%, #f7fffe 100%);
+  border-bottom: 1px solid rgba(58, 166, 185, 0.15);
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: clamp(28px, 5vw, 44px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  margin-top: 8px;
+  font-size: clamp(18px, 4vw, 20px);
+  color: var(--color-muted);
+  max-width: 600px;
+}
+
+.app-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(32px, 6vw, 64px) 0;
+}
+
+.phrase-card {
+  margin: 0 auto;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: clamp(24px, 6vw, 48px);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(58, 166, 185, 0.08);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.phrase-card.active {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 45px rgba(58, 166, 185, 0.18);
+}
+
+.phrase-text {
+  margin: 0;
+  font-size: clamp(20px, 5vw, 28px);
+  line-height: 1.6;
+  text-align: center;
+  font-weight: 600;
+}
+
+.controls {
+  margin-top: clamp(24px, 4vw, 36px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+  transition: transform var(--transition-base), box-shadow var(--transition-base),
+    background var(--transition-base), color var(--transition-base);
+}
+
+.primary-button {
+  padding: 14px 32px;
+  border-radius: 999px;
+  background: var(--color-primary);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 18px;
+  box-shadow: 0 14px 30px rgba(58, 166, 185, 0.24);
+}
+
+.primary-button:hover,
+.primary-button:focus-visible {
+  background: var(--color-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 18px 36px rgba(58, 166, 185, 0.28);
+}
+
+.primary-button:active {
+  transform: translateY(0);
+  box-shadow: 0 12px 24px rgba(58, 166, 185, 0.2);
+}
+
+.reset-button {
+  background: transparent;
+  color: var(--color-primary-dark);
+  font-weight: 500;
+  font-size: 16px;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+}
+
+.reset-button:hover,
+.reset-button:focus-visible {
+  background: rgba(58, 166, 185, 0.12);
+}
+
+.status-text {
+  margin-top: 12px;
+  font-size: 16px;
+  color: var(--color-muted);
+  text-align: center;
+  min-height: 24px;
+}
+
+.app-footer {
+  padding: 24px 0;
+  text-align: center;
+  border-top: 1px solid rgba(58, 166, 185, 0.12);
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.app-footer p {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 15px;
+}
+
+@media (min-width: 640px) {
+  :root {
+    font-size: 17px;
+  }
+
+  .app-main {
+    padding: 72px 0 96px;
+  }
+
+  .controls {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .reset-button {
+    font-size: 17px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    font-size: 18px;
+  }
+
+  .app-main {
+    padding: 96px 0 120px;
+  }
+}
+
+.fade-enter {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 260ms ease-out, transform 260ms ease-out;
+}
+

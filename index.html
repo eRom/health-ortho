@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Virelangues</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="app-header" role="banner">
+      <div class="container">
+        <h1>Virelangues</h1>
+        <p class="subtitle">
+          Un nouveau défi d'élocution à chaque clic, sans répétition dans la même
+          journée.
+        </p>
+      </div>
+    </header>
+    <main class="app-main" role="main">
+      <div class="container">
+        <section class="phrase-card" aria-live="polite" aria-atomic="true">
+          <p id="phrase" class="phrase-text"></p>
+        </section>
+        <div class="controls">
+          <button id="newPhraseButton" class="primary-button" type="button">
+            Nouvelle phrase
+          </button>
+          <button
+            id="resetButton"
+            class="reset-button"
+            type="button"
+            aria-live="polite"
+          >
+            Réinitialiser la sélection
+          </button>
+        </div>
+        <p id="status" class="status-text" role="status"></p>
+      </div>
+    </main>
+    <footer class="app-footer" role="contentinfo">
+      <div class="container">
+        <p>
+          <span>© <span id="footer-year"></span> Romain Ecarnot / v2.0.0</span>
+        </p>
+      </div>
+    </footer>
+    <script src="./script.js" defer></script>
+    <script>
+      (function () {
+            const footerYear = document.getElementById("footer-year");
+            if (footerYear) {
+              footerYear.textContent = new Date().getFullYear();
+            }
+          })();
+        </script>
+  </body>
+</html>
+
