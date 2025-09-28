@@ -112,6 +112,11 @@
   font-size: 14px;
 }
 
+header.app-header h1,
+header.app-header .subtitle {
+  text-align: center;
+}
+
 @media (max-width: 640px) {
   .container {
     padding: 0 16px;
