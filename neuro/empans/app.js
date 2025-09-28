@@ -756,7 +756,7 @@ const AudioService = (function () {
   }
 
   async function loadBufferForLetter(letter) {
-    const url = `/empan/medias/${letter}.m4a`;
+    const url = `medias/${letter}.m4a`;
     const ctx = await ensureContext();
     const response = await fetch(url, { cache: "force-cache" });
     if (!response.ok) throw new Error(`HTTP ${response.status} pour ${url}`);
