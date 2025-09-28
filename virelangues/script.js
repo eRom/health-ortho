@@ -1,3 +1,5 @@
+import { initFooterYear } from "/shared/scripts/ui.js";
+
 const storageKey = "virelangues_state";
 const phrases = [
   "Angèle et Gilles en gilet gèlent",
@@ -212,11 +214,19 @@ if (!state || state.date !== todayKey) {
  * @param {string} phrase
  */
 const renderPhrase = (phrase) => {
-  phraseElement.textContent = phrase;
-  animateCard(phraseElement.parentElement);
+  const cardElement = phraseElement?.parentElement;
+  if (phraseElement) {
+    phraseElement.textContent = phrase;
+  }
+  if (cardElement) {
+    animateCard(cardElement);
+  }
 };
 
 const updateStatus = () => {
+  if (!statusElement || !newPhraseButton) {
+    return;
+  }
   const remaining = phrases.length - state.used.length;
   if (remaining <= 0) {
     statusElement.textContent =
@@ -255,7 +265,9 @@ const scheduleMidnightReset = () => {
     () => {
       state = resetState();
       renderPhrase("");
-      statusElement.textContent = "Nouveau cycle, une phrase arrive...";
+      if (statusElement) {
+        statusElement.textContent = "Nouveau cycle, une phrase arrive...";
+      }
       window.requestAnimationFrame(() => {
         showNextPhrase();
       });
@@ -265,38 +277,52 @@ const scheduleMidnightReset = () => {
   );
 };
 
-newPhraseButton.addEventListener("click", () => {
-  showNextPhrase();
-});
+const bootstrap = () => {
+  if (!phraseElement || !newPhraseButton || !resetButton || !statusElement) {
+    return;
+  }
 
-resetButton.addEventListener("click", () => {
-  state = resetState();
-  newPhraseButton.disabled = false;
-  newPhraseButton.removeAttribute("aria-disabled");
-  statusElement.textContent = "Cycle réinitialisé.";
-  showNextPhrase();
-});
+  newPhraseButton.addEventListener("click", () => {
+    showNextPhrase();
+  });
 
-// Initial render
-if (state.lastPhrase) {
-  renderPhrase(state.lastPhrase);
-  updateStatus();
+  resetButton.addEventListener("click", () => {
+    state = resetState();
+    newPhraseButton.disabled = false;
+    newPhraseButton.removeAttribute("aria-disabled");
+    statusElement.textContent = "Cycle réinitialisé.";
+    showNextPhrase();
+  });
+
+  if (state.lastPhrase) {
+    renderPhrase(state.lastPhrase);
+    updateStatus();
+  } else {
+    showNextPhrase();
+  }
+
+  scheduleMidnightReset();
+  initFooterYear();
+};
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", bootstrap);
 } else {
-  showNextPhrase();
+  bootstrap();
 }
-
-scheduleMidnightReset();
 
 window.addEventListener("storage", (event) => {
   if (event.key !== storageKey) {
     return;
   }
   const latest = loadState();
-  if (latest && latest.date === getTodayKey()) {
-    state = latest;
-    if (state.lastPhrase) {
-      renderPhrase(state.lastPhrase);
-    }
-    updateStatus();
+  const isSameDay = latest && latest.date === getTodayKey();
+  if (!isSameDay) {
+    return;
   }
+  state = latest;
+  if (state.lastPhrase) {
+    renderPhrase(state.lastPhrase);
+  }
+  updateStatus();
 });
