@@ -483,10 +483,18 @@ select.form-control {
   gap: 24px;
 }
 
+.metrics-card {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(24px, 5vw, 32px);
+  padding: clamp(32px, 6vw, 44px);
+  margin: clamp(16px, 4vw, 32px) 0;
+}
+
 .metrics-header {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: clamp(20px, 4vw, 28px);
 }
 
 .metrics-header__title {
@@ -533,14 +541,14 @@ select.form-control {
 
 .metrics-export-buttons--inline {
   display: flex;
+  flex-direction: column;
   gap: 12px;
-  flex-wrap: wrap;
 }
 
 .metrics-export-buttons--inline .primary-button,
 .metrics-export-buttons--inline .ghost-button,
 .metrics-export-buttons--inline .secondary-button {
-  min-width: 180px;
+  width: 100%;
 }
 
 /* Responsive */
@@ -559,6 +567,18 @@ select.form-control {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .metrics-export-buttons--inline {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .metrics-export-buttons--inline .primary-button,
+  .metrics-export-buttons--inline .ghost-button,
+  .metrics-export-buttons--inline .secondary-button {
+    flex: 1;
+    width: auto;
   }
 }
 
