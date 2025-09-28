@@ -12,7 +12,7 @@ export const exercises = [
     name: "Diadococinésie Complexes",
     description:
       "Travaillez la fluidité articulatoire avec chrono paramétrable et mise en évidence des séquences de syllabes.",
-    href: "/diadococinesie/",
+    href: "/diadococinesie_complexe/",
     tags: ["coordination", "articulation", "rythme"],
     level: "Intermédiaire",
   },
