@@ -42,63 +42,28 @@
   <header class="app-header" role="banner">
     <div class="container">
       <div class="header-meta">
-        <span class="badge"><b>MPR</b> – Plateformes d'entraînement</span>
+        <a class="breadcrumb-link" href="/">← Retour aux plateformes</a>
       </div>
-      <h1>Bibliothèque d'exercices</h1>
-      <p class="subtitle" data-role="home-quote">
-        Sélectionnez une plateforme pour accéder aux exercices adaptés.
+      <h1>Exercices Orthophoniques</h1>
+      <p class="subtitle">
+        Travailler la diction, l'élocution et la coordination articulatoire.
       </p>
     </div>
   </header>
   <main class="app-main" role="main">
     <div class="container">
-      <section aria-label="Choix des plateformes" class="exercise-grid">
-        <article class="exercise-card surface-card surface-card--interactive">
-          <div class="exercise-card__header">
-            <h2 class="exercise-card__title">Orthophonie</h2>
-          </div>
-          <p class="exercise-card__description">
-            Plateforme dédiée aux exercices d'articulation, de diction et d'élocution.
-          </p>
-          <div class="exercise-card__tags">
-            <span class="tag-pill">diction</span>
-            <span class="tag-pill">élocution</span>
-            <span class="tag-pill">articulation</span>
-          </div>
-          <div class="exercise-card__actions">
-            <a class="primary-button" href="/ortho/ortho.html">Accéder à la plateforme</a>
-          </div>
-        </article>
-      
-        <article class="exercise-card surface-card surface-card--interactive">
-          <div class="exercise-card__header">
-            <h2 class="exercise-card__title">Neuropsychologie</h2>
-          </div>
-          <p class="exercise-card__description">
-            Modules pour travailler l'attention, la mémoire et les fonctions exécutives.
-          </p>
-          <div class="exercise-card__tags">
-            <span class="tag-pill">attention</span>
-            <span class="tag-pill">mémoire</span>
-            <span class="tag-pill">fonctions exécutives</span>
-          </div>
-          <div class="exercise-card__actions">
-            <a class="primary-button" href="/neuro/neuro.html">Accéder à la plateforme</a>
-          </div>
-        </article>
-      </section>
-      </div>
-      </main>
+      <section aria-label="Liste des exercices orthophoniques" class="exercise-grid"></section>
+    </div>
+  </main>
   <footer class="app-footer" role="contentinfo">
     <div class="container">
       <div class="footer-actions">
         <span>© <span id="footer-year"></span> Romain Ecarnot</span>
-        <a class="secondary-button" href="https://fr.tipeee.com/rebondir-apres-lavc-ma-carriere-dans-la-tech" target="_blank"
-          rel="noopener noreferrer">Soutenir le projet</a>
+        <a class="secondary-button" href="https://fr.tipeee.com/rebondir-apres-lavc-ma-carriere-dans-la-tech" target="_blank" rel="noopener noreferrer">Soutenir le projet</a>
       </div>
-      </div>
-      </footer>
-<script type="module" src="/scripts/home.js"></script>
+    </div>
+  </footer>
+  <script type="module" src="./ortho.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Entraînement Cognitif | Exercices</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/shared/styles/theme.css" />
+  <link rel="stylesheet" href="/shared/styles/components.css" />
+  <link rel="stylesheet" href="/styles/home.css" />
+
+  <!-- Métadonnées SEO -->
+  <meta name="description"
+    content="Plateforme d'entraînements cognitifs pour la rééducation neuropsychologique. Découvrez les exercices disponibles et suivez votre progression.">
+    <meta name="keywords" content="entraînement cognitif, mémoire de travail, rééducation, exercices">
+    <meta name="author" content="Romain Ecarnot">
+
+  <!-- Open Graph (Facebook, LinkedIn...) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Orthophonie – Exercices en Ligne">
+  <meta property="og:description"
+    content="Choisissez un module pour travailler la diction, l'élocution. De nouveaux exercices arrivent prochainement.">
+  <meta property="og:url" content="https://ortho.homeincloud.fr">
+  <meta property="og:image" content="https://ortho.homeincloud.fr/og-image.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Orthophonie – Exercices en Ligne">
+  <meta name="twitter:description"
+    content="Choisissez un module pour travailler la diction, l'élocution. De nouveaux exercices arrivent prochainement.">
+  <meta name="twitter:image" content="https://ortho.homeincloud.fr/twitter-card.png">
+
+  <!-- Favicon & Manifest -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+  <header class="app-header" role="banner">
+    <div class="container">
+      <div class="header-meta">
+        <a class="breadcrumb-link" href="/">← Retour aux plateformes</a>
+      </div>
+      <h1>Neuropsychologie</h1>
+      <p class="subtitle">
+        Modules pour travailler l'attention, la mémoire et les fonctions exécutives.      </p>
+    </div>
+  </header>
+  <main class="app-main" role="main">
+    <div class="container">
+      <section aria-label="Liste des exercices neuropsychologiques" class="exercise-grid"></section>
+    </div>
+  </main>
+  <footer class="app-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-actions">
+        <span>© <span id="footer-year"></span> Romain Ecarnot</span>
+        <a class="secondary-button" href="https://fr.tipeee.com/rebondir-apres-lavc-ma-carriere-dans-la-tech" target="_blank" rel="noopener noreferrer">Soutenir le projet</a>
+      </div>
+    </div>
+  </footer>
+  <script type="module" src="./neuro.js"></script>
+</body>
+
+</html>

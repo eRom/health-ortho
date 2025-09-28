@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Empan lettres &amp; chiffres – Progression</title>
+  <meta name="description"
+    content="Consultez vos statistiques d'entraînement Empan et exportez vos résultats en JSON ou CSV." />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-180.png" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="stylesheet" href="/shared/styles/theme.css" />
+  <link rel="stylesheet" href="/shared/styles/components.css" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+<header class="app-header" role="banner">
+  <div class="container">
+    <div class="header-meta">
+      <a class="breadcrumb-link" href="./index.html">← Retour à l'exercice</a>
+      </div>
+      <h1>Suivi des entraînements</h1>
+      <p class="subtitle">
+        Visualisez vos tendances et exportez les séries enregistrées sur cet appareil.
+      </p>
+    </div>
+  </header>
+
+  <main class="app-main" id="main-content" role="main">
+    <div class="container container--narrow">
+      <section class="metrics-section" aria-labelledby="metrics-title">
+        <article class="surface-card metrics-card">
+          <div class="metrics-header">
+            <div class="metrics-header__title">
+              <h2 id="metrics-title" class="section-title">Tendances globales</h2>
+              <p class="metrics-subtitle">
+                Les statistiques sont calculées à partir des données stockées localement.
+              </p>
+            </div>
+            <div class="metrics-stats-grid" role="list">
+              <div class="metrics-stat" role="listitem">
+                <span class="metrics-stat__label">Total séries</span>
+                <span class="metrics-stat__value" id="total-series">-</span>
+              </div>
+              <div class="metrics-stat" role="listitem">
+                <span class="metrics-stat__label">Réussite globale</span>
+                <span class="metrics-stat__value"><span id="total-success-rate">-</span>%</span>
+              </div>
+            </div>
+            <div class="metrics-export-buttons metrics-export-buttons--inline">
+              <button id="export-btn" class="primary-button" type="button">Exporter en JSON</button>
+              <button id="export-csv-btn" class="ghost-button" type="button">Exporter en CSV</button>
+            </div>
+          </div>
+        </article>
+        </section>
+        </div>
+        </main>
+        
+        <footer class="app-footer" role="contentinfo">
+          <div class="container">
+            <div class="footer-actions">
+              <span>© <span id="footer-year"></span> Romain Ecarnot</span>
+              <a class="secondary-button" href="https://fr.tipeee.com/rebondir-apres-lavc-ma-carriere-dans-la-tech"
+                target="_blank" rel="noopener noreferrer">Soutenir le projet</a>
+      </div>
+      </div>
+  </footer>
+
+  <script>
+    (function () {
+      document.documentElement.setAttribute('data-theme', 'dark');
+
+      const PROGRESS_KEY = 'empan_progression';
+      let allData = [];
+
+      const exportBtn = document.getElementById('export-btn');
+      const exportCsvBtn = document.getElementById('export-csv-btn');
+
+      function safeReadProgress() {
+        try {
+          const raw = localStorage.getItem(PROGRESS_KEY);
+          if (!raw) {
+            return [];
+          }
+          const arr = JSON.parse(raw);
+          return Array.isArray(arr) ? arr : [];
+        } catch (error) {
+          return [];
+        }
+      }
+
+      function calculateStats(data) {
+        const totalSeries = data.length;
+        const totalTotalPercentage = data.reduce((sum, entry) => sum + entry.pourcentageBonnesReponses, 0);
+        const totalSuccessRate = totalSeries > 0 ? Math.round(totalTotalPercentage / totalSeries) : 0;
+
+        return {
+          total: {
+            series: totalSeries,
+            successRate: totalSuccessRate,
+          },
+        };
+      }
+
+      function updateStats(stats) {
+        const totalSeriesEl = document.getElementById('total-series');
+        const totalSuccessRateEl = document.getElementById('total-success-rate');
+
+        if (totalSeriesEl) {
+          totalSeriesEl.textContent = `${stats.total.series} série${stats.total.series > 1 ? 's' : ''}`;
+        }
+        if (totalSuccessRateEl) {
+          totalSuccessRateEl.textContent = stats.total.successRate;
+        }
+      }
+
+      function updateExportButtons(enabled) {
+        exportBtn.disabled = !enabled;
+        exportCsvBtn.disabled = !enabled;
+      }
+
+      function loadData() {
+        allData = safeReadProgress().reverse();
+        const stats = calculateStats(allData);
+        updateStats(stats);
+        updateExportButtons(allData.length > 0);
+      }
+
+      exportBtn.addEventListener('click', () => {
+        try {
+          const blob = new Blob([JSON.stringify(allData, null, 2)], { type: 'application/json' });
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+          link.href = url;
+          link.download = `empan_toutes_donnees_${timestamp}.json`;
+          document.body.appendChild(link);
+          link.click();
+          link.remove();
+          URL.revokeObjectURL(url);
+        } catch (error) {
+          alert('Export impossible');
+        }
+      });
+
+      exportCsvBtn.addEventListener('click', () => {
+        try {
+          const headers = ['Date', 'Type', 'Séries', 'Symboles', 'Son', 'Bonnes réponses', 'Pourcentage'];
+          const csvContent = [
+            headers.join(','),
+            ...allData.map((entry) => [
+              new Date(entry.timestamp).toLocaleString(),
+              entry.type,
+              entry.nombreSeries,
+              entry.nombreSymboles,
+              entry.modeEcoute ? 'Oui' : 'Non',
+              entry.nbBonnesReponses,
+              entry.pourcentageBonnesReponses,
+            ].join(',')),
+          ].join('\n');
+
+          const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+          link.href = url;
+          link.download = `empan_toutes_donnees_${timestamp}.csv`;
+          document.body.appendChild(link);
+          link.click();
+          link.remove();
+          URL.revokeObjectURL(url);
+        } catch (error) {
+          alert('Export CSV impossible');
+        }
+      });
+
+      loadData();
+    })();
+  </script>
+  <script type="module">
+    import { initFooterYear } from "/shared/scripts/ui.js";
+
+    const bootstrapFooter = () => initFooterYear();
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", bootstrapFooter, { once: true });
+    } else {
+      bootstrapFooter();
+    }
+  </script>
+</body>
+</html>
+

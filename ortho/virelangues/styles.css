@@ -109,6 +109,19 @@ button {
   text-align: center;
   min-height: 24px;
 }
+
+.footer-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.footer-actions span {
+  color: var(--color-muted);
+  font-size: 15px;
+}
+
 @media (min-width: 640px) {
   .controls {
     flex-direction: row;
@@ -122,5 +135,11 @@ button {
 
   .reset-button {
     font-size: 17px;
+  }
+
+  .footer-actions {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 }

@@ -46,6 +46,23 @@
   box-shadow: 0 16px 34px rgba(12, 105, 132, 0.4);
 }
 
+.primary-button--warning {
+  background: linear-gradient(130deg, rgba(255, 184, 72, 0.85), rgba(255, 153, 0, 0.9));
+  color: #1b1205;
+  box-shadow: 0 18px 36px rgba(255, 163, 72, 0.35);
+}
+
+.primary-button--warning:hover,
+.primary-button--warning:focus-visible {
+  background: linear-gradient(130deg, rgba(255, 189, 90, 0.95), rgba(255, 160, 32, 0.95));
+  box-shadow: 0 24px 48px rgba(255, 170, 72, 0.4);
+}
+
+.primary-button--warning:active {
+  transform: translateY(0);
+  box-shadow: 0 16px 34px rgba(255, 170, 72, 0.32);
+}
+
 .secondary-button {
   display: inline-flex;
   align-items: center;
