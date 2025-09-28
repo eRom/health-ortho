@@ -37,7 +37,7 @@
             type="button"
             aria-live="polite"
           >
-            Réinitialiser la sélection
+            Réinitialiser
           </button>
         </div>
         <p id="status" class="status-text" role="status"></p>
@@ -46,18 +46,18 @@
     <footer class="app-footer" role="contentinfo">
       <div class="container">
         <p>
-          <span>© <span id="footer-year"></span> Romain Ecarnot / v2.0.0</span>
+          <span>© <span id="footer-year"></span> Romain Ecarnot / v1.0.0</span>
         </p>
       </div>
     </footer>
     <script src="./script.js" defer></script>
     <script>
       (function () {
-            const footerYear = document.getElementById("footer-year");
-            if (footerYear) {
-              footerYear.textContent = new Date().getFullYear();
-            }
-          })();
-        </script>
+        const footerYear = document.getElementById("footer-year");
+        if (footerYear) {
+          footerYear.textContent = new Date().getFullYear();
+        }
+      })();
+    </script>
   </body>
 </html>
