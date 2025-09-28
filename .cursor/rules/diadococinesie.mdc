@@ -1,0 +1,13 @@
+---
+globs: diadococinesie_complexe/**
+description: "Flux et état de l'exercice Diadococinésie"
+---
+
+# Diadococinésie Complexe
+
+- [index.html](mdc:diadococinesie_complexe/index.html) structure la page avec un retour vers l'accueil, un conteneur `trainer` et un panneau de fin de session (`completion-panel`) affiché en superposition.
+- [script.js](mdc:diadococinesie_complexe/script.js) importe `initFooterYear()` et orchestre un minuteur unique de 60 secondes (`SESSION_DURATION_MS = 60_000`) avec un état partagé (`state`).
+- La file d'attente (`state.queue`) mélange les indices via `shuffleIndices()` pour parcourir toutes les phrases sans répétition avant de relancer un cycle.
+- Les actions utilisateur : `Démarrer/Pause` déclenchent `handleStartPause()`, `Réinitialiser` appelle `resetSession()`, le bouton `OK` du panneau final (`restart-cycle`) ferme l'overlay et redémarre un cycle.
+- L'état idle remet l'écran sur "Prêt", synchronise les compteurs (`updateTimerDisplay()`, `updateSessionStats()`) et relance `initFooterYear()` lors du bootstrap.
+- La fin de cycle affiche `completion-panel` avec un message aléatoire (`completionMessages`), inhibe le panneau d'exercice et prépare un nouveau cycle via `prepareCycle()`.
