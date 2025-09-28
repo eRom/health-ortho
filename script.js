@@ -80,7 +80,7 @@ const phrases = [
   "De son échoppe, ses chats s'échappent, se chopent et s'écharpent",
   "Cache le machin truc muche de chose machin chouette et celui de truc machin chose",
   "Cric crac! La cruelle crapule à crête crépue écrase un criquet et le croque cru",
-  "Un pâtissier qui pâtissait chez un tapissier qui tapissait, dit un jour au tapissier qui tapissait : \"Vaut-il mieux pâtisser chez un tapissier qui tapisse ou tapisser chez un pâtissier qui pâtisse?\"",
+  'Un pâtissier qui pâtissait chez un tapissier qui tapissait, dit un jour au tapissier qui tapissait : "Vaut-il mieux pâtisser chez un tapissier qui tapisse ou tapisser chez un pâtissier qui pâtisse?"',
   "Le fondant du bonbon est dans le fond du bonbon",
   "Fendons le bonbon et le fondant du bonbon fendu fond!",
   "Quand la dinde gloutonne glougloute, toutes les poules saoules gloussent",
@@ -95,7 +95,7 @@ const phrases = [
   "Au bout du pont la cane y couve",
   "Trois gros rats gris dans trois gros trous ronds rongent trois gros croûtons ronds",
   "L'harmonica de Monique est en harmonie avec l'harmonium de Monique, car l'harmonium de Monique est harmonieux",
-  "Si six cents scies scient six cents saucisses, six cent six scies scieront six cent six saucissons"
+  "Si six cents scies scient six cents saucisses, six cent six scies scieront six cent six saucissons",
 ];
 
 /**
@@ -112,7 +112,7 @@ const phrases = [
 const getTodayKey = () => {
   const now = new Date();
   return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(
-    now.getDate()
+    now.getDate(),
   ).padStart(2, "0")}`;
 };
 
@@ -133,7 +133,7 @@ const loadState = () => {
     return {
       date: typeof data.date === "string" ? data.date : "",
       used: Array.isArray(data.used) ? data.used : [],
-      lastPhrase: typeof data.lastPhrase === "string" ? data.lastPhrase : null
+      lastPhrase: typeof data.lastPhrase === "string" ? data.lastPhrase : null,
     };
   } catch (error) {
     console.error("Impossible de charger l'état :", error);
@@ -161,7 +161,7 @@ const resetState = () => {
   const fresh = {
     date: getTodayKey(),
     used: [],
-    lastPhrase: null
+    lastPhrase: null,
   };
   saveState(fresh);
   return fresh;
@@ -251,15 +251,18 @@ const scheduleMidnightReset = () => {
   nextMidnight.setHours(24, 0, 0, 0);
   const msUntilMidnight = nextMidnight.getTime() - now.getTime();
 
-  window.setTimeout(() => {
-    state = resetState();
-    renderPhrase("");
-    statusElement.textContent = "Nouveau cycle, une phrase arrive...";
-    window.requestAnimationFrame(() => {
-      showNextPhrase();
-    });
-    scheduleMidnightReset();
-  }, Math.max(msUntilMidnight, 1000));
+  window.setTimeout(
+    () => {
+      state = resetState();
+      renderPhrase("");
+      statusElement.textContent = "Nouveau cycle, une phrase arrive...";
+      window.requestAnimationFrame(() => {
+        showNextPhrase();
+      });
+      scheduleMidnightReset();
+    },
+    Math.max(msUntilMidnight, 1000),
+  );
 };
 
 newPhraseButton.addEventListener("click", () => {
@@ -297,4 +300,3 @@ window.addEventListener("storage", (event) => {
     updateStatus();
   }
 });
-
