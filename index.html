@@ -1,17 +1,41 @@
 <!doctype html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Virelangues</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./styles.css" />
-    <script type="application/ld+json">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Virelangues – Rééducation Orthophonique en Ligne</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet" />
+  <!-- Métadonnées SEO -->
+  <meta name="description"
+    content="Virelangues – Plateforme de rééducation orthophonique : 96 virelangues français pour améliorer l’élocution, la diction et l’articulation. Interface mobile-first, sélection aléatoire quotidienne sans répétition, suivi des progrès.">
+  <meta name="keywords"
+    content="virelangues, orthophonie, rééducation orthophonique, élocution, diction, articulation, exercices vocaux, troubles de la parole">
+  <meta name="author" content="Romain Ecarnot">
+  
+  <!-- Open Graph (Facebook, LinkedIn...) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Virelangues – Rééducation Orthophonique en Ligne">
+  <meta property="og:description"
+    content="Entraînez votre élocution avec 96 virelangues français. Interface mobile-first, aléatoire quotidien sans répétition et suivi personnalisé.">
+  <meta property="og:url" content="https://ortho.homeincloud.fr">
+  <meta property="og:image" content="https://ortho.homeincloud.fr/og-image.png">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Virelangues – Rééducation Orthophonique">
+  <meta name="twitter:description"
+    content="96 virelangues pour ortho : élocution, diction et articulation. Mobile-first, aléatoire quotidien sans répétition.">
+  <meta name="twitter:image" content="https://ortho.homeincloud.fr/twitter-card.png">
+  
+  <!-- Favicon & Manifest -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="manifest" href="/manifest.json">
+  
+  <link rel="stylesheet" href="./styles.css" />
+  <script type="application/ld+json">
               {
                 "@context": "https://schema.org",
                 "@type": "SoftwareApplication",
@@ -62,53 +86,50 @@
                 "screenshot": "https://ortho.homeincloud.fr/screenshot.png"
               }
               </script>
-  </head>
-  <body>
-    <header class="app-header" role="banner">
-      <div class="container">
-        <h1>Virelangues</h1>
-        <p class="subtitle">
-          Un nouveau défi d'élocution à chaque clic, sans répétition dans la
-          même journée.
-        </p>
-      </div>
-    </header>
-    <main class="app-main" role="main">
-      <div class="container">
-        <section class="phrase-card" aria-live="polite" aria-atomic="true">
-          <p id="phrase" class="phrase-text"></p>
-        </section>
-        <div class="controls">
-          <button id="newPhraseButton" class="primary-button" type="button">
-            Nouvelle phrase
-          </button>
-          <button
-            id="resetButton"
-            class="reset-button"
-            type="button"
-            aria-live="polite"
-          >
-            Réinitialiser
-          </button>
+</head>
+
+<body>
+  <header class="app-header" role="banner">
+    <div class="container">
+      <h1>Virelangues</h1>
+      <p class="subtitle">
+        Un nouveau défi d'élocution à chaque clic, sans répétition dans la
+        même journée.
+      </p>
+    </div>
+  </header>
+  <main class="app-main" role="main">
+    <div class="container">
+      <section class="phrase-card" aria-live="polite" aria-atomic="true">
+        <p id="phrase" class="phrase-text"></p>
+      </section>
+      <div class="controls">
+        <button id="newPhraseButton" class="primary-button" type="button">
+          Nouvelle phrase
+        </button>
+        <button id="resetButton" class="reset-button" type="button" aria-live="polite">
+          Réinitialiser
+        </button>
         </div>
         <p id="status" class="status-text" role="status"></p>
-      </div>
-    </main>
-    <footer class="app-footer" role="contentinfo">
-      <div class="container">
-        <p>
-          <span>© <span id="footer-year"></span> Romain Ecarnot / v1.0.0</span>
-        </p>
-      </div>
-    </footer>
-    <script src="./script.js" defer></script>
-    <script>
-      (function () {
-        const footerYear = document.getElementById("footer-year");
-        if (footerYear) {
-          footerYear.textContent = new Date().getFullYear();
-        }
-      })();
-    </script>
-  </body>
+        </div>
+        </main>
+        <footer class="app-footer" role="contentinfo">
+          <div class="container">
+            <p>
+              <span>© <span id="footer-year"></span> Romain Ecarnot / v1.0.0</span>
+            </p>
+          </div>
+        </footer>
+        <script src="./script.js" defer></script>
+        <script>
+          (function () {
+            const footerYear = document.getElementById("footer-year");
+            if (footerYear) {
+              footerYear.textContent = new Date().getFullYear();
+            }
+          })();
+        </script>
+        </body>
+
 </html>
