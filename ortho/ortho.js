@@ -1,4 +1,4 @@
-import { orthoExercises } from "/shared/data/exercices_ortho.js";
+import { orthoExercises } from "./exercices_ortho.js";
 import { createElement, initFooterYear } from "/shared/scripts/ui.js";
 
 const grid = document.querySelector(".exercise-grid");
@@ -9,14 +9,10 @@ const renderExerciseCard = (exercise) => {
     textContent: exercise.name,
   });
 
-  const header = createElement(
-    "div",
-    { className: "exercise-card__header" },
-    [
-      title,
-      createElement("span", { className: "badge", textContent: exercise.level }),
-    ],
-  );
+  const header = createElement("div", { className: "exercise-card__header" }, [
+    title,
+    createElement("span", { className: "badge", textContent: exercise.level }),
+  ]);
 
   const description = createElement("p", {
     className: "exercise-card__description",
@@ -27,8 +23,8 @@ const renderExerciseCard = (exercise) => {
     "div",
     { className: "exercise-card__tags" },
     exercise.tags.map((tag) =>
-      createElement("span", { className: "tag-pill", textContent: tag }),
-    ),
+      createElement("span", { className: "tag-pill", textContent: tag })
+    )
   );
 
   const actions = createElement(
@@ -43,13 +39,13 @@ const renderExerciseCard = (exercise) => {
           "aria-label": `Accéder à ${exercise.name}`,
         },
       }),
-    ],
+    ]
   );
 
   return createElement(
     "article",
     { className: "exercise-card surface-card surface-card--interactive" },
-    [header, description, tags, actions],
+    [header, description, tags, actions]
   );
 };
 
@@ -68,4 +64,3 @@ if (document.readyState === "loading") {
 } else {
   bootstrap();
 }
-
