@@ -8,7 +8,15 @@ const phrases = [
   "max masque",
   "fixe fisc",
   "obélix obélisque",
-  "à toi de jouer",
+];
+
+const completionMessages = [
+  "Exercice terminé ! Vous progressez à votre rythme.",
+  "Séance complétée. Votre élocution s'affûte jour après jour.",
+  "C'est fait ! Chaque session renforce votre articulation.",
+  "Temps écoulé. Un pas de plus vers une meilleure diction.",
+  "Session terminée. Prêt pour un nouvel entraînement ?",
+  "Exercice accompli. La constance est la clé du progrès.",
 ];
 
 const SESSION_DURATION_MS = 60_000;
@@ -21,6 +29,7 @@ const state = {
   queuePosition: 0,
   phrasesCompleted: 0,
   activeIndex: null,
+  hasCompletedCycle: false,
 };
 
 const timerDisplay = document.getElementById("timer-display");
@@ -28,6 +37,12 @@ const startPauseButton = document.getElementById("start-pause");
 const resetButton = document.getElementById("reset");
 const currentPhraseText = document.getElementById("current-phrase-text");
 const sessionStatsElement = document.getElementById("session-stats");
+const exercisePanel = document.getElementById("exercise-panel");
+const completionPanel = document.getElementById("completion-panel");
+const completionMessageElement = document.getElementById("completion-message");
+const restartButton = document.getElementById("restart-cycle");
+const trainerPanel = document.getElementById("trainer-panel");
+const trainerContainer = document.querySelector(".trainer");
 
 const shuffleIndices = () => {
   const indices = phrases.map((_, index) => index);
@@ -53,7 +68,10 @@ const getCurrentCyclePosition = () => {
   if (state.phrasesCompleted >= total) {
     return total;
   }
-  if (state.isRunning || (state.activeIndex !== null && state.remainingMs < SESSION_DURATION_MS)) {
+  if (
+    state.isRunning ||
+    (state.activeIndex !== null && state.remainingMs < SESSION_DURATION_MS)
+  ) {
     return Math.min(state.phrasesCompleted + 1, total);
   }
   return Math.min(state.phrasesCompleted, total);
@@ -88,9 +106,50 @@ const prepareCycle = () => {
   prepareQueue();
   state.phrasesCompleted = 0;
   state.activeIndex = null;
+  state.hasCompletedCycle = false;
+};
+
+const showCompletionPanel = () => {
+  if (!completionPanel || !exercisePanel || !completionMessageElement) {
+    return;
+  }
+  const randomMessage =
+    completionMessages[Math.floor(Math.random() * completionMessages.length)];
+  completionMessageElement.textContent = randomMessage;
+  completionPanel.hidden = false;
+  completionPanel.style.display = "flex";
+  if (trainerContainer) {
+    trainerContainer.classList.add("trainer--overlay");
+  }
+  if (trainerPanel) {
+    trainerPanel.classList.add("exercise-panel-hidden");
+    trainerPanel.style.display = "none";
+  }
+  exercisePanel.hidden = true;
+  exercisePanel.style.display = "none";
+  exercisePanel.classList.add("exercise-panel-hidden");
+};
+
+const hideCompletionPanel = () => {
+  if (!completionPanel || !exercisePanel) {
+    return;
+  }
+  completionPanel.hidden = true;
+  completionPanel.style.display = "none";
+  exercisePanel.hidden = false;
+  exercisePanel.style.display = "grid";
+  exercisePanel.classList.remove("exercise-panel-hidden");
+  if (trainerPanel) {
+    trainerPanel.classList.remove("exercise-panel-hidden");
+    trainerPanel.style.display = "flex";
+  }
+  if (trainerContainer) {
+    trainerContainer.classList.remove("trainer--overlay");
+  }
 };
 
 const applyIdleState = () => {
+  hideCompletionPanel();
   clearTimer();
   state.isRunning = false;
   state.remainingMs = SESSION_DURATION_MS;
@@ -104,7 +163,10 @@ const applyIdleState = () => {
 
 const completeCurrentPhrase = () => {
   if (state.activeIndex !== null) {
-    state.phrasesCompleted = Math.min(state.phrasesCompleted + 1, phrases.length);
+    state.phrasesCompleted = Math.min(
+      state.phrasesCompleted + 1,
+      phrases.length
+    );
   }
   state.activeIndex = null;
   applyIdleState();
@@ -115,7 +177,8 @@ const handleTimerTick = () => {
   if (state.remainingMs <= 0) {
     completeCurrentPhrase();
     if (state.phrasesCompleted >= phrases.length) {
-      // Cycle terminé, attendre une nouvelle relance
+      state.hasCompletedCycle = true;
+      showCompletionPanel();
       prepareCycle();
     }
   } else {
@@ -130,6 +193,9 @@ const startTimer = () => {
 
 const startNewPhrase = () => {
   const total = phrases.length;
+  if (state.hasCompletedCycle) {
+    hideCompletionPanel();
+  }
   if (state.phrasesCompleted >= total) {
     state.phrasesCompleted = 0;
     prepareQueue();
@@ -175,6 +241,7 @@ const pausePhrase = () => {
 const resetSession = () => {
   clearTimer();
   prepareCycle();
+  hideCompletionPanel();
   applyIdleState();
 };
 
@@ -184,7 +251,11 @@ const handleStartPause = () => {
     return;
   }
 
-  if (state.activeIndex !== null && state.remainingMs > 0 && state.remainingMs < SESSION_DURATION_MS) {
+  if (
+    state.activeIndex !== null &&
+    state.remainingMs > 0 &&
+    state.remainingMs < SESSION_DURATION_MS
+  ) {
     resumePhrase();
     return;
   }
@@ -193,7 +264,16 @@ const handleStartPause = () => {
 };
 
 const bootstrap = () => {
-  if (!timerDisplay || !startPauseButton || !resetButton || !currentPhraseText) {
+  if (
+    !timerDisplay ||
+    !startPauseButton ||
+    !resetButton ||
+    !currentPhraseText ||
+    !exercisePanel ||
+    !completionPanel ||
+    !completionMessageElement ||
+    !restartButton
+  ) {
     return;
   }
 
@@ -202,6 +282,10 @@ const bootstrap = () => {
 
   startPauseButton.addEventListener("click", handleStartPause);
   resetButton.addEventListener("click", resetSession);
+  restartButton.addEventListener("click", () => {
+    resetSession();
+    startNewPhrase();
+  });
 };
 
 if (document.readyState === "loading") {

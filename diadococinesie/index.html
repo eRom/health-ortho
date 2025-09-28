@@ -31,7 +31,13 @@
   <main class="app-main" role="main">
     <div class="container">
       <section class="trainer surface-card" aria-live="polite">
-        <div class="trainer__panel">
+        <div id="completion-panel" class="completion-panel" hidden>
+          <div class="completion-panel__content">
+            <p id="completion-message" class="completion-panel__message"></p>
+            <button id="restart-cycle" class="primary-button" type="button">OK</button>
+          </div>
+        </div>
+        <div class="trainer__panel" id="trainer-panel">
           <div class="timer-display">
             <span id="timer-display" class="timer-display__value">01:00</span>
           </div>
@@ -41,7 +47,7 @@
           </div>
         </div>
 
-        <div class="trainer__phrases" aria-live="polite" aria-atomic="true">
+        <div class="trainer__phrases" aria-live="polite" aria-atomic="true" id="exercise-panel">
           <div id="current-phrase" class="current-phrase">
             <span id="current-phrase-text" class="current-phrase__text">Prêt</span>
           </div>
@@ -52,7 +58,11 @@
   </main>
   <footer class="app-footer" role="contentinfo">
     <div class="container">
-      <p>© <span id="footer-year"></span> Romain Ecarnot – Plateforme orthophonie</p>
+      <div class="footer-actions">
+        <span>© <span id="footer-year"></span> Romain Ecarnot</span>
+        <a class="secondary-button" href="https://fr.tipeee.com/rebondir-apres-lavc-ma-carriere-dans-la-tech" target="_blank"
+          rel="noopener noreferrer">Soutenir le projet</a>
+      </div>
     </div>
   </footer>
 

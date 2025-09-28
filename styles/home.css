@@ -49,6 +49,25 @@
   min-width: clamp(180px, 24vw, 220px);
 }
 
+.footer-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.footer-actions span {
+  color: var(--color-muted);
+  font-size: 15px;
+}
+
+@media (min-width: 640px) {
+  .footer-actions {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
 @media (min-width: 720px) {
   .exercise-grid {
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));

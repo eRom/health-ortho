@@ -3,12 +3,68 @@
   gap: clamp(24px, 4vw, 40px);
   padding: clamp(24px, 5vw, 40px);
   margin-top: clamp(24px, 5vw, 40px);
+  position: relative;
+}
+
+.trainer--overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  background: rgba(5, 13, 24, 0.94);
+  backdrop-filter: blur(18px);
+  z-index: 11;
+}
+
+.completion-panel {
+  inset: 0;
+  padding: clamp(40px, 10vw, 80px) clamp(24px, 6vw, 48px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(28px, 6vw, 42px);
+  background: rgba(5, 13, 24, 0);
+  backdrop-filter: blur(16px);
+  z-index: 12;
+  isolation: isolate;
+  text-align: center;
+}
+
+.completion-panel[hidden] {
+  display: none !important;
+}
+
+.completion-panel__content {
+  display: grid;
+  gap: clamp(18px, 5vw, 28px);
+  width: min(640px, 100%);
+}
+
+.completion-panel__message {
+  margin: 0;
+  font-size: clamp(26px, 5.4vw, 38px);
+  font-weight: 600;
+  color: #f4fbff;
+  line-height: 1.55;
+  text-shadow: 0 20px 40px rgba(0, 0, 0, 0.55);
+  background: transparent;
+}
+
+.completion-panel__content .primary-button {
+  width: 100%;
+  min-width: 0;
+  justify-content: center;
+  padding: clamp(18px, 4vw, 22px);
+  font-size: clamp(18px, 4vw, 20px);
+  box-shadow: 0 32px 70px rgba(16, 128, 164, 0.4);
 }
 
 .trainer__panel {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  transition: opacity 220ms ease;
 }
 
 .timer-display {
@@ -38,6 +94,7 @@
 .trainer__phrases {
   display: grid;
   gap: 18px;
+  transition: opacity 220ms ease;
 }
 
 .current-phrase {
@@ -63,6 +120,31 @@
   min-height: 24px;
   color: var(--color-muted);
   font-size: 15px;
+}
+
+.exercise-panel-hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.footer-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.footer-actions span {
+  color: var(--color-muted);
+  font-size: 15px;
+}
+
+@media (min-width: 640px) {
+  .footer-actions {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
 
 @media (min-width: 900px) {
