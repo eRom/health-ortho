@@ -7,5 +7,14 @@ export const exercises = [
     tags: ["diction", "élocution", "articulation"],
     level: "Tous niveaux",
   },
+  {
+    id: "diadococinesie",
+    name: "Diadococinésie Complexes",
+    description:
+      "Travaillez la fluidité articulatoire avec chrono paramétrable et mise en évidence des séquences de syllabes.",
+    href: "/diadococinesie/",
+    tags: ["coordination", "articulation", "rythme"],
+    level: "Intermédiaire",
+  },
 ];
 
