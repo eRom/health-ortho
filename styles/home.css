@@ -45,8 +45,8 @@
 }
 
 .exercise-card__actions .primary-button {
-  width: auto;
-  min-width: clamp(180px, 24vw, 220px);
+  width: 100%;
+  justify-content: center;
 }
 
 .footer-actions {

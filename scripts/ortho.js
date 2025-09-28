@@ -1,5 +1,7 @@
-import { exercises } from "/shared/data/exercises.js";
+import { orthoExercises } from "/shared/data/exercices_ortho.js";
 import { createElement, initFooterYear } from "/shared/scripts/ui.js";
+
+const grid = document.querySelector(".exercise-grid");
 
 const renderExerciseCard = (exercise) => {
   const title = createElement("h2", {
@@ -12,10 +14,7 @@ const renderExerciseCard = (exercise) => {
     { className: "exercise-card__header" },
     [
       title,
-      createElement("span", {
-        className: "badge",
-        textContent: exercise.level,
-      }),
+      createElement("span", { className: "badge", textContent: exercise.level }),
     ],
   );
 
@@ -38,10 +37,10 @@ const renderExerciseCard = (exercise) => {
     [
       createElement("a", {
         className: "primary-button",
-        textContent: "Commencer",
+        textContent: "Accéder à l'exercice",
         attrs: {
           href: exercise.href,
-          "aria-label": `Commencer l'exercice ${exercise.name}`,
+          "aria-label": `Accéder à ${exercise.name}`,
         },
       }),
     ],
@@ -49,27 +48,18 @@ const renderExerciseCard = (exercise) => {
 
   return createElement(
     "article",
-    {
-      className: "exercise-card surface-card surface-card--interactive",
-      attrs: { tabindex: "0" },
-    },
+    { className: "exercise-card surface-card surface-card--interactive" },
     [header, description, tags, actions],
   );
 };
 
-const renderExerciseList = () => {
-  const grid = document.querySelector(".exercise-grid");
+const bootstrap = () => {
   if (!grid) {
     return;
   }
-
-  exercises.forEach((exercise) => {
+  orthoExercises.forEach((exercise) => {
     grid.appendChild(renderExerciseCard(exercise));
   });
-};
-
-const bootstrap = () => {
-  renderExerciseList();
   initFooterYear();
 };
 
