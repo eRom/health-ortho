@@ -31,14 +31,24 @@ const renderExerciseCard = (exercise) => {
     "div",
     { className: "exercise-card__actions" },
     [
-      createElement("a", {
-        className: "primary-button",
-        textContent: "Accéder à l'exercice",
-        attrs: {
-          href: exercise.href,
-          "aria-label": `Accéder à ${exercise.name}`,
-        },
-      }),
+      exercise.status === "coming-soon"
+        ? createElement("button", {
+            className: "primary-button primary-button--warning",
+            textContent: "En préparation",
+            attrs: {
+              type: "button",
+              disabled: "disabled",
+              "aria-disabled": "true",
+            },
+          })
+        : createElement("a", {
+            className: "primary-button",
+            textContent: "Accéder à l'exercice",
+            attrs: {
+              href: exercise.href,
+              "aria-label": `Accéder à ${exercise.name}`,
+            },
+          }),
     ]
   );
 

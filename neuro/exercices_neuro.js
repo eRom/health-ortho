@@ -14,6 +14,7 @@ export const neuroExercises = [
     description:
       "Entraînez votre mémoire spatiale en reproduisant une séquence de blocs illuminés dans le même ordre.",
     href: "corsi/",
+    status: "coming-soon",
     tags: ["mémoire spatiale", "attention"],
     level: "Intermédiaire",
   },
