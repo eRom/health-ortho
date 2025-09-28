@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Diadococinésie Complexes – Orthophonie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/shared/styles/theme.css" />
+  <link rel="stylesheet" href="/shared/styles/components.css" />
+  <link rel="stylesheet" href="./styles.css" />
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="manifest" href="/manifest.json" />
+</head>
+
+<body>
+  <header class="app-header" role="banner">
+    <div class="container">
+      <div class="header-meta">
+        <a class="breadcrumb-link" href="/">← Retour aux exercices</a>
+      </div>
+      <h1>Diadococinésie complexes</h1>
+      <p class="subtitle">
+        Entraînez la coordination articulatoire en enchaînant des groupes de syllabes sur un tempo régulier.
+      </p>
+    </div>
+  </header>
+  <main class="app-main" role="main">
+    <div class="container">
+      <section class="trainer surface-card" aria-live="polite">
+        <div id="completion-panel" class="completion-panel" hidden>
+          <div class="completion-panel__content">
+            <p id="completion-message" class="completion-panel__message"></p>
+            <button id="restart-cycle" class="primary-button" type="button">OK</button>
+          </div>
+        </div>
+        <div class="trainer__panel" id="trainer-panel">
+          <div class="timer-display">
+            <span id="timer-display" class="timer-display__value">01:00</span>
+          </div>
+          <div class="controls">
+            <button id="start-pause" class="primary-button" type="button">Démarrer</button>
+            <button id="reset" class="reset-button" type="button">Réinitialiser</button>
+          </div>
+        </div>
+
+        <div class="trainer__phrases" aria-live="polite" aria-atomic="true" id="exercise-panel">
+          <div id="current-phrase" class="current-phrase">
+            <span id="current-phrase-text" class="current-phrase__text">Prêt</span>
+          </div>
+          <div class="session-stats" id="session-stats" role="status" aria-live="polite"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer class="app-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-actions">
+        <span>© <span id="footer-year"></span> Romain Ecarnot</span>
+        <a class="secondary-button" href="https://fr.tipeee.com/rebondir-apres-lavc-ma-carriere-dans-la-tech" target="_blank"
+          rel="noopener noreferrer">Soutenir le projet</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="./script.js"></script>
+</body>
+
+</html>
+
