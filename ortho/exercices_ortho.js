@@ -17,5 +17,15 @@ export const orthoExercises = [
     tags: ["coordination", "rythme", "articulation"],
     level: "Intermédiaire",
   },
+  {
+    status: "coming-soon",
+    id: "diadococinesie",
+    name: "Diadococinésie",
+    description:
+      "Chronomètre d'une minute pour répéter des séquences syllabiques.",
+    href: "diadococinesie_complexe/",
+    tags: ["coordination", "rythme", "articulation"],
+    level: "Débutant",
+  },
 ];
 
