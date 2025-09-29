@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Virelangues Orthophonie | Défi quotidien d'élocution</title>
+  <meta
+    name="description"
+    content="Entraînement orthophonique avec 96 virelangues français, tirage aléatoire quotidien sans répétition et suivi local."
+  />
+  <meta
+    name="keywords"
+    content="virelangues, orthophonie, diction, articulation, rééducation, MPR Nantes"
+  />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Romain Ecarnot" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-180.png" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="canonical" href="https://mpr.homeincloud.fr/ortho/ortho-virelangues/virelangues.html" />
+  <link
+    rel="alternate"
+    href="https://mpr.homeincloud.fr/ortho/ortho-virelangues/virelangues.html"
+    hreflang="fr-FR"
+  />
+  <link rel="stylesheet" href="/shared/css/variables.css" />
+  <link rel="stylesheet" href="/shared/css/layout.css" />
+  <link rel="stylesheet" href="/shared/css/components.css" />
+  <link rel="stylesheet" href="/shared/css/accessibility.css" />
+  <link rel="stylesheet" href="./virelangues.css" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta
+    property="og:title"
+    content="Virelangues Orthophonie | Défi quotidien d'élocution"
+  />
+  <meta
+    property="og:description"
+    content="Sélectionnez un virelangue aléatoire parmi 96 propositions pour travailler diction, articulation et fluidité."
+  />
+  <meta
+    property="og:url"
+    content="https://mpr.homeincloud.fr/ortho/ortho-virelangues/virelangues.html"
+  />
+  <meta property="og:image" content="https://mpr.homeincloud.fr/og-virelangues.png" />
+  <meta property="og:site_name" content="Plateforme MPR Nantes" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta
+    name="twitter:title"
+    content="Virelangues Orthophonie | Défi quotidien"
+  />
+  <meta
+    name="twitter:description"
+    content="96 virelangues français, tirage aléatoire quotidien, suivi des phrases restantes et synchronisation multi-onglets."
+  />
+  <meta name="twitter:image" content="https://mpr.homeincloud.fr/twitter-virelangues.png" />
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Virelangues Orthophonie",
+      "applicationCategory": "HealthApplication",
+      "applicationSubCategory": "Speech Therapy",
+      "operatingSystem": "Web",
+      "url": "https://mpr.homeincloud.fr/ortho/ortho-virelangues/virelangues.html",
+      "description": "Entraînement orthophonique via des virelangues français avec sélection quotidienne sans répétition.",
+      "inLanguage": "fr",
+      "author": {
+        "@type": "Person",
+        "name": "Romain Ecarnot"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "audience": {
+        "@type": "Audience",
+        "audienceType": [
+          "Patients en rééducation orthophonique",
+          "Orthophonistes",
+          "Coachs vocaux"
+        ]
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#virelangues-main">Passer au contenu</a>
+  <header class="app-header" role="banner">
+    <div class="container">
+      <div class="header-meta">
+        <a class="header-link" href="../ortho.html">← Plateforme orthophonie</a>
+        <span class="badge">Défi quotidien</span>
+      </div>
+      <h1>Virelangues orthophoniques</h1>
+      <p class="subtitle">
+        Un virelangue aléatoire par clic, anti-répétition, suivi des phrases restantes et synchronisation multi-appareils.
+      </p>
+    </div>
+  </header>
+  <main class="app-main" role="main" id="virelangues-main">
+    <div class="container">
+      <section class="trainer" aria-labelledby="phrase-title">
+        <header class="section-header">
+          <h2 id="phrase-title">Votre phrase du moment</h2>
+          <p class="section-intro" id="status" role="status"></p>
+        </header>
+        <article class="surface-card phrase-card" aria-live="polite" aria-atomic="true">
+          <p id="phrase" class="phrase-text"></p>
+        </article>
+        <div class="controls">
+          <button id="newPhraseButton" class="primary-button" type="button">
+            Nouvelle phrase
+          </button>
+          <button id="resetButton" class="ghost-button" type="button">
+            Réinitialiser le cycle
+          </button>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer class="app-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-meta">
+        <span>© <span id="footer-year"></span> Romain Ecarnot • Version <span id="virelangues-version">1.0.0</span></span>
+        <a
+          class="secondary-button"
+          href="https://fr.tipeee.com/rebondir-apres-lavc-ma-carriere-dans-la-tech"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Soutenir le projet</a
+        >
+      </div>
+      <div class="footer-links" role="navigation" aria-label="Navigation virelangues">
+        <a href="/">Accueil</a>
+        <a href="/ortho/ortho.html">Orthophonie</a>
+        <a href="/neuro/neuro.html">Neuropsychologie</a>
+      </div>
+    </div>
+  </footer>
+  <script type="module" src="./virelangues.js"></script>
+</body>
+</html>

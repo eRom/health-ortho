@@ -1,4 +1,8 @@
 // Configuration de l'application
+import { trackExerciseLaunch } from "/shared/js/analytics.js";
+import { initFooterYear } from "/shared/js/components.js";
+import { saveLatestSession } from "/shared/js/storage.js";
+
 const CONFIG = {
   lettresDisponibles: [
     "A",
@@ -53,6 +57,8 @@ const DIGIT_LABELS = {
   8: "huit",
   9: "neuf",
 };
+
+const VERSION = "1.0.0";
 
 // État de l'application
 let gameState = {
@@ -721,13 +727,29 @@ function initializeApp() {
 }
 
 // Démarrage de l'application quand le DOM est chargé
-document.addEventListener("DOMContentLoaded", initializeApp);
+const trainerPanel = document.getElementById("trainer-panel");
+const trainerContainer = document.querySelector(".trainer");
+const versionElement = document.getElementById("empans-version");
 
-// Fallback au cas où DOMContentLoaded est déjà passé
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initializeApp);
-} else {
+const bootstrap = () => {
   initializeApp();
+  initFooterYear();
+  if (versionElement) {
+    versionElement.textContent = VERSION;
+  }
+  saveLatestSession({
+    id: "empans",
+    name: "Empans",
+    href: window.location.pathname,
+    date: new Date().toISOString(),
+  });
+  trackExerciseLaunch({ id: "empans", name: "Empans" });
+};
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", bootstrap, { once: true });
+} else {
+  bootstrap();
 }
 
 // Service Audio (Web Audio API) avec préchargement et synchro

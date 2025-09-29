@@ -1,7 +1,9 @@
 import { orthoExercises } from "./exercices_ortho.js";
-import { createElement, initFooterYear } from "/shared/scripts/ui.js";
+import { createElement, initFooterYear } from "/shared/js/components.js";
 
-const grid = document.querySelector(".exercise-grid");
+const grid = document.querySelector('[data-role="exercise-grid"]');
+const versionElement = document.getElementById("ortho-version");
+const PLATFORM_VERSION = "1.0.0";
 
 const renderExerciseCard = (exercise) => {
   const title = createElement("h2", {
@@ -27,6 +29,17 @@ const renderExerciseCard = (exercise) => {
     )
   );
 
+  const statsLink = exercise.statsHref
+    ? createElement("a", {
+        className: "ghost-button ghost-button--compact",
+        textContent: "Statistiques",
+        attrs: {
+          href: exercise.statsHref,
+          "aria-label": `Voir les statistiques de ${exercise.name}`,
+        },
+      })
+    : null;
+
   const actions = createElement(
     "div",
     { className: "exercise-card__actions" },
@@ -39,7 +52,8 @@ const renderExerciseCard = (exercise) => {
           "aria-label": `Accéder à ${exercise.name}`,
         },
       }),
-    ]
+      statsLink,
+    ].filter(Boolean)
   );
 
   return createElement(
@@ -57,6 +71,9 @@ const bootstrap = () => {
     grid.appendChild(renderExerciseCard(exercise));
   });
   initFooterYear();
+  if (versionElement) {
+    versionElement.textContent = PLATFORM_VERSION;
+  }
 };
 
 if (document.readyState === "loading") {

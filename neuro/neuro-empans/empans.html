@@ -3,94 +3,102 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Empan lettres &amp; chiffres | Entraînement cognitif</title>
-  <meta name="description"
-    content="Renforcez la mémoire de travail avec l'exercice d'empan de lettres et de chiffres : séries personnalisables, mode audio et suivi de score." />
-  <meta name="keywords"
-    content="empan, mémoire de travail, entraînement cognitif, neuropsychologie, séquence de lettres, séquence de chiffres" />
-  <meta name="author" content="Romain Ecarnot" />
+  <title>Empans | Mémoire de travail & chiffres</title>
+  <meta
+    name="description"
+    content="Entraînement empan lettres & chiffres : séries personnalisables, mode audio optionnel, suivi des scores et export des données."
+  />
+  <meta
+    name="keywords"
+    content="empan, mémoire de travail, entraînement cognitif, neuropsychologie, MPR Nantes"
+  />
   <meta name="robots" content="index, follow" />
+  <meta name="author" content="Romain Ecarnot" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16.png" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
   <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-180.png" />
   <link rel="manifest" href="/manifest.json" />
-  <link rel="stylesheet" href="/shared/styles/theme.css" />
-  <link rel="stylesheet" href="/shared/styles/components.css" />
-  <link rel="stylesheet" href="./style.css" />
-  <link rel="canonical" href="https://mpr.homeincloud.fr/neuro/empans/" />
-  <link rel="alternate" href="https://mpr.homeincloud.fr/neuro/empans/" hreflang="fr-FR" />
-  
+  <link rel="canonical" href="https://mpr.homeincloud.fr/neuro/neuro-empans/empans.html" />
+  <link
+    rel="alternate"
+    href="https://mpr.homeincloud.fr/neuro/neuro-empans/empans.html"
+    hreflang="fr-FR"
+  />
+  <link rel="stylesheet" href="/shared/css/variables.css" />
+  <link rel="stylesheet" href="/shared/css/layout.css" />
+  <link rel="stylesheet" href="/shared/css/components.css" />
+  <link rel="stylesheet" href="/shared/css/accessibility.css" />
+  <link rel="stylesheet" href="./empans.css" />
+
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Empan lettres &amp; chiffres | Entraînement cognitif" />
-  <meta property="og:description"
-    content="Travaillez votre mémoire de travail en restituant des séquences de lettres ou de chiffres avec configuration personnalisée." />
-  <meta property="og:url" content="https://mpr.homeincloud.fr/neuro/empans/" />
+  <meta
+    property="og:title"
+    content="Empans | Entraînement mémoire de travail"
+  />
+  <meta
+    property="og:description"
+    content="Travaillez mémoire et attention avec l'exercice d'empan de lettres et chiffres, mode audio et statistiques."
+  />
+  <meta
+    property="og:url"
+    content="https://mpr.homeincloud.fr/neuro/neuro-empans/empans.html"
+  />
   <meta property="og:image" content="https://mpr.homeincloud.fr/og-empans.png" />
-  <meta property="og:site_name" content="Plateformes de rééducation" />
-  
+  <meta property="og:site_name" content="Plateforme MPR Nantes" />
+
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Empan lettres &amp; chiffres | Entraînement cognitif" />
-  <meta name="twitter:description"
-    content="Exercice d'empan pour entraîner mémoire et attention grâce à des séries paramétrables et un suivi détaillé." />
+  <meta
+    name="twitter:title"
+    content="Empans | Exercices mémoire de travail"
+  />
+  <meta
+    name="twitter:description"
+    content="Module d'empan français : paramétrage des séries, mode audio, statistiques et export JSON."
+  />
   <meta name="twitter:image" content="https://mpr.homeincloud.fr/twitter-empans.png" />
-  
+
   <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "SoftwareApplication",
-          "name": "Empan lettres & chiffres",
-          "applicationCategory": "HealthApplication",
-          "applicationSubCategory": "Cognitive Training",
-          "operatingSystem": "Web",
-          "url": "https://mpr.homeincloud.fr/neuro/empans/",
-          "description": "Application d'entraînement cognitif pour travailler l'empan de lettres et de chiffres avec des séries personnalisables.",
-          "inLanguage": "fr",
-          "author": {
-            "@type": "Person",
-            "name": "Romain Ecarnot"
-          },
-          "keywords": [
-            "empan",
-            "mémoire de travail",
-            "entraînement cognitif",
-            "neuropsychologie",
-            "séquences de lettres",
-            "séquences de chiffres"
-          ],
-          "audience": {
-            "@type": "Audience",
-            "audienceType": [
-              "Patients en rééducation neuropsychologique",
-              "Neuropsychologues",
-              "Personnes avec troubles de la mémoire"
-            ]
-          },
-          "featureList": [
-            "Paramétrage des séries",
-            "Mode audio optionnel",
-            "Suivi des scores",
-            "Export des données"
-          ]
-        }
-      </script>
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Empans",
+      "applicationCategory": "HealthApplication",
+      "applicationSubCategory": "Cognitive Training",
+      "operatingSystem": "Web",
+      "url": "https://mpr.homeincloud.fr/neuro/neuro-empans/empans.html",
+      "description": "Entraînement mémoire de travail par empan lettres et chiffres avec statistiques et export.",
+      "inLanguage": "fr",
+      "author": {
+        "@type": "Person",
+        "name": "Romain Ecarnot"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    }
+  </script>
 </head>
+
 <body>
-  <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+  <a class="skip-link" href="#main-content">Passer au contenu</a>
   <header class="app-header" role="banner">
     <div class="container">
       <div class="header-meta">
-        <a class="breadcrumb-link" href="../neuro.html">← Retour aux exercices</a>
-        <a class="secondary-button secondary-button--compact" href="./metrics.html">Statistiques</a>
+        <a class="header-link" href="../neuro.html">← Modules neuropsychologie</a>
+        <a class="ghost-button ghost-button--compact" href="./empans.stats.html">Statistiques</a>
       </div>
-      <h1>Empan lettres &amp; chiffres</h1>
+      <h1>Empans lettres &amp; chiffres</h1>
       <p class="subtitle">
-        Renforcez la mémoire de travail en restituant des séquences de symboles.
+        Renforcez la mémoire de travail en restituant des séquences de symboles, avec ou sans mode audio.
       </p>
     </div>
   </header>
@@ -229,24 +237,23 @@
 
   <footer class="app-footer" role="contentinfo">
     <div class="container">
-      <div class="footer-actions">
-        <span>© <span id="footer-year"></span> Romain Ecarnot</span>
-        <a class="secondary-button" href="https://fr.tipeee.com/rebondir-apres-lavc-ma-carriere-dans-la-tech" target="_blank" rel="noopener noreferrer">Soutenir le projet</a>
+      <div class="footer-meta">
+        <span>© <span id="footer-year"></span> Romain Ecarnot • Version <span id="empans-version">1.0.0</span></span>
+        <a
+          class="secondary-button"
+          href="https://fr.tipeee.com/rebondir-apres-lavc-ma-carriere-dans-la-tech"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Soutenir sur Tipeee</a
+        >
+      </div>
+      <div class="footer-links" role="navigation" aria-label="Navigation empans">
+        <a href="/">Accueil</a>
+        <a href="/neuro/neuro.html">Neuropsychologie</a>
+        <a href="/ortho/ortho.html">Orthophonie</a>
       </div>
     </div>
   </footer>
-
-  <script src="./app.js"></script>
-  <script type="module">
-    import { initFooterYear } from "/shared/scripts/ui.js";
-
-    const bootstrapFooter = () => initFooterYear();
-
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", bootstrapFooter, { once: true });
-    } else {
-      bootstrapFooter();
-    }
-  </script>
+  <script type="module" src="./empans.js"></script>
 </body>
 </html>

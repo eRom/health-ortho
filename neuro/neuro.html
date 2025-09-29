@@ -4,89 +4,106 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Plateforme Neuropsychologie | Entraînements mémoire & attention</title>
+  <title>Plateforme Neuropsychologie MPR | Mémoire &amp; Attention</title>
+  <meta name="description"
+    content="Entraînements neuropsychologiques pour mémoire de travail, attention et fonctions exécutives avec suivi et statistiques." />
+  <meta name="keywords"
+    content="neuropsychologie, mémoire de travail, attention, fonctions exécutives, rééducation, MPR Nantes" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Romain Ecarnot" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/shared/styles/theme.css" />
-  <link rel="stylesheet" href="/shared/styles/components.css" />
-  <link rel="stylesheet" href="/styles/home.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-180.png" />
   <link rel="manifest" href="/manifest.json" />
-  <link rel="canonical" href="https://mpr.homeincloud.fr/neuro/" />
-  <link rel="alternate" href="https://mpr.homeincloud.fr/neuro/" hreflang="fr-FR" />
-
-  <!-- Métadonnées SEO -->
-  <meta name="description"
-    content="Exercices neuropsychologiques pour renforcer mémoire de travail, attention et fonctions exécutives. Trainings guidés et suivi local." />
-  <meta name="keywords"
-    content="neuropsychologie, entraînement cognitif, mémoire de travail, attention, fonctions exécutives, rééducation" />
-  <meta name="author" content="Romain Ecarnot" />
-  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://mpr.homeincloud.fr/neuro/neuro.html" />
+  <link rel="alternate" href="https://mpr.homeincloud.fr/neuro/neuro.html" hreflang="fr-FR" />
+  <link rel="stylesheet" href="/shared/css/variables.css" />
+  <link rel="stylesheet" href="/shared/css/layout.css" />
+  <link rel="stylesheet" href="/shared/css/components.css" />
+  <link rel="stylesheet" href="/shared/css/accessibility.css" />
+  <link rel="stylesheet" href="./neuro.css" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Plateforme Neuropsychologie | Entraînements mémoire & attention" />
+  <meta property="og:title" content="Plateforme Neuropsychologie MPR | Exercices mémoire & attention" />
   <meta property="og:description"
-    content="Découvrez les exercices neuropsychologiques pour travailler mémoire, attention et coordination cognitive." />
-  <meta property="og:url" content="https://mpr.homeincloud.fr/neuro/" />
+    content="Modules neuropsychologiques pour travailler mémoire de travail, attention et fonctions exécutives avec statistiques locales." />
+  <meta property="og:url" content="https://mpr.homeincloud.fr/neuro/neuro.html" />
   <meta property="og:image" content="https://mpr.homeincloud.fr/og-neuro.png" />
-  <meta property="og:site_name" content="Plateformes de rééducation" />
+  <meta property="og:site_name" content="Plateforme MPR Nantes" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Plateforme Neuropsychologie | Entraînements mémoire & attention" />
+  <meta name="twitter:title" content="Plateforme Neuropsychologie MPR" />
   <meta name="twitter:description"
-    content="Accédez aux exercices neuropsychologiques pour stimuler mémoire de travail et attention." />
+    content="Exercices neuropsychologiques professionnels : mémoire de travail, attention et fonctions exécutives." />
   <meta name="twitter:image" content="https://mpr.homeincloud.fr/twitter-neuro.png" />
 
   <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "CollectionPage",
-          "name": "Plateforme Neuropsychologie",
-          "url": "https://mpr.homeincloud.fr/neuro/",
-          "description": "Sélection d'exercices neuropsychologiques pour travailler mémoire, attention et fonctions exécutives.",
-          "inLanguage": "fr",
-          "isPartOf": {
-            "@type": "WebSite",
-            "name": "Plateformes de rééducation",
-            "url": "https://mpr.homeincloud.fr"
-          },
-          "about": [
-            { "@type": "Thing", "name": "Neuropsychologie" },
-            { "@type": "Thing", "name": "Mémoire de travail" },
-            { "@type": "Thing", "name": "Fonctions exécutives" }
-          ]
-        }
-      </script>
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Plateforme Neuropsychologie MPR",
+      "url": "https://mpr.homeincloud.fr/neuro/neuro.html",
+      "description": "Sélection de modules neuropsychologiques pour travailler mémoire, attention et fonctions exécutives.",
+      "inLanguage": "fr",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Plateforme MPR Nantes",
+        "url": "https://mpr.homeincloud.fr"
+      },
+      "about": [
+        { "@type": "Thing", "name": "Neuropsychologie" },
+        { "@type": "Thing", "name": "Mémoire de travail" },
+        { "@type": "Thing", "name": "Fonctions exécutives" }
+      ]
+    }
+  </script>
 </head>
 
 <body>
+  <a class="skip-link" href="#neuro-main">Passer au contenu</a>
   <header class="app-header" role="banner">
     <div class="container">
       <div class="header-meta">
-        <a class="breadcrumb-link" href="/">← Retour aux plateformes</a>
+        <a class="header-link" href="/">← Accueil</a>
+        <span class="badge">Neuropsychologie</span>
       </div>
-      <h1>Neuropsychologie</h1>
+      <h1>Neuropsychologie : mémoire &amp; attention</h1>
       <p class="subtitle">
-        Modules pour travailler l'attention, la mémoire et les fonctions exécutives.      </p>
+        Exercices conçus avec les équipes MPR Nantes pour stimuler mémoire de travail, attention et fonctions exécutives.
+        </p>
     </div>
   </header>
-  <main class="app-main" role="main">
+  <main class="app-main" role="main" id="neuro-main">
     <div class="container">
-      <section aria-label="Liste des exercices neuropsychologiques" class="exercise-grid"></section>
+      <section aria-labelledby="neuro-exercises" class="exercise-collection">
+        <header class="section-header">
+          <h2 id="neuro-exercises">Modules neuropsychologiques</h2>
+          <p class="section-intro">
+            Choisissez un module pour travailler la mémoire, l'attention ou la coordination cognitive.
+          </p>
+        </header>
+        <div class="exercise-grid" data-role="exercise-grid"></div>
+      </section>
     </div>
   </main>
   <footer class="app-footer" role="contentinfo">
     <div class="container">
-      <div class="footer-actions">
-        <span>© <span id="footer-year"></span> Romain Ecarnot</span>
-        <a class="secondary-button" href="https://fr.tipeee.com/rebondir-apres-lavc-ma-carriere-dans-la-tech" target="_blank" rel="noopener noreferrer">Soutenir le projet</a>
+      <div class="footer-meta">
+        <span>© <span id="footer-year"></span> Romain Ecarnot • Version <span id="neuro-version">1.0.0</span></span>
+        <a class="secondary-button" href="https://fr.tipeee.com/rebondir-apres-lavc-ma-carriere-dans-la-tech" target="_blank"
+          rel="noopener noreferrer">Soutenir sur Tipeee</a>
+      </div>
+      <div class="footer-links" role="navigation" aria-label="Navigation neuropsychologie">
+        <a href="/">Accueil</a>
+        <a href="/ortho/ortho.html">Orthophonie</a>
+        <a href="/remerciement.html">Remerciements</a>
       </div>
     </div>
   </footer>
   <script type="module" src="./neuro.js"></script>
 </body>
-
 </html>

@@ -1,0 +1,74 @@
+:root {
+  color-scheme: dark;
+  --font-sans:
+    "Inter", "SF Pro Text", "SF Pro Display", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  --font-heading:
+    "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  --color-bg: #0b141f;
+  --color-bg-elevated: #111d2b;
+  --color-surface: #152536;
+  --color-surface-muted: rgba(21, 37, 54, 0.68);
+  --color-border: rgba(95, 163, 186, 0.18);
+  --color-border-strong: rgba(95, 163, 186, 0.45);
+  --color-primary: #3aa6b9;
+  --color-primary-dark: #2f8190;
+  --color-primary-glow: rgba(58, 166, 185, 0.35);
+  --color-accent: #5fd6c7;
+  --color-success: #52c2a0;
+  --color-warning: #ffba63;
+  --color-danger: #f15f68;
+  --color-danger-dark: #d6454f;
+  --color-danger-glow: rgba(209, 69, 79, 0.32);
+  --color-text: #e3f4f8;
+  --color-text-strong: #f2fbfe;
+  --color-text-muted: #9eb5c6;
+  --color-text-subtle: rgba(158, 181, 198, 0.65);
+  --shadow-soft: 0 18px 44px rgba(8, 24, 40, 0.45);
+  --shadow-strong: 0 32px 70px rgba(6, 20, 32, 0.55);
+  --radius-xl: 26px;
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --radius-sm: 8px;
+  --transition-base: 180ms ease-in-out;
+  --transition-slow: 280ms ease;
+  --focus-outline: 0 0 0 3px rgba(95, 214, 199, 0.28);
+  --layout-max-width: min(100%, 1080px);
+  font-size: 16px;
+}
+
+@media (min-width: 640px) {
+  :root {
+    font-size: 17px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    font-size: 18px;
+  }
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --color-bg: #f6fbfd;
+  --color-bg-elevated: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-muted: rgba(239, 246, 249, 0.86);
+  --color-border: rgba(27, 68, 97, 0.12);
+  --color-border-strong: rgba(27, 68, 97, 0.24);
+  --color-text: #0c1a26;
+  --color-text-strong: #051018;
+  --color-text-muted: #4c6072;
+  --color-text-subtle: rgba(76, 96, 114, 0.68);
+  --shadow-soft: 0 18px 34px rgba(8, 26, 40, 0.18);
+  --shadow-strong: 0 30px 60px rgba(12, 28, 40, 0.22);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-base: 0ms linear;
+    --transition-slow: 0ms linear;
+  }
+}

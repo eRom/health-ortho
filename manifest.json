@@ -1,76 +1,26 @@
 {
-  "name": "Empan - Entraînement Neuro-psy",
-  "short_name": "Empan",
-  "description": "Application d'entraînement de l'empan de lettres",
+  "name": "Plateforme MPR Nantes",
+  "short_name": "MPR",
+  "description": "Accès 24/7 aux exercices d'orthophonie et de neuropsychologie avec suivi des progrès.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "#32B8C6",
-  "theme_color": "#1D7480",
+  "background_color": "#0b141f",
+  "theme_color": "#3aa6b9",
+  "orientation": "portrait-primary",
+  "categories": ["health", "education"],
   "icons": [
+    { "src": "/icons/icon-57.png", "sizes": "57x57", "type": "image/png" },
+    { "src": "/icons/icon-60.png", "sizes": "60x60", "type": "image/png" },
+    { "src": "/icons/icon-72.png", "sizes": "72x72", "type": "image/png" },
+    { "src": "/icons/icon-76.png", "sizes": "76x76", "type": "image/png" },
+    { "src": "/icons/icon-114.png", "sizes": "114x114", "type": "image/png" },
+    { "src": "/icons/icon-120.png", "sizes": "120x120", "type": "image/png" },
+    { "src": "/icons/icon-144.png", "sizes": "144x144", "type": "image/png" },
+    { "src": "/icons/icon-152.png", "sizes": "152x152", "type": "image/png" },
+    { "src": "/icons/icon-180.png", "sizes": "180x180", "type": "image/png" },
     {
-      "src": "icons/icon-57.png",
-      "sizes": "57x57",
-      "type": "image/png"
-    },
-    {
-      "src": "icons/icon-60.png",
-      "sizes": "60x60",
-      "type": "image/png"
-    },
-    {
-      "src": "icons/icon-72.png",
-      "sizes": "72x72",
-      "type": "image/png"
-    },
-    {
-      "src": "icons/icon-76.png",
-      "sizes": "76x76",
-      "type": "image/png"
-    },
-    {
-      "src": "icons/icon-114.png",
-      "sizes": "114x114",
-      "type": "image/png"
-    },
-    {
-      "src": "icons/icon-120.png",
-      "sizes": "120x120",
-      "type": "image/png"
-    },
-    {
-      "src": "icons/icon-144.png",
-      "sizes": "144x144",
-      "type": "image/png"
-    },
-    {
-      "src": "icons/icon-152.png",
-      "sizes": "152x152",
-      "type": "image/png"
-    },
-    {
-      "src": "icons/icon-180.png",
-      "sizes": "180x180",
-      "type": "image/png"
-    },
-    {
-      "src": "icons/icon-1024.png",
-      "sizes": "1024x1024",
-      "type": "image/png"
-    },
-    {
-      "src": "/icons/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/icons/android-chrome-192x192",
+      "src": "/icons/android-chrome-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
@@ -80,6 +30,7 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
-    }
+    },
+    { "src": "/icons/icon-1024.png", "sizes": "1024x1024", "type": "image/png" }
   ]
 }

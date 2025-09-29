@@ -1,0 +1,89 @@
+/* Styles spécifiques au module Empans */
+
+.container--narrow {
+  width: min(100%, 880px);
+}
+
+.trainer-card {
+  display: grid;
+  gap: clamp(20px, 5vw, 32px);
+}
+
+.inputs-grid {
+  display: grid;
+  gap: 16px;
+}
+
+@media (min-width: 640px) {
+  .inputs-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.form-group--stacked {
+  grid-column: span 2;
+}
+
+.game-shell {
+  display: grid;
+  gap: clamp(20px, 4vw, 32px);
+}
+
+.game-progress {
+  display: flex;
+  justify-content: space-between;
+  color: var(--color-text-muted);
+}
+
+.letter-display {
+  display: grid;
+  place-items: center;
+  min-height: 120px;
+  font-size: clamp(32px, 6vw, 48px);
+  font-weight: 700;
+}
+
+.instruction-text {
+  color: var(--color-text-muted);
+  margin-bottom: 8px;
+}
+
+.game-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.feedback-section {
+  min-height: 48px;
+}
+
+.feedback-message {
+  font-weight: 600;
+}
+
+.feedback-message.correct {
+  color: var(--color-success);
+}
+
+.feedback-message.incorrect {
+  color: var(--color-danger);
+}
+
+.results-card__body {
+  display: grid;
+  gap: 16px;
+  text-align: center;
+}
+
+.results-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.notification {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999;
+}
