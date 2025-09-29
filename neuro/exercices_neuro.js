@@ -12,7 +12,7 @@ export const neuroExercises = [
     id: "corsi",
     name: "Test de Corsi",
     description:
-      "Entraînez votre mémoire spatiale en reproduisant une séquence de blocs illuminés dans le même ordre.",
+      "Entraînez votre mémoire spatiale en reproduisant une séquence de blocs.",
     href: "corsi/",
     status: "coming-soon",
     tags: ["mémoire spatiale", "attention"],
