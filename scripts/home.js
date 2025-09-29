@@ -13,10 +13,11 @@ document.addEventListener("DOMContentLoaded", () => {
   if (footerYear) {
     footerYear.textContent = String(new Date().getFullYear());
   }
-
+  /*
   const quoteElement = document.querySelector('[data-role="home-quote"]');
   if (quoteElement && QUOTES.length > 0) {
     const randomQuote = QUOTES[Math.floor(Math.random() * QUOTES.length)];
     quoteElement.textContent = randomQuote;
   }
+    */
 });
