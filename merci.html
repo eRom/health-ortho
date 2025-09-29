@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,7 +20,7 @@
   <link rel="manifest" href="/manifest.json" />
   <link rel="canonical" href="https://mpr.homeincloud.fr/remerciements.html" />
   <link rel="alternate" href="https://mpr.homeincloud.fr/remerciements.html" hreflang="fr-FR" />
-  
+
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Remerciements | MPR Nantes - St Jacques" />
@@ -28,14 +29,14 @@
   <meta property="og:url" content="https://mpr.homeincloud.fr/remerciements.html" />
   <meta property="og:image" content="https://mpr.homeincloud.fr/og-remerciements.png" />
   <meta property="og:site_name" content="Plateformes de rééducation" />
-  
+
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Remerciements | MPR Nantes - St Jacques" />
   <meta name="twitter:description"
     content="Gratitude envers l'équipe MPR Nantes - St Jacques pour l'accompagnement en rééducation." />
   <meta name="twitter:image" content="https://mpr.homeincloud.fr/twitter-remerciements.png" />
-  
+
   <script type="application/ld+json">
         {
           "@context": "https://schema.org",
@@ -56,19 +57,16 @@
         }
       </script>
 </head>
+
 <body>
   <header class="app-header" role="banner">
     <div class="container">
       <div class="header-meta">
         <a class="breadcrumb-link" href="/">← Retour à l'accueil</a>
-        <span class="badge">Gratitude</span>
       </div>
-      <h1>Merci à l'équipe MPR Nantes - St Jacques</h1>
-      <p class="subtitle">
-        Votre expertise et votre bienveillance rendent chaque étape de la rééducation plus lumineuse.
-      </p>
+      <h1>Merci à l'équipe</h1>
     </div>
-    </header>
+  </header>
 
   <main class="app-main" role="main">
     <div class="container container--narrow">
@@ -77,8 +75,7 @@
           <div class="gratitude-hero">
             <h2 class="section-title" id="gratitude-intro-title">Avec toute ma reconnaissance</h2>
             <p>
-              Grâce à vous, je reprends confiance en mes capacités et retrouve progressivement mon autonomie. Cette page
-              est ma façon de vous dire que votre travail compte énormément et n'est jamais anodin.
+              Grâce à vous, je repris confiance en mes capacités et retrouve mon autonomie.
             </p>
             <p>
               Chaque jour, votre professionnalisme, vos encouragements et votre gentillesse éclairent mon parcours de
@@ -87,18 +84,21 @@
           </div>
 
           <div class="gratitude-highlight" aria-label="Équipe soignante honorée">
-            <p><span class="heart" aria-hidden="true">♥</span> Merci pour votre expertise, votre écoute et votre présence
+            <p>Merci pour votre expertise, votre écoute et votre présence
               inestimable.</p>
+            <p><span class="heart" aria-hidden="true">♥</span></p>
           </div>
 
           <div class="team-section" aria-labelledby="gratitude-team-title">
             <h3 class="team-title" id="gratitude-team-title">Remerciements particuliers</h3>
             <div class="team-grid">
-              <div class="team-card"><strong>Stéphanie</strong><span>Orthophoniste</span></div>
-              <div class="team-card"><strong>Gaël</strong><span>Kinésithérapeute</span></div>
-              <div class="team-card"><strong>Johanna</strong><span>Neuropsychologue</span></div>
               <div class="team-card"><strong>Anaig</strong><span>Kinésithérapeute</span></div>
+              <div class="team-card"><strong>Stéphanie</strong><span>Orthophoniste</span></div>
+
+              <div class="team-card"><strong>Johanna</strong><span>Neuropsychologue</span></div>
+
               <div class="team-card"><strong>Clarisse</strong><span>Ergothérapeute</span></div>
+              <div class="team-card"><strong>Gaël</strong><span>Kinésithérapeute</span></div>
               <div class="team-card"><strong>Marie</strong><span>Orthophoniste</span></div>
               <div class="team-card"><strong>Anaïs</strong><span>Assistante sociale</span></div>
               <div class="team-card"><strong>Juliette</strong><span>Ergothérapeute</span></div>
@@ -121,14 +121,14 @@
               apportez à chaque séance.
             </p>
           </div>
-          
+
           <footer class="signature-block">
             <p>Avec reconnaissance,</p>
             <p class="signature-name">Romain Ecarnot</p>
             <p class="signature-date">Septembre 2025</p>
           </footer>
         </article>
-        </section>
+      </section>
     </div>
   </main>
 
@@ -145,13 +145,14 @@
   <script type="module">
     import { initFooterYear } from "/shared/scripts/ui.js";
 
-        const bootstrap = () => initFooterYear();
+      const bootstrap = () => initFooterYear();
 
-        if (document.readyState === "loading") {
-          document.addEventListener("DOMContentLoaded", bootstrap, { once: true });
-        } else {
-          bootstrap();
-        }
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", bootstrap, { once: true });
+      } else {
+        bootstrap();
+      }
   </script>
 </body>
+
 </html>
