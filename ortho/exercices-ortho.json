@@ -1,0 +1,41 @@
+{
+  "modules": [
+    {
+      "id": "virelangues",
+      "title": "Virelangues dynamiques",
+      "description": "Entraînez la précision articulatoire via des virelangues progressifs avec audio de référence.",
+      "level": "Intermédiaire",
+      "duration": 12,
+      "entryPoint": "/ortho/ortho-virelangues/virelangues.html",
+      "exercises": [
+        {
+          "title": "Articulation bilabiale",
+          "objective": "Renforcer la coordination des lèvres sur des suites /pa/ /ba/ /ma/."
+        },
+        {
+          "title": "Alternance rapides",
+          "objective": "Accroître la vitesse diction avec des séquences alternées en 60 secondes."
+        }
+      ]
+    },
+    {
+      "id": "diadococinies",
+      "title": "Diadococinésies",
+      "description": "Séquences syllabiques rythmées pour travailler la fluidité et la coordination."
+      ,"level": "Avancé",
+      "duration": 15,
+      "entryPoint": "/ortho/ortho-diadococinesies/diadococinesies.html",
+      "exercises": [
+        {
+          "title": "Séquence /pa-ta-ka/",
+          "objective": "Synchroniser et accélérer l'alternance des points d'articulation."
+        },
+        {
+          "title": "Routines respiratoires",
+          "objective": "Stabiliser le souffle et le débit pendant les séquences rapides."
+        }
+      ]
+    }
+  ]
+}
+

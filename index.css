@@ -1,0 +1,145 @@
+/*
+ * Styles spécifiques à la page d'accueil MPR Nantes
+ * --------------------------------------------------------------------------
+ * Ce fichier étend les variables du design système et rassemble les styles
+ * non critiques chargés après le critical CSS inline. Les classes communes
+ * sont définies dans shared/css/components.css afin de favoriser la
+ * réutilisation.
+ */
+
+@import url('/shared/css/variables.css');
+
+body[data-page="home"] {
+  background: radial-gradient(circle at top, rgba(56, 189, 248, 0.12), transparent 55%),
+    var(--color-background);
+}
+
+.hero__meta {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-lg);
+}
+
+.hero__headline {
+  font-family: var(--font-family-heading);
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  margin: 0;
+}
+
+.hero__description {
+  max-width: 45ch;
+  margin: var(--space-md) auto;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+.platform-grid {
+  position: relative;
+  isolation: isolate;
+}
+
+.platform-grid::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  background: radial-gradient(circle at center, rgba(14, 165, 233, 0.08), transparent 70%);
+  z-index: -1;
+}
+
+.platform-card__tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tag-pill {
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.16);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.platform-card__progress {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: var(--radius-md);
+  background: rgba(14, 165, 233, 0.12);
+  color: var(--color-accent);
+  font-size: var(--font-size-sm);
+}
+
+.platform-card__progress strong {
+  color: var(--color-text-primary);
+}
+
+.platform-card__meta {
+  display: flex;
+  gap: var(--space-md);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.link-secondary {
+  color: var(--color-accent);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+.link-secondary:hover,
+.link-secondary:focus-visible {
+  color: var(--color-accent-strong);
+}
+
+.app-shell[data-state="loading"]::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 7, 13, 0.85);
+  backdrop-filter: blur(6px);
+  display: block;
+  z-index: var(--z-modal-backdrop);
+}
+
+.app-shell[data-state="loading"]::before {
+  content: '';
+  position: fixed;
+  inset: 50% auto auto 50%;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 3px solid rgba(34, 211, 238, 0.2);
+  border-top-color: var(--color-accent);
+  animation: spin var(--duration-slow) linear infinite;
+  transform: translate(-50%, -50%);
+  z-index: var(--z-modal);
+}
+
+@keyframes spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@media (max-width: 48rem) {
+  .hero__headline {
+    text-align: left;
+  }
+
+  .hero__description {
+    margin-left: 0;
+  }
+
+  .platform-card {
+    gap: var(--space-sm);
+  }
+}
+

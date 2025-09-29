@@ -1,11 +1,11 @@
 {
-  "name": "Empan - Entraînement Neuro-psy",
-  "short_name": "Empan",
-  "description": "Application d'entraînement de l'empan de lettres",
+  "name": "MPR Nantes",
+  "short_name": "MPR",
+  "description": "Solution de rééducation orthophonique et neuropsychologique connectée avec suivi patient et statistiques.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#32B8C6",
-  "theme_color": "#1D7480",
+  "background_color": "#05070d",
+  "theme_color": "#05070d",
   "icons": [
     {
       "src": "icons/icon-57.png",
@@ -68,18 +68,25 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
+    }
+  ],
+  "lang": "fr-FR",
+  "dir": "ltr",
+  "scope": "/",
+  "orientation": "portrait",
+  "categories": ["medical", "health", "education"],
+  "shortcuts": [
+    {
+      "name": "Orthophonie",
+      "short_name": "Ortho",
+      "url": "/ortho/ortho.html",
+      "description": "Accéder directement aux exercices d'orthophonie"
     },
     {
-      "src": "/icons/android-chrome-192x192",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/icons/android-chrome-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "name": "Neuropsychologie",
+      "short_name": "Neuro",
+      "url": "/neuro/neuro.html",
+      "description": "Accéder aux modules neuropsychologiques"
     }
   ]
 }

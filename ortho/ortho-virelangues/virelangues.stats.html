@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Statistiques Virelangues | MPR Nantes</title>
+  <link rel="stylesheet" href="/shared/css/variables.css" />
+  <link rel="stylesheet" href="/shared/css/layout.css" />
+  <link rel="stylesheet" href="/shared/css/components.css" />
+  <link rel="stylesheet" href="/ortho/ortho-virelangues/virelangues.css" />
+</head>
+
+<body>
+  <div class="container">
+    <header class="session-header">
+      <h1>Statistiques Virelangues</h1>
+      <p>Données synthétiques générées à partir de vos sessions enregistrées.</p>
+    </header>
+    <section id="stats"></section>
+  </div>
+  <script type="module">
+    import renderStats from './virelangues-stats.js';
+    (async () => {
+      const container = document.getElementById('stats');
+      container.innerHTML = await renderStats('ortho:virelangues');
+    })();
+  </script>
+</body>
+
+</html>
+

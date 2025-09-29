@@ -1,0 +1,109 @@
+/*
+ * Layout & Grids
+ * --------------------------------------------------------------------------
+ * Définit la grille responsive, les conteneurs et comportements flexbox
+ * communs à toutes les pages afin d'assurer consistance et lisibilité.
+ */
+
+@import url('/shared/css/variables.css');
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-shell > main {
+  flex: 1;
+}
+
+.container {
+  width: min(100% - 2.5rem, var(--max-width-container));
+  margin-inline: auto;
+}
+
+.grid {
+  display: grid;
+  gap: var(--grid-gap);
+}
+
+.grid--two {
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.inline {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.surface-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-soft);
+}
+
+.surface-card--interactive {
+  transition: transform var(--duration-standard) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard);
+}
+
+.surface-card--interactive:focus-visible,
+.surface-card--interactive:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-border-strong);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-alt);
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 1rem;
+  background: var(--color-text-primary);
+  color: var(--color-text-inverse);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  transition: top var(--duration-fast) ease;
+  z-index: var(--z-header);
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+@media (max-width: 48rem) {
+  .container {
+    width: min(100% - 1.5rem, var(--max-width-container));
+  }
+
+  .grid--two {
+    grid-template-columns: 1fr;
+  }
+}
+

@@ -1,0 +1,24 @@
+[
+  {
+    "id": "v001",
+    "difficulty": "Facile",
+    "text": "Un chasseur sachant chasser sait chasser sans son chien.",
+    "focus": "Sibilantes",
+    "audio": "/ortho/ortho-virelangues/virelangues-medias/v001.mp3"
+  },
+  {
+    "id": "v002",
+    "difficulty": "Intermédiaire",
+    "text": "Ces cerises sont si sûres qu'on ne sait si ce sont celles-ci ou celles-là.",
+    "focus": "Voyelles fermées",
+    "audio": "/ortho/ortho-virelangues/virelangues-medias/v002.mp3"
+  },
+  {
+    "id": "v003",
+    "difficulty": "Avancé",
+    "text": "Les chaussettes de l'archiduchesse sont-elles sèches ou archi-sèches ?",
+    "focus": "Consonnes ch/s",
+    "audio": "/ortho/ortho-virelangues/virelangues-medias/v003.mp3"
+  }
+]
+

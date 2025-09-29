@@ -1,0 +1,141 @@
+@import url('/shared/css/variables.css');
+
+body[data-page="ortho"] {
+  background: radial-gradient(circle at top, rgba(34, 197, 247, 0.12), transparent 60%), var(--color-background);
+}
+
+.therapy-hero {
+  padding-block: clamp(3rem, 6vw, 5rem);
+}
+
+.therapy-hero__title {
+  font-family: var(--font-family-heading);
+  font-size: clamp(2.2rem, 4vw, 3.3rem);
+  margin-bottom: var(--space-sm);
+}
+
+.therapy-hero__description {
+  max-width: 55ch;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+.therapy-dashboard {
+  display: grid;
+  gap: var(--grid-gap);
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  margin-block: var(--space-xl);
+}
+
+.therapy-stats {
+  display: grid;
+  gap: var(--space-md);
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+}
+
+.stat-card {
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  background: rgba(14, 165, 233, 0.08);
+  border: 1px solid rgba(14, 165, 233, 0.18);
+}
+
+.stat-card__value {
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  margin: 0;
+}
+
+.stat-card__label {
+  color: var(--color-text-secondary);
+  margin: 0.35rem 0 0;
+}
+
+.module-grid {
+  display: grid;
+  gap: var(--grid-gap);
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  margin-block: var(--space-xl);
+}
+
+.module-card {
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.module-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.module-card__title {
+  margin: 0;
+  font-size: var(--font-size-xl);
+}
+
+.module-card__meta {
+  display: flex;
+  gap: var(--space-sm);
+  color: var(--color-text-muted);
+}
+
+.module-card__actions {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 1.25rem;
+  border-left: 2px solid rgba(148, 163, 184, 0.25);
+  margin-top: var(--space-lg);
+}
+
+.timeline__item {
+  margin-bottom: var(--space-md);
+  position: relative;
+}
+
+.timeline__item::before {
+  content: '';
+  position: absolute;
+  left: -1.35rem;
+  top: 0.45rem;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.timeline__title {
+  margin: 0;
+  font-size: var(--font-size-md);
+}
+
+.timeline__description {
+  margin: 0.25rem 0 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.cta-group {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-top: var(--space-md);
+}
+
+@media (max-width: 48rem) {
+  .therapy-hero {
+    padding-block: 2.5rem;
+  }
+
+  .module-card__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+

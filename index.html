@@ -1,161 +1,179 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr" data-theme="dark">
 
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Plateformes de rééducation | Orthophonie & Neuropsychologie</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/shared/styles/theme.css" />
-  <link rel="stylesheet" href="/shared/styles/components.css" />
-  <link rel="stylesheet" href="/styles/home.css" />
-  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#05070d" />
+  <title>MPR Nantes | Exercices Orthophonie & Neuropsychologie</title>
+  <meta name="description"
+    content="Programme de rééducation MPR Nantes : accès 24/7 aux exercices d'orthophonie et de neuropsychologie, statistiques et suivi patient-professionnel." />
+  <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://mpr.homeincloud.fr/" />
   <link rel="alternate" href="https://mpr.homeincloud.fr/" hreflang="fr-FR" />
 
-  <!-- Métadonnées SEO -->
-  <meta name="description"
-    content="Accédez à des plateformes de rééducation orthophonie et neuropsychologie : exercices guidés, entraînements quotidiens et suivi des progrès." />
-  <meta name="keywords"
-    content="rééducation, orthophonie, neuropsychologie, exercices en ligne, diction, mémoire, entraînement cognitif" />
-  <meta name="author" content="Romain Ecarnot" />
-  <meta name="robots" content="index, follow" />
+  <link rel="preload" href="/shared/assets/fonts/Inter-Variable.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/shared/assets/fonts/SFProDisplay-Semibold.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/shared/css/variables.css" />
+  <link rel="stylesheet" href="/shared/css/layout.css" />
+  <link rel="stylesheet" href="/shared/css/components.css" />
+  <link rel="stylesheet" href="/shared/css/accessibility.css" />
+  <link rel="stylesheet" href="/index.css" />
+  <link rel="icon" href="/favicon.ico" sizes="32x32" />
+  <link rel="icon" href="/icons/icon-192.png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="/icons/icon-180.png" />
+  <link rel="manifest" href="/manifest.json" />
 
-  <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Plateformes de rééducation | Orthophonie & Neuropsychologie" />
+  <meta property="og:title" content="MPR Nantes | Exercices Orthophonie & Neuropsychologie" />
   <meta property="og:description"
-    content="Choisissez une plateforme d'exercices pour travailler articulation, diction, mémoire et attention." />
+    content="Accédez à la bibliothèque interactive d'exercices thérapeutiques, suivez vos progrès et collaborez avec les professionnels de santé." />
   <meta property="og:url" content="https://mpr.homeincloud.fr/" />
   <meta property="og:image" content="https://mpr.homeincloud.fr/og-image.png" />
-  <meta property="og:site_name" content="Plateformes de rééducation" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:site_name" content="MPR Nantes" />
 
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Plateformes de rééducation | Orthophonie & Neuropsychologie" />
+  <meta name="twitter:title" content="Programme MPR Nantes" />
   <meta name="twitter:description"
-    content="Exercices guidés pour l'orthophonie et la neuropsychologie : diction, articulation, mémoire et attention." />
+    content="Rééducation orthophonique et neuropsychologique personnalisée avec statistiques et suivi patient." />
   <meta name="twitter:image" content="https://mpr.homeincloud.fr/twitter-card.png" />
+
+  <style>
+    /* Critical CSS - Surface et typographie */
+    :root {
+      color-scheme: dark light;
+    }
+  
+    body {
+      margin: 0;
+      font-family: var(--font-family-base, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+      background: var(--color-background, #05070d);
+      color: var(--color-text-primary, #f9fafb);
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .container {
+      width: min(100% - 2rem, var(--max-width-container, 1200px));
+      margin-inline: auto;
+    }
+  
+    .hero {
+      padding-block: clamp(3rem, 6vw, 5rem);
+      text-align: center;
+    }
+  
+    .platform-grid {
+      display: grid;
+      gap: var(--grid-gap, 1.5rem);
+      grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+      padding-block: clamp(2rem, 4vw, 3rem);
+    }
+  
+    .platform-card {
+      background: var(--color-surface, #111827);
+      border-radius: var(--radius-lg, 1.25rem);
+      border: 1px solid var(--color-border, rgba(255, 255, 255, 0.08));
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      box-shadow: var(--shadow-soft, 0 20px 45px rgba(3, 7, 18, 0.45));
+      transition: transform var(--duration-standard, 250ms) var(--ease-standard, cubic-bezier(0.4, 0, 0.2, 1));
+    }
+  
+    .platform-card:focus-visible,
+    .platform-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--color-border-strong, rgba(59, 130, 246, 0.65));
+    }
+  
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-sm, 0.5rem);
+      background: var(--color-surface-alt, #162033);
+      color: var(--color-text-secondary, #d1d5db);
+      font-size: var(--font-size-sm, 0.875rem);
+    }
+  
+    .cta-button {
+      align-self: flex-start;
+      min-height: var(--size-touch-min, 44px);
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-md, 0.875rem);
+      background: linear-gradient(135deg, var(--color-accent, #22d3ee), var(--color-accent-strong, #0ea5e9));
+      color: var(--color-text-inverse, #0f172a);
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      transition: box-shadow 180ms var(--ease-standard);
+    }
+  
+    .cta-button:focus-visible,
+    .cta-button:hover {
+      box-shadow: 0 0 0 3px var(--color-accent-soft, rgba(34, 211, 238, 0.16));
+    }
+  
+    @media (max-width: 48rem) {
+      .hero {
+        text-align: left;
+      }
+    }
+  </style>
 
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Plateformes de rééducation",
-      "url": "https://mpr.homeincloud.fr",
-      "description": "Plateforme centrale donnant accès à des exercices de rééducation orthophonie et neuropsychologie.",
+      "@type": "HealthApplication",
+      "name": "MPR Nantes",
+      "operatingSystem": "Web",
+      "applicationCategory": "MedicalApplication",
+      "description": "Solution de rééducation orthophonique et neuropsychologique connectée avec suivi personnalisé.",
+      "url": "https://mpr.homeincloud.fr/",
       "inLanguage": "fr",
       "publisher": {
-        "@type": "Person",
-        "name": "Romain Ecarnot"
+        "@type": "Organization",
+        "name": "Centre Hospitalier Universitaire de Nantes",
+        "url": "https://www.chu-nantes.fr"
       },
-      "keywords": [
-        "virelangues",
-        "orthophonie",
-        "rééducation orthophonique",
-        "élocution",
-        "diction",
-        "articulation",
-        "exercices vocaux",
-        "troubles de la parole",
-        "séances orthophoniste",
-        "entraînement cognitif",
-        "mémoire",
-        "attention",
-        "fonctions exécutives",
-        "troubles de la mémoire",
-        "troubles de l'attention",
-        "troubles de la diction",
-        "troubles de l'articulation",
-        "troubles de l'élocution"
-      ],
-      "audience": {
-        "@type": "Audience",
-        "audienceType": [
-          "Patients en rééducation",
-          "Orthophonistes",
-          "Neuropsychologues",
-          "Personnes avec troubles de la mémoire",
-          "Personnes avec troubles de l'attention",
-          "Personnes avec troubles de la diction",
-          "Personnes avec troubles de l'articulation",
-          "Personnes avec troubles de l'élocution",
-          "Personnes avec troubles de la parole"
-        ]
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
       },
       "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://mpr.homeincloud.fr/?q={search_term_string}",
-        "query-input": "required name=search_term_string"
+        "@type": "ExerciseAction",
+        "target": "https://mpr.homeincloud.fr/ortho/ortho.html",
+        "name": "Lancer les exercices d'orthophonie"
+      },
+      "audience": {
+        "@type": "Audience",
+        "audienceType": ["Patients en rééducation", "Orthophonistes", "Neuropsychologues"]
       }
     }
   </script>
 </head>
 
-<body>
-  <header class="app-header" role="banner">
-    <div class="container">
-      <div class="header-meta">
-        <span class="badge"><b>MPR</b> – Plateformes d'entraînement</span>
-      </div>
-      <h1>Bibliothèque d'exercices</h1>
-      <p class="subtitle" data-role="home-quote">
-        Sélectionnez une plateforme pour accéder aux exercices adaptés.
-      </p>
-    </div>
-  </header>
-  <main class="app-main" role="main">
-    <div class="container">
-      <section aria-label="Choix des plateformes" class="exercise-grid">
-        <article class="exercise-card surface-card surface-card--interactive">
-          <div class="exercise-card__header">
-            <h2 class="exercise-card__title">Orthophonie</h2>
-          </div>
-          <p class="exercise-card__description">
-            Plateforme dédiée aux exercices d'articulation, de diction et d'élocution.
-          </p>
-          <div class="exercise-card__tags">
-            <span class="tag-pill">diction</span>
-            <span class="tag-pill">élocution</span>
-            <span class="tag-pill">articulation</span>
-          </div>
-          <div class="exercise-card__actions">
-            <a class="primary-button" href="/ortho/ortho.html">Accéder à la plateforme</a>
-          </div>
-        </article>
+<body data-page="home">
+  <a class="skip-link" href="#contenu-principal">Passer au contenu</a>
+  <div id="app-root" class="app-shell" data-state="loading">
+    <header id="app-header" aria-live="polite"></header>
+    <main id="contenu-principal" tabindex="-1"></main>
+    <footer id="app-footer"></footer>
+  </div>
 
-        <article class="exercise-card surface-card surface-card--interactive">
-          <div class="exercise-card__header">
-            <h2 class="exercise-card__title">Neuropsychologie</h2>
-          </div>
-          <p class="exercise-card__description">
-            Modules pour travailler l'attention, la mémoire et les fonctions exécutives.
-          </p>
-          <div class="exercise-card__tags">
-            <span class="tag-pill">attention</span>
-            <span class="tag-pill">mémoire</span>
-            <span class="tag-pill">fonctions exécutives</span>
-          </div>
-          <div class="exercise-card__actions">
-            <a class="primary-button" href="/neuro/neuro.html">Accéder à la plateforme</a>
-          </div>
-        </article>
-      </section>
-    </div>
-    </main>
-  <footer class="app-footer" role="contentinfo">
-    <div class="container">
-      <div class="footer-actions">
-        <span>© <span id="footer-year"></span> Romain Ecarnot</span>
-        <a class="secondary-button" href="https://fr.tipeee.com/rebondir-apres-lavc-ma-carriere-dans-la-tech" target="_blank"
-          rel="noopener noreferrer">Soutenir le projet</a>
-      </div>
-    </div>
-    </footer>
-    <script type="module" src="/scripts/home.js"></script>
+  <script type="module" src="/index.js"></script>
+  <script nomodule src="/index.legacy.js"></script>
+  <noscript>
+    <p role="alert">Veuillez activer JavaScript pour profiter pleinement de l'application de rééducation MPR Nantes.</p>
+  </noscript>
 </body>
 
 </html>
