@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Empan lettres &amp; chiffres | Entraînement cognitif</title>
+  <title>Empan lettres | Entraînement cognitif</title>
   <meta name="description"
-    content="Renforcez la mémoire de travail avec l'exercice d'empan de lettres et de chiffres : séries personnalisables, mode audio et suivi de score." />
+    content="Renforcez la mémoire de travail avec l'exercice d'empan de lettres : séries personnalisables, mode audio et suivi de score." />
   <meta name="keywords"
-    content="empan, mémoire de travail, entraînement cognitif, neuropsychologie, séquence de lettres, séquence de chiffres" />
+    content="empan, mémoire de travail, entraînement cognitif, neuropsychologie, séquence de lettres" />
   <meta name="author" content="Romain Ecarnot" />
   <meta name="robots" content="index, follow" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -26,16 +26,16 @@
   
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Empan lettres &amp; chiffres | Entraînement cognitif" />
+  <meta property="og:title" content="Empan lettres | Entraînement cognitif" />
   <meta property="og:description"
-    content="Travaillez votre mémoire de travail en restituant des séquences de lettres ou de chiffres avec configuration personnalisée." />
+    content="Travaillez votre mémoire de travail en restituant des séquences de lettres avec configuration personnalisée." />
   <meta property="og:url" content="https://mpr.homeincloud.fr/neuro/empans/" />
   <meta property="og:image" content="https://mpr.homeincloud.fr/og-empans.png" />
   <meta property="og:site_name" content="Plateformes de rééducation" />
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Empan lettres &amp; chiffres | Entraînement cognitif" />
+  <meta name="twitter:title" content="Empan lettres | Entraînement cognitif" />
   <meta name="twitter:description"
     content="Exercice d'empan pour entraîner mémoire et attention grâce à des séries paramétrables et un suivi détaillé." />
   <meta name="twitter:image" content="https://mpr.homeincloud.fr/twitter-empans.png" />
@@ -44,12 +44,12 @@
         {
           "@context": "https://schema.org",
           "@type": "SoftwareApplication",
-          "name": "Empan lettres & chiffres",
+          "name": "Empan lettres",
           "applicationCategory": "HealthApplication",
           "applicationSubCategory": "Cognitive Training",
           "operatingSystem": "Web",
           "url": "https://mpr.homeincloud.fr/neuro/empans/",
-          "description": "Application d'entraînement cognitif pour travailler l'empan de lettres et de chiffres avec des séries personnalisables.",
+          "description": "Application d'entraînement cognitif pour travailler l'empan de lettres avec des séries personnalisables.",
           "inLanguage": "fr",
           "author": {
             "@type": "Person",
@@ -60,8 +60,7 @@
             "mémoire de travail",
             "entraînement cognitif",
             "neuropsychologie",
-            "séquences de lettres",
-            "séquences de chiffres"
+            "séquences de lettres"
           ],
           "audience": {
             "@type": "Audience",
@@ -88,9 +87,9 @@
         <a class="breadcrumb-link" href="../neuro.html">← Retour aux exercices</a>
         <a class="secondary-button secondary-button--compact" href="./metrics.html">Statistiques</a>
       </div>
-      <h1>Empan lettres &amp; chiffres</h1>
+      <h1>Empan lettres</h1>
       <p class="subtitle">
-        Renforcez la mémoire de travail en restituant des séquences de symboles.
+        Renforcez la mémoire de travail en restituant des séquences de lettres.
       </p>
     </div>
   </header>
@@ -100,13 +99,6 @@
       <section id="home-screen" class="screen active" role="region" aria-labelledby="home-title" aria-hidden="false">
         <article class="surface-card trainer-card">
           <div class="inputs-grid">
-            <div class="form-group">
-              <label class="form-label" for="symbol-type">Type de symboles</label>
-              <select id="symbol-type" class="form-control">
-                <option value="letters" selected>Lettres</option>
-                <option value="digits">Chiffres</option>
-              </select>
-            </div>
             <div class="form-group">
               <label class="form-label" for="exercise-count">Nombre de séries</label>
               <select id="exercise-count" class="form-control">
@@ -168,7 +160,7 @@
             <div class="input-section" id="input-section">
               <label class="instruction-text" for="user-input" id="user-input-label">Tapez la séquence retenue :</label>
               <input type="text" id="user-input" class="form-control letter-input" maxlength="8" aria-describedby="user-input-help" />
-              <p id="user-input-help" class="sr-only">Saisissez les symboles sans espaces, en lettres majuscules ou chiffres selon l'exercice.</p>
+              <p id="user-input-help" class="sr-only">Saisissez les lettres sans espaces, en majuscules.</p>
               <div class="game-controls">
                 <button id="validate-answer" class="primary-button" type="button">Valider</button>
                 <button id="restart-series" class="ghost-button" type="button">Recommencer cette série</button>

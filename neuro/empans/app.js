@@ -19,7 +19,6 @@ const CONFIG = {
     "S",
     "T",
   ],
-  chiffresDisponibles: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
   niveauxDifficulte: {
     4: "Débutant",
     5: "Facile",
@@ -41,19 +40,6 @@ const CONFIG = {
   exercicesParSerie: 8,
 };
 
-const DIGIT_LABELS = {
-  0: "zéro",
-  1: "un",
-  2: "deux",
-  3: "trois",
-  4: "quatre",
-  5: "cinq",
-  6: "six",
-  7: "sept",
-  8: "huit",
-  9: "neuf",
-};
-
 // État de l'application
 let gameState = {
   currentScreen: "home",
@@ -64,7 +50,7 @@ let gameState = {
   currentSequence: [],
   isDisplayingLetters: false,
   currentLetterIndex: 0,
-  symbolType: "letters", // "letters" | "digits"
+  symbolType: "letters",
   soundEnabled: false,
   seriesStartAt: null,
 };
@@ -90,7 +76,6 @@ function initializeElements() {
     letterCountSelect: document.getElementById("letter-count"),
     startSeriesBtn: document.getElementById("start-series"),
     exerciseCountSelect: document.getElementById("exercise-count"),
-    symbolTypeSelect: document.getElementById("symbol-type"),
     enableSoundCheckbox: document.getElementById("enable-sound-checkbox"),
     reverseOrderCheckbox: document.getElementById("reverse-order-checkbox"),
 
@@ -134,8 +119,8 @@ function initializeElements() {
 }
 
 // Gestion des paramètres persistés (localStorage)
-const SETTINGS_KEY = "neuro-settings-v1";
-const PROGRESS_KEY = "empan_progression"; // historique des séries
+const SETTINGS_KEY = "neuro-settings-lettres-v1";
+const PROGRESS_KEY = "empan_lettres_progression"; // historique des séries
 
 function msToSeconds(ms) {
   return Math.round(ms / 100) / 10; // arrondi au 1/10e
@@ -309,7 +294,7 @@ function startSeries() {
   gameState.totalExercises = parseInt(
     elements.exerciseCountSelect?.value || String(CONFIG.exercicesParSerie)
   );
-  gameState.symbolType = elements.symbolTypeSelect?.value || "letters";
+  gameState.symbolType = "letters";
   gameState.soundEnabled = !!elements.enableSoundCheckbox?.checked;
   gameState.reverseOrder = !!elements.reverseOrderCheckbox?.checked;
   gameState.currentExercise = 0;
@@ -363,10 +348,7 @@ function startNewExercise() {
 // Fonction pour générer une séquence aléatoire
 function generateRandomSequence(length) {
   const sequence = [];
-  const available =
-    gameState.symbolType === "digits"
-      ? CONFIG.chiffresDisponibles
-      : CONFIG.lettresDisponibles;
+  const available = CONFIG.lettresDisponibles;
   for (let i = 0; i < length; i++) {
     const randomIndex = Math.floor(Math.random() * available.length);
     sequence.push(available[randomIndex]);
@@ -390,10 +372,7 @@ function displayNextLetter() {
     }
 
     if (elements.currentLetterAnnouncer) {
-      const label =
-        gameState.symbolType === "digits"
-          ? DIGIT_LABELS[letter] || letter
-          : letter;
+      const label = letter;
       elements.currentLetterAnnouncer.textContent = label;
     }
 
@@ -439,10 +418,7 @@ function endLetterDisplay() {
 
     if (elements.userInputLabel) {
       const base = elements.userInputLabel.textContent || "";
-      const hint =
-        gameState.symbolType === "digits"
-          ? `Saisissez ${gameState.letterCount} chiffres.`
-          : `Saisissez ${gameState.letterCount} lettres.`;
+      const hint = `Saisissez ${gameState.letterCount} lettres.`;
       requestAnnouncement(`${base} ${hint}`.trim());
     }
   }
@@ -558,7 +534,7 @@ function showResults() {
     );
     const entry = {
       timestamp: new Date().toISOString(),
-      type: gameState.symbolType === "digits" ? "chiffres" : "lettres",
+      type: "lettres",
       nombreSeries: gameState.totalExercises,
       nombreSymboles: gameState.letterCount,
       modeEcoute: !!gameState.soundEnabled,
@@ -765,11 +741,8 @@ const AudioService = (function () {
     return audioBuffer;
   }
 
-  function symbolListForState(state) {
-    // Précharger les symboles du type sélectionné
-    if (state.symbolType === "letters") return CONFIG.lettresDisponibles;
-    if (state.symbolType === "digits") return CONFIG.chiffresDisponibles;
-    return [];
+  function symbolListForState() {
+    return CONFIG.lettresDisponibles;
   }
 
   async function preloadBuffers(state) {

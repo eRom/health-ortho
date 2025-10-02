@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Empan lettres &amp; chiffres – Progression</title>
+  <title>Empan lettres – Progression</title>
   <meta name="description"
-    content="Consultez vos statistiques d'entraînement Empan, visualisez vos tendances et exportez vos résultats en JSON ou CSV." />
+    content="Consultez vos statistiques d'entraînement Empan lettres, visualisez vos tendances et exportez vos résultats en JSON ou CSV." />
   <meta name="keywords"
-    content="empan, statistiques, mémoire de travail, entraînement cognitif, neuropsychologie, export de données" />
+    content="empan, lettres, statistiques, mémoire de travail, entraînement cognitif" />
   <meta name="author" content="Romain Ecarnot" />
   <meta name="robots" content="index, follow" />
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
@@ -23,31 +23,31 @@
   
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Empan lettres &amp; chiffres – Progression" />
+  <meta property="og:title" content="Empan lettres – Progression" />
   <meta property="og:description"
-    content="Analysez vos séries Empan, votre taux de réussite et exportez vos données pour un suivi détaillé." />
+    content="Analysez vos séries Empan lettres, votre taux de réussite et exportez vos données pour un suivi détaillé." />
   <meta property="og:url" content="https://mpr.homeincloud.fr/neuro/empans/metrics.html" />
   <meta property="og:image" content="https://mpr.homeincloud.fr/og-empans-metrics.png" />
   <meta property="og:site_name" content="Plateformes de rééducation" />
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Empan lettres &amp; chiffres – Progression" />
+  <meta name="twitter:title" content="Empan lettres – Progression" />
   <meta name="twitter:description"
-    content="Suivez vos statistiques Empan et exportez vos données JSON ou CSV pour en garder une trace." />
+    content="Suivez vos statistiques Empan lettres et exportez vos données JSON ou CSV pour en garder une trace." />
   <meta name="twitter:image" content="https://mpr.homeincloud.fr/twitter-empans-metrics.png" />
   
   <script type="application/ld+json">
         {
           "@context": "https://schema.org",
           "@type": "WebPage",
-          "name": "Statistiques Empan lettres & chiffres",
+          "name": "Statistiques Empan lettres",
           "url": "https://mpr.homeincloud.fr/neuro/empans/metrics.html",
-          "description": "Tableau de bord des statistiques Empan lettres & chiffres avec options d'export JSON et CSV.",
+          "description": "Tableau de bord des statistiques Empan lettres avec options d'export JSON et CSV.",
           "inLanguage": "fr",
           "isPartOf": {
             "@type": "SoftwareApplication",
-            "name": "Empan lettres & chiffres",
+            "name": "Empan lettres",
             "url": "https://mpr.homeincloud.fr/neuro/empans/"
           },
           "audience": {
@@ -66,13 +66,13 @@
   <div class="container">
     <div class="header-meta">
       <a class="breadcrumb-link" href="./index.html">← Retour à l'exercice</a>
-      </div>
-      <h1>Suivi des entraînements</h1>
-      <p class="subtitle">
-        Visualisez vos tendances et exportez les séries enregistrées sur cet appareil.
-      </p>
     </div>
-  </header>
+    <h1>Suivi des entraînements</h1>
+    <p class="subtitle">
+      Visualisez vos tendances et exportez les séries de lettres enregistrées sur cet appareil.
+      </p>
+      </div>
+      </header>
 
   <main class="app-main" id="main-content" role="main">
     <div class="container container--narrow">
@@ -119,7 +119,7 @@
     (function () {
       document.documentElement.setAttribute('data-theme', 'dark');
 
-      const PROGRESS_KEY = 'empan_progression';
+      const PROGRESS_KEY = 'empan_lettres_progression';
       let allData = [];
 
       const exportBtn = document.getElementById('export-btn');
@@ -182,7 +182,7 @@
           const link = document.createElement('a');
           const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
           link.href = url;
-          link.download = `empan_toutes_donnees_${timestamp}.json`;
+          link.download = `empan_lettres_donnees_${timestamp}.json`;
           document.body.appendChild(link);
           link.click();
           link.remove();
@@ -194,12 +194,11 @@
 
       exportCsvBtn.addEventListener('click', () => {
         try {
-          const headers = ['Date', 'Type', 'Séries', 'Symboles', 'Son', 'Bonnes réponses', 'Pourcentage'];
+          const headers = ['Date', 'Séries', 'Symboles', 'Son', 'Bonnes réponses', 'Pourcentage'];
           const csvContent = [
             headers.join(','),
             ...allData.map((entry) => [
               new Date(entry.timestamp).toLocaleString(),
-              entry.type,
               entry.nombreSeries,
               entry.nombreSymboles,
               entry.modeEcoute ? 'Oui' : 'Non',
@@ -213,7 +212,7 @@
           const link = document.createElement('a');
           const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
           link.href = url;
-          link.download = `empan_toutes_donnees_${timestamp}.csv`;
+          link.download = `empan_lettres_donnees_${timestamp}.csv`;
           document.body.appendChild(link);
           link.click();
           link.remove();
