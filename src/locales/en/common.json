@@ -13,8 +13,9 @@
     }
   },
   "footer": {
-    "legal": "© 2025 Romain Ecarnot — Support via Tipee",
-    "prototype": "Next.js prototype under construction."
+    "legal": "© 2025 Romain Ecarnot",
+    "support": "Support the project",
+    "version": "Version {version} under development"
   },
   "layout": {
     "skipToContent": "Skip to main content",

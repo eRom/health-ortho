@@ -212,11 +212,28 @@ export default async function LocaleLayout({
             return (
               <footer className="mt-auto border-t border-border/60 bg-background/80">
                 <div className="mx-auto flex w-full max-w-6xl flex-col gap-3 px-4 py-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:px-6">
-                  {footerMessages?.legal ? (
-                    <span>{footerMessages.legal}</span>
-                  ) : null}
-                  {footerMessages?.prototype ? (
-                    <span>{footerMessages.prototype}</span>
+                  <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
+                    {footerMessages?.legal ? (
+                      <span>{footerMessages.legal}</span>
+                    ) : null}
+                    {footerMessages?.support ? (
+                      <a
+                        href="https://fr.tipeee.com/rebondir-apres-lavc-ma-carriere-dans-la-tech"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary hover:text-primary/80 transition-colors underline decoration-dotted underline-offset-4"
+                      >
+                        {footerMessages.support}
+                      </a>
+                    ) : null}
+                  </div>
+                  {footerMessages?.version ? (
+                    <span className="text-muted-foreground/70">
+                      {footerMessages.version.replace(
+                        "{version}",
+                        process.env.npm_package_version || "0.1.0"
+                      )}
+                    </span>
                   ) : null}
                 </div>
               </footer>

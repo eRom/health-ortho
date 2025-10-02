@@ -48,10 +48,6 @@ export default async function Home({ params }: HomePageProps) {
         </Card>
       </section>
 
-      <footer className="mt-auto flex flex-col items-center justify-between gap-4 border-t border-border/60 py-6 text-xs text-muted-foreground sm:flex-row">
-        <span>{t("footer.legal")}</span>
-        <span>{t("footer.prototype")}</span>
-      </footer>
     </main>
   );
 }
