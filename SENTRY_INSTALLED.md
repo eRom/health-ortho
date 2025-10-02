@@ -11,27 +11,25 @@ Sentry a été installé et configuré avec succès dans votre application MPR I
 
 ### Fichiers de Configuration Créés
 
-#### Configuration Sentry
-1. **`sentry.client.config.ts`** - Configuration client (navigateur)
+#### Configuration Sentry ✨ **Nouveau format Turbopack**
+1. **`instrumentation-client.ts`** - Configuration client (navigateur)
    - Error tracking
    - Performance monitoring (10% sample)
    - Session Replay (10%/100% avec erreur)
    - Filtrage des erreurs non pertinentes
+   - **✨ Compatible Turbopack (Next.js 15+)**
 
-2. **`sentry.server.config.ts`** - Configuration serveur (Node.js)
-   - Error tracking
+2. **`instrumentation.ts`** - Configuration serveur et Edge
+   - Auto-init de Sentry pour Node.js et Edge Runtime
+   - Error tracking serveur
    - Performance monitoring (10% sample)
    - Profiling (10% en production)
    - Intégration Prisma
    - Filtrage des données sensibles
-
-3. **`sentry.edge.config.ts`** - Configuration Edge Runtime
-   - Error tracking léger
-   - Filtrage des données sensibles
-
-4. **`instrumentation.ts`** - Hook Next.js
-   - Auto-init de Sentry
    - Hook `onRequestError` pour capturer les erreurs de requête
+
+> **Note** : Migration effectuée vers la nouvelle structure recommandée.  
+> Les anciens fichiers `sentry.*.config.ts` ont été supprimés et remplacés par `instrumentation.ts` et `instrumentation-client.ts`.
 
 #### Intégration Next.js
 5. **`next.config.ts`** - Mis à jour

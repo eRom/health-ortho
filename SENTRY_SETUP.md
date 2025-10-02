@@ -8,14 +8,15 @@ Guide complet pour configurer et utiliser Sentry dans MPR In Cloud.
 
 ✅ **Package installé** : `@sentry/nextjs`  
 ✅ **Fichiers créés** :
-- `sentry.client.config.ts` - Configuration client (navigateur)
-- `sentry.server.config.ts` - Configuration serveur
-- `sentry.edge.config.ts` - Configuration Edge Runtime
-- `instrumentation.ts` - Hook d'instrumentation Next.js
+- `instrumentation-client.ts` - Configuration client (navigateur) ✨ **Nouveau format Turbopack**
+- `instrumentation.ts` - Configuration serveur et Edge Runtime
 - `src/lib/sentry.ts` - Helpers Sentry
 - `src/app/global-error.tsx` - Error boundary global
 - `src/app/[locale]/error.tsx` - Error boundary avec Sentry (mis à jour)
 - `src/app/api/sentry-test/route.ts` - Route de test
+
+> **Note** : Migration effectuée vers la nouvelle structure recommandée pour Next.js 15 et Turbopack.  
+> Les anciens fichiers `sentry.*.config.ts` ont été remplacés par `instrumentation.ts` et `instrumentation-client.ts`.
 
 ---
 
