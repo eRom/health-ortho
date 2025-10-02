@@ -1,8 +1,15 @@
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
-export default function Home() {
-  const t = useTranslations();
+interface HomePageProps {
+  params: Promise<{
+    locale: string;
+  }>;
+}
+
+export default async function Home({ params }: HomePageProps) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale });
 
   return (
     <main className="mx-auto flex min-h-screen max-w-5xl flex-col gap-14 px-6 py-16">

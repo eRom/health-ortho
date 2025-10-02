@@ -1,43 +1,105 @@
-"use client";
-
 import Link from "next/link";
-import { useLocale, useTranslations } from "next-intl";
-import { usePathname } from "next/navigation";
-import { useState } from "react";
-import { ChevronDown, Loader2 } from "lucide-react";
+import { memo } from "react";
 
-import { Button } from "@/components/ui/button";
-import { signOut, useSession } from "@/lib/auth-client";
-import { localeLabels, locales } from "@/lib/i18n/config";
+import { localeLabels, locales, type Locale } from "@/lib/i18n/config";
+
+import { SignOutButton } from "@/components/navigation/sign-out-button";
+
+const localeIcons: Record<string, string> = {
+  fr: "🇫🇷",
+  en: "🇬🇧",
+};
 
 interface SiteHeaderProps {
-  locale: string;
+  locale: Locale;
+  messages: SiteHeaderMessages;
+  session: SiteHeaderSession;
 }
 
-export function SiteHeader({ locale: layoutLocale }: SiteHeaderProps) {
-  const t = useTranslations("layout");
-  const locale = useLocale() || layoutLocale;
-  const pathname = usePathname();
-  const { data: session, isPending } = useSession();
-  const [isSigningOut, setIsSigningOut] = useState(false);
+export type SiteHeaderMessages = {
+  skipToContent: string;
+  nav: {
+    neuro: string;
+    ortho: string;
+    dashboard: string;
+    login: string;
+    logout: string;
+    ariaLabel: string;
+  };
+  languageLabel: string;
+  languageToggle: string;
+};
 
+export type SiteHeaderSession = {
+  name?: string | null;
+  email?: string | null;
+} | null;
+
+const LanguageSwitcher = memo(function LanguageSwitcher({
+  locale,
+  messages,
+}: {
+  locale: Locale;
+  messages: Pick<SiteHeaderMessages, "languageLabel" | "languageToggle">;
+}) {
+  return (
+    <>
+      <details className="sm:hidden">
+        <summary className="flex cursor-pointer list-none items-center gap-1.5 rounded-full border border-border/60 px-3 py-1.5 text-xs text-muted-foreground transition-colors hover:bg-accent/40 hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+          {messages.languageToggle}
+          <span aria-hidden>▼</span>
+        </summary>
+        <ul className="mt-3 flex flex-col gap-1 rounded-xl border border-border/60 bg-background/95 p-3 text-sm shadow-lg">
+          {locales.map((loc) => (
+            <li key={loc}>
+              <Link
+                href={`/${loc}`}
+                className="flex items-center gap-2 rounded-lg px-3 py-2 transition-colors hover:bg-accent/40 hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                aria-current={loc === locale ? "page" : undefined}
+                lang={loc}
+                prefetch={false}
+              >
+                <span aria-hidden>{localeIcons[loc] ?? loc.toUpperCase()}</span>
+                <span className="text-xs text-muted-foreground">
+                  {localeLabels[loc]}
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </details>
+
+      <nav aria-label={messages.languageLabel} className="hidden sm:block">
+        <ul className="flex items-center gap-2 text-xs text-muted-foreground">
+          {locales.map((loc) => (
+            <li key={loc}>
+              <Link
+                href={`/${loc}`}
+                className="flex items-center gap-2 rounded-full px-2 py-1 transition-colors hover:bg-accent/40 hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                aria-current={loc === locale ? "page" : undefined}
+                lang={loc}
+                prefetch={false}
+              >
+                <span aria-hidden>{localeIcons[loc] ?? loc.toUpperCase()}</span>
+                <span className="sr-only">{localeLabels[loc]}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </>
+  );
+});
+
+export function SiteHeader({ locale, messages, session }: SiteHeaderProps) {
   const navigation = [
-    { href: `/${locale}/neuro`, label: t("nav.neuro") },
-    { href: `/${locale}/ortho`, label: t("nav.ortho") },
-    { href: `/${locale}/dashboard`, label: t("nav.dashboard") },
+    { href: `/${locale}/neuro`, label: messages.nav.neuro },
+    { href: `/${locale}/ortho`, label: messages.nav.ortho },
+    { href: `/${locale}/dashboard`, label: messages.nav.dashboard },
   ];
 
-  async function handleSignOut() {
-    setIsSigningOut(true);
-    try {
-      await signOut({ callbackURL: `/${locale}` });
-    } catch (error) {
-      console.error("sign-out", error);
-      setIsSigningOut(false);
-    }
-  }
-
-  const userDisplayName = session?.user?.name || session?.user?.email || "";
+  const userDisplayName =
+    session?.name || session?.email || localeLabels[locale];
 
   return (
     <>
@@ -45,7 +107,7 @@ export function SiteHeader({ locale: layoutLocale }: SiteHeaderProps) {
         href="#content"
         className="fixed left-4 top-4 z-50 -translate-y-16 rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-lg transition-transform focus:translate-y-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
       >
-        {t("skipToContent")}
+        {messages.skipToContent}
       </a>
 
       <header className="border-b border-border/60 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/70">
@@ -55,89 +117,56 @@ export function SiteHeader({ locale: layoutLocale }: SiteHeaderProps) {
               href={`/${locale}`}
               className="text-base font-semibold tracking-tight text-foreground transition-colors hover:text-primary"
             >
-              Health Ortho
+              MPR In Cloud
             </Link>
 
             <nav
-              aria-label={t("nav.ariaLabel")}
+              aria-label={messages.nav.ariaLabel}
               className="hidden items-center gap-2 overflow-x-auto text-sm text-muted-foreground sm:flex"
             >
-              {navigation.map((item) => {
-                const isActive = pathname?.startsWith(item.href);
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="rounded-full px-3 py-1.5 transition-colors hover:bg-accent/40 hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                    aria-current={isActive ? "page" : undefined}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              })}
+              {navigation.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="rounded-full px-3 py-1.5 transition-colors hover:bg-accent/40 hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  prefetch={false}
+                >
+                  {item.label}
+                </Link>
+              ))}
             </nav>
           </div>
 
           <div className="flex items-center gap-3">
-            <details className="sm:hidden">
-              <summary className="flex cursor-pointer list-none items-center gap-1.5 rounded-full border border-border/60 px-3 py-1.5 text-xs text-muted-foreground transition-colors hover:bg-accent/40 hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-                {t("languageToggle")}
-                <ChevronDown aria-hidden className="size-3" />
-              </summary>
-              <ul className="mt-3 flex flex-col gap-1 rounded-xl border border-border/60 bg-background/95 p-3 text-sm shadow-lg">
-                {locales.map((loc) => (
-                  <li key={loc}>
-                    <Link
-                      href={`/${loc}`}
-                      className="block rounded-lg px-3 py-2 transition-colors hover:bg-accent/40 hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                      aria-current={loc === locale ? "page" : undefined}
-                      lang={loc}
-                    >
-                      {localeLabels[loc]}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </details>
-
-            <nav aria-label={t("languageLabel")} className="hidden sm:block">
-              <ul className="flex items-center gap-2 text-xs text-muted-foreground">
-                {locales.map((loc) => (
-                  <li key={loc}>
-                    <Link
-                      href={`/${loc}`}
-                      className="rounded-full px-2 py-1 transition-colors hover:bg-accent/40 hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                      aria-current={loc === locale ? "page" : undefined}
-                      lang={loc}
-                    >
-                      {localeLabels[loc]}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
+            <LanguageSwitcher
+              locale={locale}
+              messages={{
+                languageLabel: messages.languageLabel,
+                languageToggle: messages.languageToggle,
+              }}
+            />
 
             {session ? (
               <div className="hidden items-center gap-3 text-sm text-muted-foreground sm:flex">
-                <span className="max-w-[12rem] truncate" title={userDisplayName}>
+                <span
+                  className="max-w-[12rem] truncate"
+                  title={userDisplayName ?? undefined}
+                >
                   {userDisplayName}
                 </span>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={handleSignOut}
-                  disabled={isSigningOut}
-                >
-                  {isSigningOut ? (
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden />
-                  ) : null}
-                  {t("nav.logout")}
-                </Button>
+                <SignOutButton
+                  label={messages.nav.logout}
+                  callbackUrl={`/${locale}`}
+                />
               </div>
             ) : (
-              <Button asChild variant="secondary" size="sm" disabled={isPending}>
-                <Link href={`/${locale}/auth/login`}>{t("nav.login")}</Link>
-              </Button>
+              <Link
+                href={`/${locale}/auth/login`}
+                className="rounded-full border border-border/60 px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-accent/40 hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                prefetch={false}
+              >
+                {messages.nav.login}
+              </Link>
             )}
           </div>
         </div>

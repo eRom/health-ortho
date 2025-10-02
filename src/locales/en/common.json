@@ -2,7 +2,7 @@
   "hero": {
     "tagline": "PM&R Nantes",
     "title": "Digital rehabilitation, accessible everywhere, any time.",
-    "description": "Health Ortho supports patients and healthcare professionals with neuropsychology and speech therapy modules available around the clock. The vision: empower autonomy, track progress and strengthen therapeutic collaboration.",
+    "description": "MPR In Cloud supports patients and healthcare professionals with neuropsychology and speech therapy modules available around the clock. The vision: empower autonomy, track progress and strengthen therapeutic collaboration.",
     "modules": {
       "title": "Specialised modules",
       "body": "Neuropsychology and speech therapy exercises tailored to PM&R rehabilitation pathways, with secure access for every patient."
@@ -76,7 +76,7 @@
     "auth": {
       "login": {
         "tagline": "Secure access",
-        "title": "Sign in to Health Ortho",
+        "title": "Sign in to MPR In Cloud",
         "description": "Log in to continue your personalised modules and view your stats.",
         "fields": {
           "email": {

@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import type { ReactNode } from "react";
 
 import { auth } from "@/lib/auth";
+import type { UnknownSession } from "../layout";
 
 interface ProtectedAppLayoutProps {
   children: ReactNode;
@@ -16,19 +17,17 @@ export default async function ProtectedAppLayout({
   params,
 }: ProtectedAppLayoutProps) {
   const { locale } = await params;
-  const incomingHeaders = headers();
+  const incomingHeaders = await headers();
   const headerInit = new Headers();
-  incomingHeaders.forEach((value, key) => {
+  for (const [key, value] of incomingHeaders.entries()) {
     headerInit.append(key, value);
-  });
+  }
 
-  const { data, error } = await auth.api.getSession({
-    fetchOptions: {
-      headers: headerInit,
-    },
-  });
+  const sessionResult = (await auth.api.getSession({
+    headers: headerInit,
+  })) as UnknownSession | null;
 
-  if (error || !data) {
+  if (!sessionResult?.session) {
     const callback = encodeURIComponent(`/${locale}/dashboard`);
     redirect(`/${locale}/auth/login?callbackUrl=${callback}`);
   }

@@ -1,9 +1,16 @@
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
-export default function OrthoPage() {
-  const t = useTranslations("pages.ortho");
-  const modules = t.raw("modules") as string[];
+interface OrthoPageProps {
+  params: Promise<{
+    locale: string;
+  }>;
+}
+
+export default async function OrthoPage({ params }: OrthoPageProps) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pages.ortho" });
+  const modules = (t.raw("modules") as string[]) ?? [];
 
   return (
     <section className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-10 px-4 py-12 sm:px-6">

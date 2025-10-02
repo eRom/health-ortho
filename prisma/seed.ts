@@ -68,8 +68,14 @@ async function seedDemoUser() {
     },
   });
 
-  if (result.error) {
-    throw new Error(`Impossible de créer l'utilisateur demo: ${result.error.message}`);
+  if ("error" in result && result.error) {
+    const message =
+      typeof result.error === "object" &&
+      result.error &&
+      "message" in result.error
+        ? String(result.error.message)
+        : "Erreur inconnue";
+    throw new Error(`Impossible de créer l'utilisateur demo: ${message}`);
   }
 
   await prisma.user.update({

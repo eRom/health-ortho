@@ -1,4 +1,4 @@
-# Health Ortho — Refonte Next.js
+# MPR In Cloud — Refonte Next.js
 
 Ce dépôt héberge la refonte Next.js de la plateforme MPR de Nantes. Le projet utilise l'App Router, TypeScript et shadcn/ui pour proposer une expérience sombre mobile-first, conforme WCAG 2.1 AA, avec internationalisation (FR prioritaire, EN disponible).
 

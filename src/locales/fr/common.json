@@ -2,7 +2,7 @@
   "hero": {
     "tagline": "MPR Nantes",
     "title": "Rééducation numérique, accessible partout, tout le temps.",
-    "description": "Health Ortho accompagne les patients et les professionnels de santé avec des modules de neuropsychologie et d'orthophonie disponibles 24h/24. L'objectif : favoriser l'autonomie, suivre les progrès et renforcer la collaboration thérapeutique.",
+    "description": "MPR In Cloud accompagne les patients et les professionnels de santé avec des modules de neuropsychologie et d'orthophonie disponibles 24h/24. L'objectif : favoriser l'autonomie, suivre les progrès et renforcer la collaboration thérapeutique.",
     "modules": {
       "title": "Modules spécialisés",
       "body": "Exercices de neuropsychologie et d'orthophonie, adaptés à la rééducation MPR, avec accès sécurisé pour chaque patient."
@@ -76,7 +76,7 @@
     "auth": {
       "login": {
         "tagline": "Accès sécurisé",
-        "title": "Connexion à Health Ortho",
+        "title": "Connexion à MPR In Cloud",
         "description": "Identifiez-vous pour retrouver vos modules personnalisés et vos statistiques.",
         "fields": {
           "email": {
