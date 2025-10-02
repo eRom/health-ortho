@@ -57,3 +57,7 @@ export function register() {
   });
 }
 
+// Hook pour instrumenter les navigations Next.js
+// Permet à Sentry de tracker les transitions entre pages
+export const onRouterTransitionStart = Sentry.captureRouterTransitionStart;
+
