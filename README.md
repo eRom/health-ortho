@@ -11,8 +11,18 @@ Ce dépôt héberge la refonte Next.js de la plateforme MPR de Nantes. Le projet
 - `npm run db:migrate` — applique les migrations Prisma (SQLite par défaut).
 - `npm run db:generate` — régénère le client Prisma après modification du schéma.
 - `npm run db:studio` — ouvre Prisma Studio pour explorer les données.
+- `npm run db:seed` — (re)crée le compte démo via Better Auth.
 
 Les scripts de tests (Vitest, Playwright) seront ajoutés au fur et à mesure.
+
+## Authentification
+
+- Better Auth gère la session avec stockage SQLite via Prisma (`prisma/schema.prisma`).
+- Trois modes de connexion sont prévus : e-mail/mot de passe, Google OAuth et Apple Sign In.
+- Renseigne les variables correspondantes dans `.env` à partir de `.env.example` (`BETTER_AUTH_SECRET`, `GOOGLE_CLIENT_*`, `APPLE_*`, etc.).
+- L'UI de connexion (`src/app/[locale]/(auth)/auth/login/page.tsx`) consomme le client `better-auth/react` exposé dans `src/lib/auth-client.ts`.
+- Le header global affiche l'état de session (nom, logout) en utilisant le hook `useSession`.
+- Après configuration, exécute `npm run db:seed` pour générer le compte démo (`romain.ecarnot@gmail.com` / `mprnantes`).
 
 ## Architecture en cours
 
