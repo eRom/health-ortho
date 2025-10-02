@@ -11,10 +11,6 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
 
-  // Définir la racine du projet pour éviter le warning sur les lockfiles multiples
-  output: "standalone",
-  outputFileTracingRoot: "/Users/recarnot/dev/health-ortho",
-
   experimental: {
     optimizePackageImports: [
       "lucide-react",
