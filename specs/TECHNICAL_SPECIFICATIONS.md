@@ -1417,7 +1417,6 @@ jobs:
 - `QUICK_START.md` : Guide démarrage rapide
 - `ROADMAP.md` : 🗺️ Roadmap fonctionnelle et suivi de progression
 - `CONTRIBUTING.md` : Guide contributeurs
-- `BEST_PRACTICES_AUDIT.md` : Audit qualité code
 - `OPTIMIZATIONS.md` : Détails optimisations
 - `TESTING_SETUP.md` : Guide configuration tests
 - `PLAYWRIGHT_SETUP.md` : Guide Playwright E2E
@@ -1425,6 +1424,8 @@ jobs:
 - `LINEAR_SETUP.md` : Intégration Linear
 - `NODE_UPGRADE_SUMMARY.md` : Migration Node 20
 - `specs/PRODUCT_GUIDE.md` : 📱 Guide produit (vision, personas, fonctionnalités, parcours, métriques)
+- `specs/BEST_PRACTICES_AUDIT.md` : 🔍 Audit qualité & bonnes pratiques
+- `specs/SCORES.md` : 📊 Scores & métriques détaillées (score global 9/10)
 - `specs/TECHNICAL_SPECIFICATIONS.md` : Spécifications techniques complètes
 - `specs/VERCEL_DEPLOYMENT_GUIDE.md` : Guide de déploiement Vercel détaillé
 - `specs/MCP_GUIDE.md` : 🔌 Guide complet des MCP installés et configurés

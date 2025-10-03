@@ -6,30 +6,31 @@
 
 ---
 
-## 📊 Score Actuel du Projet
-
-| Catégorie | Score | Status |
-|-----------|-------|--------|
-| Architecture | ?/10 | ✅ TODO |
-| TypeScript | ?/10 | ❌  TODO |
-| Performance | ?/10 | ✅ TODO |
-| Sécurité | ?/10 | ✅ TODO |
-| i18n | ?/10 | ✅ TODO |
-| SEO | ?/10 | ✅ TODO |
-| Accessibilité | ?/10 | ✅ Excellent |
-| Tests | ?/10 | ⚠️ En cours |
-| Documentation | ?/10 | ✅ Complet |
-| Error Handling | ?/10 | ✅ Implémenté |
-
-**Score Global** : ?/10 ⭐
-
----
-
 ## 🎯 Phase 1 : MVP (Actuelle)
 
 **Objectif** : Application fonctionnelle avec authentification et pages de base  
 **Période** : Sprint 1-2  
-**Status** : 🟡 En cours
+**Status** : ⏳ À faire
+
+### Stack Technique & dépendances
+- [ ] Next.js 15.5 (App Router, RSC, Turbopack)
+- [ ] React 19 (Server Components, Suspense)
+- [ ] TypeScript (strict mode, type-safety)
+- [ ] Tailwind CSS (utility-first, dark mode)
+- [ ] shadcn/ui (composants UI)
+- [ ] Prisma ORM (type-safe database)
+- [ ] Better Auth (authentification moderne)
+- [ ] next-intl (internationalisation)
+- [ ] Neon DB (PostgreSQL serverless)
+- [ ] Vercel (déploiement & hosting)
+- [ ] Cloudflare (CDN & sécurité)
+- [ ] Sentry (monitoring & erreurs)
+- [ ] Vitest (tests unitaires)
+- [ ] Playwright (tests E2E)
+- [ ] ESLint (linting)
+- [ ] Lucide React (icônes) 
+- [ ] Zod (Validation de données simple et sécurisée)
+
 
 ### Infrastructure & Configuration
 - [ ] Base de données Neon DB en production
