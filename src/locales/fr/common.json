@@ -25,6 +25,7 @@
       "dashboard": "Suivi personnalisé",
       "login": "Se connecter",
       "logout": "Se déconnecter",
+      "profile": "Mon profil",
       "ariaLabel": "Navigation principale"
     },
     "languageLabel": "Sélection de la langue",
@@ -103,6 +104,28 @@
           "apple": "Continuer avec Apple"
         },
         "or": "Ou"
+      }
+    },
+    "profil": {
+      "tagline": "Mon compte",
+      "title": "Profil utilisateur",
+      "description": "Gérez vos informations personnelles et vos préférences.",
+      "sections": {
+        "personal": {
+          "title": "Informations personnelles",
+          "description": "Vos informations de compte"
+        },
+        "actions": {
+          "title": "Actions",
+          "description": "Gérer votre session"
+        }
+      },
+      "fields": {
+        "name": "Nom",
+        "email": "Email",
+        "emailVerified": "Email vérifié",
+        "emailNotVerified": "Email non vérifié",
+        "createdAt": "Membre depuis"
       }
     }
   }

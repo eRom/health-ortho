@@ -2,18 +2,29 @@
 
 import { useSearchParams } from "next/navigation";
 import { useState, useTransition } from "react";
+import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
 import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle,
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
 } from "@/components/ui/card";
 import { signInAction } from "@/lib/auth-actions";
 
 import { Apple, Chrome, Loader2, Mail } from "lucide-react";
+
+const loginSchema = z.object({
+  email: z
+    .string()
+    .min(1, "L'email est requis")
+    .email("Format d'email invalide"),
+  password: z
+    .string()
+    .min(6, "Le mot de passe doit contenir au moins 6 caractères"),
+});
 
 export interface LoginFieldMessages {
   label: string;
@@ -61,6 +72,10 @@ export function LoginForm({
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const [fieldErrors, setFieldErrors] = useState<{
+    email?: string;
+    password?: string;
+  }>({});
   const [isPending, startTransition] = useTransition();
 
   const fallbackUrl = callbackURL || `/${locale}/dashboard`;
@@ -71,6 +86,19 @@ export function LoginForm({
   ) {
     event.preventDefault();
     setError(null);
+    setFieldErrors({});
+
+    // Validation
+    const validation = loginSchema.safeParse({ email, password });
+    if (!validation.success) {
+      const errors: { email?: string; password?: string } = {};
+      validation.error.errors.forEach((err) => {
+        if (err.path[0] === "email") errors.email = err.message;
+        if (err.path[0] === "password") errors.password = err.message;
+      });
+      setFieldErrors(errors);
+      return;
+    }
 
     startTransition(async () => {
       const result = await signInAction({
@@ -118,8 +146,23 @@ export function LoginForm({
                 placeholder={messages.fields.email.placeholder}
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
-                className="rounded-lg border border-border/60 bg-background px-4 py-3 text-foreground shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                className={`rounded-lg border bg-background px-4 py-3 text-foreground shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
+                  fieldErrors.email
+                    ? "border-destructive focus-visible:ring-destructive"
+                    : "border-border/60"
+                }`}
+                aria-invalid={fieldErrors.email ? "true" : "false"}
+                aria-describedby={fieldErrors.email ? "email-error" : undefined}
               />
+              {fieldErrors.email ? (
+                <span
+                  id="email-error"
+                  className="text-xs text-destructive"
+                  role="alert"
+                >
+                  {fieldErrors.email}
+                </span>
+              ) : null}
             </label>
 
             <label className="flex flex-col gap-2 text-sm text-muted-foreground">
@@ -132,8 +175,25 @@ export function LoginForm({
                 placeholder={messages.fields.password.placeholder}
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
-                className="rounded-lg border border-border/60 bg-background px-4 py-3 text-foreground shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                className={`rounded-lg border bg-background px-4 py-3 text-foreground shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
+                  fieldErrors.password
+                    ? "border-destructive focus-visible:ring-destructive"
+                    : "border-border/60"
+                }`}
+                aria-invalid={fieldErrors.password ? "true" : "false"}
+                aria-describedby={
+                  fieldErrors.password ? "password-error" : undefined
+                }
               />
+              {fieldErrors.password ? (
+                <span
+                  id="password-error"
+                  className="text-xs text-destructive"
+                  role="alert"
+                >
+                  {fieldErrors.password}
+                </span>
+              ) : null}
             </label>
 
             {error ? (
@@ -145,12 +205,12 @@ export function LoginForm({
               </p>
             ) : null}
 
-          <Button type="submit" size="lg" disabled={disabled}>
-            {disabled ? (
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden />
-            ) : (
-              <Mail className="mr-2 h-4 w-4" aria-hidden />
-            )}
+            <Button type="submit" size="lg" disabled={disabled}>
+              {disabled ? (
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden />
+              ) : (
+                <Mail className="mr-2 h-4 w-4" aria-hidden />
+              )}
               {messages.cta}
             </Button>
           </form>

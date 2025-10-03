@@ -3,7 +3,7 @@ import { memo } from "react";
 
 import { localeLabels, locales, type Locale } from "@/lib/i18n/config";
 
-import { SignOutButton } from "@/components/navigation/sign-out-button";
+import { UserMenu } from "@/components/navigation/user-menu";
 
 const localeIcons: Record<string, string> = {
   fr: "🇫🇷",
@@ -24,6 +24,7 @@ export type SiteHeaderMessages = {
     dashboard: string;
     login: string;
     logout: string;
+    profile: string;
     ariaLabel: string;
   };
   languageLabel: string;
@@ -147,18 +148,15 @@ export function SiteHeader({ locale, messages, session }: SiteHeaderProps) {
             />
 
             {session ? (
-              <div className="hidden items-center gap-3 text-sm text-muted-foreground sm:flex">
-                <span
-                  className="max-w-[12rem] truncate"
-                  title={userDisplayName ?? undefined}
-                >
-                  {userDisplayName}
-                </span>
-                <SignOutButton
-                  label={messages.nav.logout}
-                  callbackUrl={`/${locale}`}
-                />
-              </div>
+              <UserMenu
+                userName={session.name || session.email || "User"}
+                userEmail={session.email || ""}
+                locale={locale}
+                messages={{
+                  profile: messages.nav.profile,
+                  logout: messages.nav.logout,
+                }}
+              />
             ) : (
               <Link
                 href={`/${locale}/auth/login`}

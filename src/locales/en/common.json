@@ -25,6 +25,7 @@
       "dashboard": "Progress dashboard",
       "login": "Log in",
       "logout": "Log out",
+      "profile": "My profile",
       "ariaLabel": "Primary navigation"
     },
     "languageLabel": "Language selection",
@@ -103,6 +104,28 @@
           "apple": "Continue with Apple"
         },
         "or": "Or"
+      }
+    },
+    "profil": {
+      "tagline": "My account",
+      "title": "User profile",
+      "description": "Manage your personal information and preferences.",
+      "sections": {
+        "personal": {
+          "title": "Personal information",
+          "description": "Your account details"
+        },
+        "actions": {
+          "title": "Actions",
+          "description": "Manage your session"
+        }
+      },
+      "fields": {
+        "name": "Name",
+        "email": "Email",
+        "emailVerified": "Email verified",
+        "emailNotVerified": "Email not verified",
+        "createdAt": "Member since"
       }
     }
   }

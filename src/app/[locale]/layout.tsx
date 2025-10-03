@@ -10,9 +10,9 @@ import {
   type SiteHeaderMessages,
   type SiteHeaderSession,
 } from "@/components/navigation/site-header";
-import { auth } from "@/lib/auth";
 import { defaultLocale, locales, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
+import { getSafeSession } from "@/lib/safe-auth";
 
 import "../globals.css";
 
@@ -133,12 +133,12 @@ export default async function LocaleLayout({
   const cookieHeader = headerList.get("cookie") ?? "";
   const userAgentHeader = headerList.get("user-agent") ?? undefined;
 
-  const sessionResult = (await auth.api.getSession({
+  const sessionResult = await getSafeSession({
     headers: {
       cookie: cookieHeader,
       ...(userAgentHeader ? { "user-agent": userAgentHeader } : {}),
     },
-  })) as UnknownSession | null;
+  });
 
   const sessionUser =
     sessionResult?.user ?? sessionResult?.session?.user ?? null;
@@ -169,6 +169,7 @@ export default async function LocaleLayout({
         dashboard: typeof nav.dashboard === "string" ? nav.dashboard : "",
         login: typeof nav.login === "string" ? nav.login : "",
         logout: typeof nav.logout === "string" ? nav.logout : "",
+        profile: typeof nav.profile === "string" ? nav.profile : "",
         ariaLabel: typeof nav.ariaLabel === "string" ? nav.ariaLabel : "",
       },
       languageLabel:

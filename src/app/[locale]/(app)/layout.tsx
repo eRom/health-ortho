@@ -2,8 +2,7 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import type { ReactNode } from "react";
 
-import { auth } from "@/lib/auth";
-import type { UnknownSession } from "../layout";
+import { getSafeSession } from "@/lib/safe-auth";
 
 interface ProtectedAppLayoutProps {
   children: ReactNode;
@@ -23,9 +22,9 @@ export default async function ProtectedAppLayout({
     headerInit.append(key, value);
   }
 
-  const sessionResult = (await auth.api.getSession({
+  const sessionResult = await getSafeSession({
     headers: headerInit,
-  })) as UnknownSession | null;
+  });
 
   if (!sessionResult?.session) {
     const callback = encodeURIComponent(`/${locale}/dashboard`);
