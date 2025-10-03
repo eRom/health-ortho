@@ -1,6 +1,6 @@
-# 📋 Spécifications Techniques - MPR In Cloud
+# 📋 Spécifications Techniques - Health In Cloud
 
-**Projet** : MPR In Cloud (Health Ortho)  
+**Projet** : Health In Cloud
 **Type** : Application web de rééducation orthophonique et neuropsychologique  
 **Version** : 0.1.0  
 **Dernière mise à jour** : Octobre 2025
@@ -32,7 +32,7 @@
 ## 🎯 Vue d'Ensemble
 
 ### Description
-MPR In Cloud est une plateforme de rééducation orthophonique et neuropsychologique développée pour le service MPR de Nantes. L'application propose des exercices interactifs pour la rééducation cognitive et vocale.
+Health In Cloud est une plateforme de rééducation orthophonique et neuropsychologique développée pour le service MPR de Nantes. L'application propose des exercices interactifs pour la rééducation cognitive et vocale.
 
 ### Objectifs
 - ✅ Interface sombre mobile-first
@@ -190,11 +190,11 @@ src/
 
 ### Infrastructure & CDN
 
-| Service | Plan | Usage |
-|---------|------|-------|
-| **Vercel** | Hobby/Pro | Hosting Next.js & déploiement |
-| **Cloudflare** | Free/Pro | CDN, DNS, Sécurité, Cache |
-| **Neon DB** | Free/Scale | PostgreSQL serverless |
+| Service | Usage |
+|---------|-------|
+| **Vercel** | Hosting Next.js & déploiement |
+| **Cloudflare** | CDN, DNS, Sécurité, Cache |
+| **Neon DB** | PostgreSQL serverless |
 
 ---
 
@@ -472,23 +472,6 @@ feature-branch-1  → Preview deployment 1
 feature-branch-2  → Preview deployment 2
 ```
 
-### Tarification Neon DB
-
-#### Plan Gratuit (Free Tier)
-- ✅ **3 GB Storage**
-- ✅ **191 heures compute/mois** (suffisant pour projets en développement)
-- ✅ **3 branches max**
-- ✅ **Point-in-time recovery** (7 jours)
-- ✅ **Parfait pour démarrer** et MVP
-
-#### Plan Scale ($19/mois)
-- ✅ **10 GB Storage inclus** (puis $3.50/GB supplémentaire)
-- ✅ **Compute illimité**
-- ✅ **Branches illimitées**
-- ✅ **Point-in-time recovery** (30 jours)
-- ✅ **Recommandé pour production**
-
-> **Note** : Le plan gratuit est largement suffisant pour le développement et les premiers utilisateurs. Vous pouvez upgrader quand nécessaire.
 
 ---
 
@@ -741,9 +724,9 @@ Card.displayName = "Card";
 
 ## ⚡ Performance & Optimisations
 
-### Score Performance
-- **Avant** : 72/100
-- **Objectif** : 90+/100
+### Score Performance Cible
+- **Score** : 90+/100
+- **Architecture optimisée** pour performance maximale
 
 ### Optimisations Implémentées
 
@@ -1115,66 +1098,26 @@ npm run start
 
 #### Plans Vercel
 
-##### 🆓 Plan Hobby (Gratuit)
+##### Capacités Vercel
 
-**Parfait pour démarrer le projet !**
-
-| Fonctionnalité | Limite | Suffisant pour ? |
-|----------------|---------|------------------|
-| **Déploiements** | ♾️ Illimité | ✅ Oui |
-| **Preview Deployments** | ♾️ Illimité | ✅ Oui |
-| **Bande passante** | 100 GB/mois | ✅ Oui (< 10k visiteurs/mois) |
-| **Build Time** | 6,000 minutes/mois | ✅ Oui |
-| **Projets** | ♾️ Illimité | ✅ Oui |
-| **Domaine personnalisé** | ✅ Inclus | ✅ Oui |
-| **SSL automatique** | ✅ Inclus | ✅ Oui |
-| **Edge Functions** | 100,000 invocations/jour | ✅ Oui |
-| **Serverless Functions** | 100 GB-hours/mois | ✅ Oui |
-| **Image Optimization** | 1,000 images/mois | ⚠️ Limité |
-| **Logs** | 1 jour de rétention | ⚠️ Limité |
-| **Membres d'équipe** | 1 seul utilisateur | ⚠️ Solo |
-
-**Idéal pour** :
-- ✅ Développement & MVP
-- ✅ Projets personnels
-- ✅ Beta privée (< 100 utilisateurs)
-- ✅ Validation du produit
-- ✅ Applications avec trafic modéré
-
-##### 💎 Plan Pro (20 $/mois)
-
-**Pour passer en production avec une équipe**
-
-| Fonctionnalité | Limite | Différence vs Hobby |
-|----------------|---------|---------------------|
-| **Bande passante** | 1 TB/mois | 10x plus |
-| **Build Time** | 24,000 minutes/mois | 4x plus |
-| **Image Optimization** | 5,000 images/mois | 5x plus |
-| **Logs** | 3 jours de rétention | 3x plus |
-| **Membres d'équipe** | ♾️ Illimité | 🎯 Collaboration |
-| **Protection par mot de passe** | ✅ Inclus | 🎯 Nouveau |
-| **Analytics avancés** | ✅ Inclus | 🎯 Nouveau |
-| **Support prioritaire** | ✅ Inclus | 🎯 Nouveau |
-| **DDoS Protection** | ✅ Avancée | 🎯 Meilleure |
-
-**Passer au Pro quand** :
-- ⚠️ > 10,000 visiteurs/mois
-- ⚠️ > 80 GB de bande passante utilisée
-- ⚠️ Besoin de plusieurs développeurs
-- ⚠️ Logs et monitoring nécessaires (> 1 jour)
-- ⚠️ Protection de previews par mot de passe
-
-#### Avantages Vercel
-
-- ✅ **Intégration Next.js native** : Créé par la même équipe
-- ✅ **Edge Network global** : CDN ultra-rapide dans 70+ villes
-- ✅ **Preview Deployments** : URL unique pour chaque branche Git
-- ✅ **Zero-config** : Détection automatique du framework
-- ✅ **Analytics intégré** : Web Vitals & métriques
-- ✅ **Integration Neon** : Setup DB en 1 clic
-- ✅ **Environment Variables** : UI simple pour secrets
-- ✅ **Automatic HTTPS** : SSL gratuit et automatique
-- ✅ **Git Integration** : GitHub, GitLab, Bitbucket
+| Fonctionnalité | Disponibilité |
+|----------------|---------------|
+| **Déploiements** | ✅ Illimité |
+| **Preview Deployments** | ✅ Illimité |
+| **Bande passante** | ✅ Configurée |
+| **Build Time** | ✅ Optimisé |
+| **Projets** | ✅ Illimité |
+| **Domaine personnalisé** | ✅ Inclus |
+| **SSL automatique** | ✅ Inclus |
+| **Edge Functions** | ✅ Disponible |
+| **Serverless Functions** | ✅ Disponible |
+| **Image Optimization** | ✅ Automatique |
+| **Logs** | ✅ Configuré |
+| **Collaboration** | ✅ Disponible |
+| **Protection par mot de passe** | ✅ Disponible |
+| **Analytics avancés** | ✅ Intégré |
+| **Support** | ✅ Disponible |
+| **DDoS Protection** | ✅ Avancée |
 
 #### Déploiement Vercel CLI
 
@@ -1223,24 +1166,7 @@ Utilisateur → Cloudflare → Vercel → Neon DB
 
 #### Configuration Cloudflare
 
-##### Plan Recommandé
-
-**Phase MVP → Production** : **Free Plan** (0 €/mois)
-
-| Fonctionnalité | Free Plan | Pro Plan (19 €/mois) |
-|----------------|-----------|----------------------|
-| **DNS** | ✅ Illimité | ✅ Illimité |
-| **Bande passante** | ✅ Illimitée | ✅ Illimitée |
-| **CDN** | ✅ Global | ✅ Global |
-| **SSL/TLS** | ✅ Gratuit | ✅ Gratuit |
-| **Protection DDoS** | ✅ Gratuite | ✅ Avancée |
-| **Analytics** | 24h | 30 jours |
-| **WAF** | Basique | ✅ Avancé |
-| **Page Rules** | 3 | 20 |
-
-**Recommandation** : Free Plan suffit pour démarrer !
-
-##### DNS Records pour Vercel
+##### Configuration DNS pour Vercel
 
 ```
 # Record A (domaine racine)
@@ -1292,14 +1218,14 @@ Challenge Passage: 30 minutes
 
 **Rule 1** : Redirection www → non-www
 ```
-Pattern: www.mprincloud.com/*
+Pattern: www.healthincloud.app/*
 Action: Forwarding URL (301)
-Target: https://mprincloud.com/$1
+Target: https://healthincloud.app/$1
 ```
 
 **Rule 2** : Cache agressif pour assets statiques
 ```
-Pattern: mprincloud.com/_next/static/*
+Pattern: healthincloud.app/_next/static/*
 Actions:
   - Cache Level: Cache Everything
   - Edge Cache TTL: 1 month
@@ -1308,7 +1234,7 @@ Actions:
 
 **Rule 3** : Bypass cache pour API
 ```
-Pattern: mprincloud.com/api/*
+Pattern: healthincloud.app/api/*
 Action: Cache Level: Bypass
 ```
 
@@ -1326,24 +1252,17 @@ Action: Cache Level: Bypass
 - **HTTPS forcé** : Chiffrement obligatoire
 - **Rate Limiting** : Limite les tentatives de connexion
 
-##### 3. **Économies**
-- **Bande passante** : Illimitée sur Cloudflare (vs limitée sur Vercel)
-- **Requêtes** : Moins de hits sur Vercel = facture réduite
-- **Images** : Cache = moins d'optimisations Vercel
-
-##### 4. **Monitoring**
+##### 3. **Monitoring**
 - **Analytics temps réel** : Trafic, pays, devices
 - **Logs** : Toutes les requêtes tracées
 - **Alertes** : Notification si attaque détectée
 
-#### Quand Activer Cloudflare ?
+#### Activation de Cloudflare
 
-✅ **Dès que vous avez un domaine personnalisé** (`mprincloud.com`)
-- Configuration : 10 minutes
-- Coût : 0 € (Free Plan)
-- Impact : Performance +50%, sécurité renforcée
-
-⏳ **Pas urgent** si vous utilisez `health-ortho.vercel.app`
+✅ **Avec domaine personnalisé** (`healthincloud.app`)
+- Configuration rapide (10 minutes)
+- Performance optimale (+50%)
+- Sécurité renforcée
 
 #### 🐳 Self-Hosted (Alternative)
 ```dockerfile
@@ -1377,7 +1296,7 @@ CMD ["node", "server.js"]
 ```env
 # Application
 NODE_ENV="production"
-NEXT_PUBLIC_APP_URL="https://votre-domaine.com"
+NEXT_PUBLIC_APP_URL="https://healthincloud.app"
 
 # Database (Neon DB)
 DATABASE_URL="postgres://[user]:[password]@[endpoint].neon.tech/[database]?sslmode=require"
@@ -1489,7 +1408,7 @@ Les **Model Context Protocol (MCP)** permettent à l'IA d'interagir directement 
   - `get_item_examples_from_registries` : Exemples d'utilisation
   - `get_add_command_for_items` : Commande d'installation
 
-##### 6. **Prisma** ✅ Nouvellement installé
+##### 6. **Prisma** ✅
 - **Usage** : Gestion ORM et migrations
 - **Fonctionnalités** :
   - Explorer le schéma de base de données
@@ -1503,40 +1422,41 @@ Les **Model Context Protocol (MCP)** permettent à l'IA d'interagir directement 
   - Documentation intégrée
   - Aide aux migrations
   - Optimisation des requêtes
-- **Utilité pour ce projet** : ⭐⭐⭐⭐⭐ (Excellent choix !)
+- **Utilité pour ce projet** : ⭐⭐⭐⭐⭐ (Excellent !)
 
-#### MCP Recommandés à Installer
-
-##### 7. **GitHub** ✅ Déjà disponible
-- **Usage** : Intégration GitHub
-- **Fonctionnalités** :
-  - Créer et gérer des Pull Requests
-  - Lire et commenter des issues
-  - Consulter l'historique des commits
-  - Gérer les branches
-- **Utilité pour ce projet** : ⭐⭐⭐⭐⭐ (Essentiel)
-
-##### 8. **Vercel** (À installer si disponible)
+##### 7. **Vercel** ✅ Nouvellement configuré
 - **Usage** : Déploiement et monitoring
-- **Fonctionnalités potentielles** :
+- **Fonctionnalités** :
   - Consulter les déploiements
   - Voir les logs en temps réel
   - Gérer les variables d'environnement
   - Consulter les métriques analytics
-- **Utilité pour ce projet** : ⭐⭐⭐⭐⭐ (Très utile)
-- **Status** : ⚠️ À vérifier disponibilité
+  - Déclencher des déploiements
+  - Gérer les domaines personnalisés
+- **Commandes principales** :
+  - Liste des déploiements
+  - Logs en temps réel
+  - Variables d'environnement
+  - Analytics & métriques
+- **Utilité pour ce projet** : ⭐⭐⭐⭐⭐ (Essentiel !)
 
-##### 9. **Neon** (À installer si disponible)
-- **Usage** : Gestion base de données
-- **Fonctionnalités potentielles** :
+##### 8. **Neon** ✅ Nouvellement configuré
+- **Usage** : Gestion base de données PostgreSQL
+- **Fonctionnalités** :
   - Gérer les branches de DB
   - Consulter les métriques de performance
   - Voir l'usage compute/storage
   - Gérer les connexions
-- **Utilité pour ce projet** : ⭐⭐⭐⭐ (Utile)
-- **Status** : ⚠️ À vérifier disponibilité
+  - Créer et gérer des branches
+  - Point-in-time recovery
+- **Commandes principales** :
+  - Gestion des branches DB
+  - Métriques de performance
+  - Usage compute/storage
+  - Connection strings
+- **Utilité pour ce projet** : ⭐⭐⭐⭐⭐ (Essentiel !)
 
-##### 10. **Cloudflare** (Recommandé pour le domaine personnalisé)
+##### 9. **Cloudflare** ✅ Nouvellement configuré
 - **Usage** : CDN, DNS, sécurité, performance
 - **Fonctionnalités** :
   - Gérer les DNS records (A, CNAME, etc.)
@@ -1546,22 +1466,22 @@ Les **Model Context Protocol (MCP)** permettent à l'IA d'interagir directement 
   - Monitoring du trafic
   - Protection DDoS
   - Configuration SSL/TLS
-- **Commandes potentielles** :
+- **Commandes principales** :
   - Gestion des DNS records
   - Configuration du cache
   - Analytics et métriques
   - Gestion de la sécurité
-- **Utilité pour ce projet** : ⭐⭐⭐⭐⭐ (Très recommandé avec domaine personnalisé)
-- **Quand l'utiliser** : Dès que vous configurez `mprincloud.com`
+- **Utilité pour ce projet** : ⭐⭐⭐⭐⭐ (Essentiel !)
+- **Domaine configuré** : `healthincloud.app`
 
 **Avantages pour MPR In Cloud** :
 - ✅ **Performance** : CDN global, latence réduite pour patients en France
 - ✅ **Sécurité** : Protection DDoS + WAF pour données médicales
 - ✅ **DNS** : Le plus rapide du monde (1.1.1.1)
 - ✅ **Cache** : Assets statiques ultra-rapides
-- ✅ **Gratuit** : Plan Free largement suffisant (bande passante illimitée)
+- ✅ **Bande passante** : Illimitée
 
-##### 11. **Chrome DevTools** (Très recommandé pour dev)
+##### 10. **Chrome DevTools** ✅ Nouvellement configuré
 - **Usage** : Debugging avancé, analyse de performance, accessibilité
 - **Fonctionnalités** :
   - Inspection du DOM en temps réel
@@ -1594,9 +1514,7 @@ Playwright MCP    → Tests fonctionnels (ça marche ?)
 Chrome DevTools   → Debugging & Optimisation (pourquoi/comment ?)
 ```
 
-#### Autres MCP Utiles (À Considérer)
-
-##### 12. **NPM/Package Manager** (Si disponible)
+##### 11. **NPM/Package Manager** (Si disponible)
 - **Usage** : Gestion des dépendances
 - **Fonctionnalités potentielles** :
   - Rechercher des packages
@@ -1605,7 +1523,7 @@ Chrome DevTools   → Debugging & Optimisation (pourquoi/comment ?)
   - Détecter les vulnérabilités
 - **Utilité pour ce projet** : ⭐⭐⭐⭐ (Très utile)
 
-##### 13. **Slack** (Optionnel)
+##### 12. **Slack** (Optionnel)
 - **Usage** : Notifications d'équipe
 - **Fonctionnalités potentielles** :
   - Envoyer des notifications
@@ -1613,7 +1531,7 @@ Chrome DevTools   → Debugging & Optimisation (pourquoi/comment ?)
   - Alertes d'erreurs Sentry
 - **Utilité pour ce projet** : ⭐⭐ (Optionnel, pour équipe)
 
-##### 14. **Figma** (Optionnel)
+##### 13. **Figma** (Optionnel)
 - **Usage** : Accès aux designs
 - **Fonctionnalités potentielles** :
   - Consulter les maquettes
@@ -1621,7 +1539,7 @@ Chrome DevTools   → Debugging & Optimisation (pourquoi/comment ?)
   - Récupérer les styles (couleurs, fonts)
 - **Utilité pour ce projet** : ⭐⭐ (Utile si designs Figma existent)
 
-##### 15. **Google Cloud/Workspace** (Optionnel)
+##### 14. **Google Cloud/Workspace** (Optionnel)
 - **Usage** : Services Google
 - **Fonctionnalités potentielles** :
   - Gérer OAuth2 (déjà configuré)
@@ -1649,25 +1567,22 @@ Dans Cursor :
 
 ### Priorités d'Installation MCP
 
-#### Priorité 1 : Essentiels (Déjà installés ✅)
-- ✅ Context7 : Documentation en temps réel
-- ✅ Sentry : Error tracking
-- ✅ Playwright : Tests E2E
-- ✅ Linear : Gestion de projet
-- ✅ Shadcn : Composants UI
-- ✅ Prisma : ORM et migrations 🎉 **Nouvellement installé !**
-- ✅ GitHub : Gestion du code
+#### MCP Installés et Configurés ✅
+- ✅ **Context7** : Documentation en temps réel
+- ✅ **Sentry** : Error tracking & monitoring
+- ✅ **Playwright** : Tests E2E
+- ✅ **Linear** : Gestion de projet
+- ✅ **Shadcn** : Composants UI
+- ✅ **Prisma** : ORM et migrations
+- ✅ **Vercel** : Déploiement et monitoring
+- ✅ **Neon** : Gestion DB PostgreSQL
+- ✅ **Cloudflare** : CDN/DNS/Sécurité
+- ✅ **Chrome DevTools** : Debugging & Performance 🎉 **Nouvellement configuré !**
 
-#### Priorité 2 : Très Recommandés
-- ⚠️ **Chrome DevTools** : Debugging & Performance (excellent pour objectifs projet)
-- ⚠️ **Vercel** : Déploiement et monitoring (à installer si disponible)
-- ⚠️ **Neon** : Gestion DB (à installer si disponible)
-- ⚠️ **Cloudflare** : CDN/DNS/Sécurité (recommandé avec domaine personnalisé)
-- ⚠️ **NPM** : Gestion dépendances (à installer si disponible)
-
-#### Priorité 3 : Optionnels
-- 🔵 Slack : Notifications équipe (si équipe collaborative)
-- 🔵 Figma : Designs (si maquettes Figma existent)
+#### MCP Recommandés (Optionnels)
+- 🔹 **NPM** : Gestion dépendances
+- 🔹 **Slack** : Notifications équipe (si équipe collaborative)
+- 🔹 **Figma** : Designs (si maquettes Figma existent)
 
 ### Utilisation des MCP dans le Workflow
 
@@ -1713,10 +1628,34 @@ Dans Cursor :
 6. AI fournit les commandes de migration
 ```
 
+#### Exemple : Déploiement avec Vercel MCP
+
+```
+1. Nouveau déploiement nécessaire
+2. AI utilise Vercel MCP → list_deployments()
+3. AI vérifie le dernier déploiement et son statut
+4. AI analyse les logs si erreur détectée
+5. AI suggère des corrections si nécessaire
+6. AI peut déclencher un nouveau déploiement
+7. AI vérifie les variables d'environnement configurées
+```
+
+#### Exemple : Gestion DB avec Neon MCP
+
+```
+1. Besoin de créer une branche DB pour tester une feature
+2. AI utilise Neon MCP → create_branch()
+3. AI crée une branche "feature-test" depuis main
+4. AI fournit la connection string de la nouvelle branche
+5. AI peut vérifier les métriques de performance
+6. AI peut gérer le scaling compute selon usage
+7. AI peut supprimer la branche après tests
+```
+
 #### Exemple : Configuration DNS avec Cloudflare MCP
 
 ```
-1. Besoin de configurer le domaine mprincloud.com
+1. Besoin de configurer le domaine healthincloud.app
 2. AI utilise Cloudflare MCP → list_dns_records()
 3. AI vérifie la configuration actuelle
 4. AI suggère les records DNS optimaux pour Vercel
@@ -1739,7 +1678,7 @@ Scénario : Bug d'affichage sur mobile
    - padding manquant
 5. AI identifie : le container parent a max-width trop petit
 6. AI propose la correction dans le code
-7. AI vérifie avec screenshot avant/après
+7. AI vérifie le résultat avec screenshot
 ```
 
 #### Exemple : Optimisation Performance avec Chrome DevTools MCP
@@ -1750,15 +1689,15 @@ Scénario : Page dashboard lente à charger
 1. AI utilise Chrome DevTools MCP → Performance tab
 2. AI enregistre le chargement de /dashboard
 3. AI analyse les métriques Core Web Vitals :
-   - LCP: 4.2s (❌ trop lent, objectif < 2.5s)
+   - LCP: 4.2s (❌ doit être < 2.5s)
    - FID: 85ms (✅ bon)
    - CLS: 0.05 (✅ bon)
 4. AI identifie : Large image non optimisée (2.5MB)
-5. AI suggère :
+5. AI applique optimisations :
    - Convertir en AVIF/WebP
    - Ajouter priority loading
    - Lazy load pour images en-dessous du fold
-6. AI vérifie après optimisation : LCP = 1.8s ✅
+6. AI vérifie le résultat : LCP = 1.8s ✅
 ```
 
 #### Exemple : Audit Accessibilité avec Chrome DevTools MCP
@@ -1795,8 +1734,8 @@ Scénario : Vérifier conformité WCAG 2.1 AA
    ├─ Chrome DevTools MCP → Tests responsive
    └─ Playwright MCP → Tests E2E basiques
 
-3. Code Review
-   └─ GitHub MCP → Créer PR avec contexte
+3. Tests & Validation
+   └─ Vérifications locales
 ```
 
 #### Phase 2 : Tests & Optimisation
@@ -1828,9 +1767,9 @@ Scénario : Vérifier conformité WCAG 2.1 AA
    └─ Vercel MCP → Vérifier preview deployment
 
 2. Deploy
-   ├─ GitHub MCP → Merge PR
+   ├─ Push vers main
    ├─ Vercel MCP → Deploy automatique
-   └─ Cloudflare MCP → Vérifier DNS/Cache
+   └─ Cloudflare MCP → Vérifier DNS/Cache (si configuré)
 
 3. Post-deploy
    ├─ Chrome DevTools MCP → Tests smoke production
@@ -1849,7 +1788,7 @@ Scénario : Vérifier conformité WCAG 2.1 AA
    ├─ Sentry MCP → Identifier issue
    ├─ Chrome DevTools MCP → Reproduire localement
    ├─ Chrome DevTools MCP → Debugger
-   └─ GitHub MCP → Fix PR
+   └─ Fix et push vers repository
 
 3. Support Utilisateurs
    ├─ Linear MCP → Créer ticket depuis feedback
@@ -1871,8 +1810,9 @@ Scénario : Vérifier conformité WCAG 2.1 AA
 | **Erreur production** | Sentry | Stack traces, contexte erreur |
 | **Déploiement** | Vercel | Logs, preview, env vars |
 | **DNS/CDN** | Cloudflare | Configuration domaine, cache |
-| **Code review** | GitHub | PRs, comments, merge |
 | **Gestion projet** | Linear | Issues, roadmap, cycles |
+| **Monitoring infra** | Vercel | Déploiements, logs, analytics |
+| **DB Management** | Neon | Branches, métriques, connexions |
 
 ---
 
@@ -1951,198 +1891,28 @@ jobs:
 
 ## 🎯 Priorités & Roadmap
 
-### Score Actuel : 8/10 ⭐
+**La roadmap détaillée du projet a été déplacée vers un fichier dédié.**
 
-| Catégorie | Score | Status |
-|-----------|-------|--------|
-| Architecture | 9/10 | ✅ Excellent |
-| TypeScript | 10/10 | ✅ Parfait |
-| Performance | 9/10 | ✅ Optimisé |
-| Sécurité | 9/10 | ✅ Très sécurisé |
-| i18n | 10/10 | ✅ Parfait |
-| SEO | 10/10 | ✅ Parfait |
-| Accessibilité | 9/10 | ✅ Excellent |
-| Tests | 7/10 | ⚠️ En cours |
-| Documentation | 8/10 | ✅ Complet |
-| Error Handling | 8/10 | ✅ Implémenté |
+📋 **Voir** : [`ROADMAP.md`](../ROADMAP.md) pour le suivi complet de la progression
 
-### Priorités Immédiates (Sprint 1-2)
+### Vue d'ensemble
 
-#### 🔴 Priorité HAUTE
-1. **UI/UX Essentiels** :
-   - [ ] Implémenter Footer
-   - [ ] Améliorer header mobile
-   - [ ] Optimiser landing page
+| Score Global | 8/10 ⭐ |
+|--------------|---------|
 
-2. **Tests** :
-   - [ ] Atteindre 50% coverage
-   - [ ] Tests critiques : auth, navigation, composants UI
-   - [ ] Tests E2E des parcours principaux
+**Phase actuelle** : Phase 1 - MVP (Sprint 1-2)
 
-3. **Production Ready** :
-   - [ ] Configurer Sentry production
-   - [ ] Setup monitoring & alertes
-   - [x] Base de données production (Neon DB configuré)
+**Priorités immédiates** :
+1. 🔴 Infrastructure Production (Neon DB, Vercel, Cloudflare)
+2. 🔴 UI/UX Essentiels (Footer, Header mobile, Landing page)
+3. 🔴 Tests Essentiels (Auth, Navigation, E2E)
+4. 🔴 Monitoring Production (Sentry, Analytics)
 
-4. **Fonctionnalités Core** :
-   - [ ] Finaliser exercices Neuro
-   - [ ] Finaliser exercices Ortho
-   - [ ] Système de suivi des progrès
-
-#### 🟡 Priorité MOYENNE (Sprint 3-4)
-
-4. **Analytics** :
-   - [ ] Intégrer analytics (Vercel Analytics ou Plausible)
-   - [ ] Tracking événements clés
-   - [ ] Dashboard métriques
-
-5. **Optimisations Avancées** :
-   - [ ] Service Worker PWA
-   - [ ] Offline support
-   - [ ] Bundle analyzer optimizations
-
-6. **Features Additionnelles** :
-   - [ ] Export des résultats (PDF)
-   - [ ] Partage de résultats
-   - [ ] Interface administration
-
-#### 🟢 Priorité BASSE (Sprint 5+)
-
-7. **Nice to Have** :
-   - [ ] Storybook pour composants
-   - [ ] Lighthouse CI
-   - [ ] A/B testing infrastructure
-   - [ ] Multi-tenancy support
-
-### Pages & Composants Principaux
-
-#### Pages Publiques (Route Group: `(site)/`)
-
-##### Landing Page (`/`)
-- **Description** : Page d'accueil publique de l'application
-- **Statut** : ✅ Implémentée
-- **Caractéristiques** :
-  - Hero section avec titre et CTA
-  - Présentation des fonctionnalités
-  - Design moderne et accessible
-  - Responsive mobile-first
-  - Support i18n (FR/EN)
-  - SEO optimisé (metadata dynamiques)
-- **Route** : `src/app/[locale]/(site)/page.tsx`
-
-##### Page Merci (`/merci`)
-- **Description** : Page de remerciement statique
-- **Statut** : ✅ Implémentée
-- **Caractéristiques** :
-  - Message de remerciement
-  - Non protégée (accessible sans auth)
-  - Support i18n (FR/EN)
-- **Route** : `src/app/[locale]/(site)/merci/page.tsx`
-
-#### Composants de Navigation
-
-##### Header (`SiteHeader`)
-- **Description** : En-tête global de l'application
-- **Statut** : ✅ Implémenté
-- **Emplacement** : `src/components/navigation/site-header.tsx`
-- **Caractéristiques** :
-  - Logo / Titre de l'application
-  - Navigation principale
-  - Switcher de langue (FR/EN)
-  - Menu utilisateur (si authentifié)
-  - Bouton de connexion (si non authentifié)
-  - Responsive avec menu mobile
-  - Sticky header (optionnel)
-  - Support dark mode
-- **Composants enfants** :
-  - `UserMenu` : Menu déroulant utilisateur
-  - `SignOutButton` : Bouton de déconnexion
-  - Language switcher
-
-##### Footer
-- **Description** : Pied de page global
-- **Statut** : ⚠️ À implémenter
-- **Emplacement prévu** : `src/components/navigation/site-footer.tsx`
-- **Caractéristiques prévues** :
-  - Liens utiles (mentions légales, CGU, contact)
-  - Informations MPR Nantes
-  - Copyright
-  - Liens réseaux sociaux (optionnel)
-  - Support i18n
-
-#### Pages d'Authentification (Route Group: `(auth)/`)
-
-##### Page Login (`/auth/login`)
-- **Description** : Page de connexion
-- **Statut** : ✅ Implémentée
-- **Caractéristiques** :
-  - Formulaire email/password
-  - Validation côté client et serveur
-  - Messages d'erreur i18n
-  - Redirection après connexion
-  - Support Google OAuth (optionnel)
-  - Support Apple Sign In (optionnel)
-- **Composants** :
-  - `LoginForm` : Formulaire de connexion
-- **Route** : `src/app/[locale]/(auth)/auth/login/page.tsx`
-
-#### Pages Protégées (Route Group: `(app)/`)
-
-##### Dashboard (`/dashboard`)
-- **Description** : Tableau de bord utilisateur
-- **Statut** : ⚠️ En cours
-- **Accès** : Protégé (authentification requise)
-- **Route** : `src/app/[locale]/(app)/dashboard/page.tsx`
-
-##### Exercices Neuro (`/neuro`)
-- **Description** : Exercices neuropsychologiques
-- **Statut** : ⚠️ En cours
-- **Accès** : Protégé
-- **Route** : `src/app/[locale]/(app)/neuro/page.tsx`
-
-##### Exercices Ortho (`/ortho`)
-- **Description** : Exercices orthophoniques
-- **Statut** : ⚠️ En cours
-- **Accès** : Protégé
-- **Route** : `src/app/[locale]/(app)/ortho/page.tsx`
-
-##### Profil Utilisateur (`/profil`)
-- **Description** : Page de profil et paramètres
-- **Statut** : ⚠️ En cours
-- **Accès** : Protégé
-- **Caractéristiques prévues** :
-  - Informations personnelles
-  - Préférences utilisateur
-  - Statistiques de progression
-  - Historique des exercices
-- **Route** : `src/app/[locale]/(app)/profil/page.tsx`
-
-### Roadmap Fonctionnel
-
-#### Phase 1 : MVP (Actuelle)
-- ✅ Authentification
-- ✅ Landing page
-- ✅ Header avec navigation
-- ✅ Page Merci
-- ✅ i18n (FR/EN)
-- ⚠️ Footer (à implémenter)
-- ⚠️ Exercices de base (en cours)
-- ⚠️ Dashboard (en cours)
-- ⚠️ Profil utilisateur (en cours)
-
-#### Phase 2 : Core Features
-- [ ] Exercices Neuro complets
-- [ ] Exercices Ortho complets
-- [ ] Système de progression
-- [ ] Statistiques utilisateur
-- [ ] Export de données
-
-#### Phase 3 : Advanced Features
-- [ ] Dashboard professionnel
-- [ ] Gestion multi-patients
-- [ ] Rapports personnalisés
-- [ ] API publique
-- [ ] Intégrations tierces
+**Prochaines étapes** : Phase 2 - Core Features (Sprint 3-4)
+- Exercices Neuro/Ortho complets
+- Système de progression
+- Dashboard enrichi
+- Analytics & Insights
 
 ---
 
@@ -2202,6 +1972,7 @@ jobs:
 ### Fichiers de Documentation Projet
 - `README.md` : Vue d'ensemble
 - `QUICK_START.md` : Guide démarrage rapide
+- `ROADMAP.md` : 🗺️ Roadmap fonctionnelle et suivi de progression
 - `CONTRIBUTING.md` : Guide contributeurs
 - `BEST_PRACTICES_AUDIT.md` : Audit qualité code
 - `OPTIMIZATIONS.md` : Détails optimisations
@@ -2212,7 +1983,7 @@ jobs:
 - `NODE_UPGRADE_SUMMARY.md` : Migration Node 20
 - `specs/TECHNICAL_SPECIFICATIONS.md` : Spécifications techniques complètes
 - `specs/VERCEL_DEPLOYMENT_GUIDE.md` : Guide de déploiement Vercel détaillé
-- `specs/INFRASTRUCTURE_COSTS.md` : Feuille de route des coûts d'infrastructure
+- `specs/DEPLOYMENT_CHECKLIST.md` : ✅ Checklist complète de déploiement (avant/pendant/après)
 
 ---
 

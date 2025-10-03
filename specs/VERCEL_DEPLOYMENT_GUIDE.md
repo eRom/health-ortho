@@ -17,10 +17,10 @@
 
 Avant de commencer, assurez-vous d'avoir :
 
-- ✅ Un compte [Vercel](https://vercel.com) (gratuit)
+- ✅ Un compte [Vercel](https://vercel.com)
 - ✅ Un compte [GitHub](https://github.com), GitLab, ou Bitbucket
 - ✅ Le projet health-ortho poussé sur Git
-- ✅ Un compte [Neon DB](https://neon.tech) (gratuit)
+- ✅ Un compte [Neon DB](https://neon.tech)
 - ✅ Les variables d'environnement préparées
 
 ---
@@ -118,7 +118,7 @@ git push origin feature/new-exercise
 
 # 6. Merge vers main
 # → Vercel déploie automatiquement en production
-# → Ex: health-ortho.vercel.app ou votre-domaine.com
+# → Ex: health-ortho.vercel.app ou healthincloud.app
 ```
 
 ---
@@ -144,7 +144,7 @@ git push origin feature/new-exercise
 ```env
 # Application
 NODE_ENV=production
-NEXT_PUBLIC_APP_URL=https://votre-projet.vercel.app
+NEXT_PUBLIC_APP_URL=https://healthincloud.app
 
 # Database (Neon DB)
 DATABASE_URL=postgres://[user]:[password]@[endpoint].neon.tech/[database]?sslmode=require
@@ -282,14 +282,14 @@ npx prisma migrate deploy
 
 1. Dans Vercel Dashboard → **"Settings"** → **"Domains"**
 2. Cliquer sur **"Add"**
-3. Entrer votre domaine (ex: `mprincloud.com`)
+3. Entrer votre domaine (ex: `healthincloud.app`)
 4. Configurer les DNS
 
 ### Configuration DNS
 
 #### Avec Cloudflare (Recommandé)
 
-**Pour domaine racine** (`mprincloud.com`) :
+**Pour domaine racine** (`healthincloud.app`) :
 
 ```
 Type: A
@@ -298,7 +298,7 @@ Value: 76.76.21.21
 Proxy: Activé (orange)
 ```
 
-**Pour www** (`www.mprincloud.com`) :
+**Pour www** (`www.healthincloud.app`) :
 
 ```
 Type: CNAME
@@ -324,7 +324,6 @@ Value: cname.vercel-dns.com
 ### SSL/TLS
 
 - ✅ **Automatique** : Vercel génère un certificat SSL via Let's Encrypt
-- ✅ **Gratuit** : Inclus dans tous les plans
 - ✅ **Renouvellement auto** : Pas d'action requise
 - ⏱️ **Délai** : 5-10 minutes après configuration DNS
 
@@ -333,8 +332,8 @@ Value: cname.vercel-dns.com
 Configurer dans Vercel :
 
 ```
-mprincloud.com → Production (primaire)
-www.mprincloud.com → Redirect to mprincloud.com
+healthincloud.app → Production (primaire)
+www.healthincloud.app → Redirect to healthincloud.app
 ```
 
 Ou via Next.js config :
@@ -345,8 +344,8 @@ async redirects() {
   return [
     {
       source: '/:path*',
-      has: [{ type: 'host', value: 'www.mprincloud.com' }],
-      destination: 'https://mprincloud.com/:path*',
+      has: [{ type: 'host', value: 'www.healthincloud.app' }],
+      destination: 'https://healthincloud.app/:path*',
       permanent: true,
     },
   ];
@@ -411,7 +410,7 @@ export default function RootLayout({ children }) {
 }
 ```
 
-**Gratuit** avec plan Hobby :
+**Fonctionnalités** :
 - ✅ Page views
 - ✅ Core Web Vitals
 - ✅ Top pages
@@ -573,20 +572,18 @@ npx prisma db push
 **Erreur** : `Image Optimization Limit Reached`
 
 **Solutions** :
-- Plan Hobby : 1,000 images/mois
-- Optimiser les images avant upload
-- Utiliser `unoptimized: true` pour certaines images
-- Upgrader vers Pro pour 5,000 images/mois
+- Optimiser les images avant upload (AVIF/WebP)
+- Utiliser `unoptimized: true` pour certaines images si nécessaire
+- Vérifier la configuration d'optimisation
 
 #### 5. Function Timeout
 
 **Erreur** : `Function execution timed out`
 
 **Solutions** :
-- Hobby : 10s timeout max
-- Pro : 60s timeout max
-- Optimiser les requêtes lentes
+- Optimiser les requêtes lentes (indexation DB, caching)
 - Utiliser des Background Jobs pour tâches longues
+- Vérifier les timeouts configurés
 
 ### Debugging Build
 
@@ -685,7 +682,7 @@ vercel projects ls
 Votre application MPR In Cloud est maintenant déployée sur Vercel ! 🚀
 
 **URLs à retenir** :
-- 🌐 Production : `https://health-ortho.vercel.app` (ou votre domaine)
+- 🌐 Production : `https://healthincloud.app`
 - 📊 Dashboard : [vercel.com/dashboard](https://vercel.com/dashboard)
 - 🐘 Neon DB : [console.neon.tech](https://console.neon.tech)
 
