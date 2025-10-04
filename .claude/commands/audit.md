@@ -1,58 +1,71 @@
 ---
-description: Audit project scores and update SCORES.md
+description: Audit quality metrics and update the scorecard
 ---
 
-Analyze the current state of the Health In Cloud project and update the `specs/SCORES.md` file with:
+Review the current state of the Health In Cloud project and update `.specs/SCORECARD.md` accordingly. Follow the steps below and commit all edits when finished.
 
-## 1. Category Evaluation
+## 1. Evaluate Categories
 
-Assess each category:
-- Architecture & Structure
+Re-assess each scorecard category:
+- Architecture
 - TypeScript
 - Accessibility
 - Security
 - Performance
-- i18n
+- Internationalisation (i18n)
 - SEO
-- Tests (coverage, quality)
-- Monitoring (Sentry, analytics)
+- Tests (unit, integration, E2E)
+- Monitoring & Observability
 - Documentation
-- Error Handling
-- Infrastructure (Vercel, Neon, Cloudflare)
+- Error Handling & Resilience
+- Infrastructure & Deployment
 
-## 2. Global Score Calculation
+For each category, gather evidence (code changes, tooling outputs, dashboards) to support any score adjustments.
 
-Calculate overall score (out of 10)
+## 2. Update Scorecard Snapshot
 
-## 3. Improvement Identification
+- Recalculate the overall score (0–10) and update the **Snapshot** section.
+- Refresh the confidence level and next review window if needed.
 
-- Strengths to maintain
-- Areas needing attention
-- Priority actions
+## 3. Score Table & Commentary
 
-## 4. Update SCORES.md
+- Modify the **Scorecard (current)** table with the new score, trend arrow (`↗️`, `↘️`, `→`) and concise commentary (why it changed or stayed the same).
+- Reference concrete artefacts (e.g., “Playwright suite covers auth/login”, “Lighthouse score 94”).
 
-Update the following sections:
-- "Répartition par Catégorie" table
-- "Évolution Notable" section
-- Score history
-- Score objectives
-- Technical metrics
+## 4. Change Log
 
-## 5. Recommendations
+- Append one row per category whose score changed using the format: `YYYY-MM-DD | Category | old → new | Driver`.
+- If multiple categories changed in the same audit, add individual rows.
 
-Provide:
-- Immediate actions (high priority)
-- Short-term actions (1-2 weeks)
-- Medium-term actions (1 month)
+## 5. Targets & Actions
 
-## Analysis Basis
+- Update the **Short term**, **Mid term**, and **Long term** tables:
+  - Mark completed actions with a note or remove them.
+  - Add new actions that emerged from the audit.
+  - Adjust targets if strategy shifted.
 
-Base your analysis on:
-- Current code state
-- Existing tests
-- Sentry configuration
-- Deployed infrastructure
-- Available documentation
+## 6. Recommendations Summary
 
-Update the last modification date and generate a clear, actionable report.
+Provide a short written recap (can be placed in commit message or accompanying audit note) covering:
+- Immediate high-priority fixes/tests/config changes.
+- Short-term (≤ 1 month) improvements.
+- Medium-term (1–3 months) roadmap-impacting work.
+
+## 7. Evidence Checklist
+
+During the audit, verify or capture:
+- Latest unit/E2E test runs (`npm run test:run`, `npm run test:e2e`).
+- Lighthouse or Chrome DevTools audits for key routes.
+- Sentry/monitoring status (error rate, alerts).
+- Deployment health on Vercel/Neon (build success, migrations).
+- Documentation updates (README/specs) covering new features.
+
+## 8. Finalise
+
+- Update the “Last reviewed” date in `.specs/SCORECARD.md`.
+- Ensure all edits are consistent with `.specs/TECHNICAL_SPEC.md`, `.specs/ROADMAP.md`, and `.specs/TESTS_GUIDE.md`.
+- Stage and commit the modified files with a message such as `chore: audit quality metrics`.
+
+## Notes
+
+If no scores change, document the reasons (e.g., “No material changes since last audit”) and still update the review date to maintain traceability.
