@@ -27,7 +27,7 @@ This workflow describes how to take a change from idea to production while keepi
 ## 4. Pull Request Preparation
 - [ ] Title follows Conventional Commits (e.g., `feat: add rehab progress chart`).
 - [ ] PR description covers: context, summary of changes, tests run (with commands/output), scorecard updates (if any), follow-up tasks.
-- [ ] Link related issues or Linear tickets.
+- [ ] Link related issues or tasks (GitHub Issues, Jira, etc.).
 - [ ] Attach screenshots or Lighthouse reports when relevant.
 - [ ] Ensure TODOs or debug code are removed.
 

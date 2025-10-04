@@ -100,7 +100,7 @@ Use this document to bootstrap or audit the Health In Cloud Next.js stack. Check
 ## 13. Architecture Snapshot
 ```
 Users → Cloudflare (CDN, DNS, WAF, TLS) → Vercel (Next.js App Router) → Prisma → Neon PostgreSQL
-                                               └─ Services: Sentry, Linear, OAuth providers
+                                               └─ Services: Sentry, OAuth providers
 ```
 - Route groups: `(site)` public pages, `(auth)` auth flows, `(app)` authenticated dashboards/exercises.
 - Prefer React Server Components; limit `"use client"` surfaces to interactivity and Zustand stores.
@@ -112,7 +112,7 @@ src/
 ├─ app/[locale]/(site)         # Landing, thank-you pages
 ├─ app/[locale]/(auth)         # Auth routes (Better Auth)
 ├─ app/[locale]/(app)          # Protected routes: dashboard, neuro, ortho, profile
-├─ app/api/                    # Route handlers (auth, sentry, linear)
+├─ app/api/                    # Route handlers (auth, sentry)
 ├─ components/ui               # shadcn primitives
 ├─ components/navigation       # SiteHeader, SiteFooter, UserMenu, SignOutButton
 ├─ lib/                        # Auth, i18n, prisma singleton, sentry helpers, utils (cn)
