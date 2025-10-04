@@ -242,5 +242,6 @@ Use this section to capture audit results or blockers.
 - Product overview: `.specs/PRODUCT_SPEC.md`
 - Roadmap: `.specs/ROADMAP.md`
 - Testing playbook: `.specs/TESTS_GUIDE.md`
-- MCP integration: `.specs/MCP_GUIDE.md`
 - Quality scorecard: `.specs/SCORECARD.md`
+- MCP integration: `.specs/MCP_GUIDE.md`
+- Data & compliance: `.specs/DATA_COMPLIANCE.md`
